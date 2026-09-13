@@ -1,0 +1,35 @@
+# --- rendered output & runtime state (large / machine-specific) -------------
+# ~200 GB of frames plus render_log.csv and render_all.log
+cities_351_700/
+# signed-in Chrome profile used by render_all.py
+.ges-chrome-profile/
+# debug screenshots (older runs wrote them to the repo root)
+render_debug_*.png
+*.log
+nohup.out
+
+# --- reference datasets & archives (too big, or not ours to redistribute) ---
+# Cities/ and city_satellite/ (the latter has its own .git and LFS stubs)
+reference/
+archive/koblenz_test_renders/
+# exported chat transcripts
+archive/sessions/
+*.zip
+
+# --- python ------------------------------------------------------------------
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+.pytest_cache/
+.mypy_cache/
+
+# --- editors / OS ------------------------------------------------------------
+.idea/
+.vscode/
+*.swp
+.DS_Store
+Thumbs.db
+
+# --- secrets -----------------------------------------------------------------
+.env

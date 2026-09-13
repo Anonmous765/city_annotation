@@ -1,0 +1,2 @@
+playwright>=1.40      # render_all.py (drives Chrome); also needs Google Chrome installed
+# build_city_list.py needs `pdftotext` from poppler-utils on PATH
