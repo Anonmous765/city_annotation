@@ -6,7 +6,7 @@ ends up with footage/, <view>.json, ImagerySources.txt and the .esp, exactly
 like reference/Cities/Koblenz/.
 
     pip install playwright            # one-time
-    python3 render_all.py projects --out cities_351_700   # renders everything not yet done
+    python3 render_all.py projects --out cities_10_50     # renders everything not yet done
 
 Output layout (same as reference/Cities/Koblenz and reference/city_satellite/cities/<city>):
 
@@ -14,6 +14,7 @@ Output layout (same as reference/Cities/Koblenz and reference/city_satellite/cit
     <out>/<city_folder>/satellite/satellite.esp, satellite.json, ImagerySources.txt
     <out>/<city_folder>/ground_truth/...
     <out>/metadata.csv                # copied from projects/metadata.csv
+    (<out> is whatever you pass to --out, one folder per share of the city list)
 
 First run: a Chrome window opens on Earth Studio. Sign in to Google there
 (the script waits until the Earth Studio start screen appears) and leave the
@@ -348,8 +349,8 @@ def render_one(page, downloads, esp: Path, view: str, args, zip_path: Path) -> i
 def main():
     ap = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
     ap.add_argument("projects", type=Path, help="folder produced by batch_generate.py")
-    ap.add_argument("--out", type=Path, default=Path("cities_351_700"),
-                    help="where rendered <city>/<view>/ folders go (default: cities_351_700)")
+    ap.add_argument("--out", type=Path, required=True,
+                    help="where rendered <city>/<view>/ folders go, e.g. cities_10_50")
     ap.add_argument("--only", nargs="*", help="city folder names to render (default: all)")
     ap.add_argument("--limit", type=int, default=0, help="stop after N renders (0 = no limit)")
     ap.add_argument("--profile", type=Path, default=Path(".ges-chrome-profile"),
