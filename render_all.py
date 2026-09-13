@@ -32,9 +32,21 @@ What it does per project: open Earth Studio, drop the .esp onto the page
 (same as drag-and-drop import), click Render (the dialog is pre-filled from
 the .esp: 2048x2048, frames 0-60, JPEG, JSON 3D tracking), click Start, wait
 for the zip, save + unzip it, verify 61 frames + json. Progress is polled
-every few seconds; if it stops moving for --stall-minutes the page is reloaded
-and the project retried (up to --retries). Already-complete projects are
-skipped, so you can stop and restart at any time.
+every few seconds; if it stops moving for --stall-minutes the view is marked
+stalled and retried on a later pass (see below); other errors are retried up
+to --retries times right away. Already-complete projects are skipped, so you
+can stop and restart at any time.
+
+Stalls: sometimes Earth Studio stops advancing the frame counter at one
+specific frame of one project ("00:00 remaining", nothing in flight, no
+error) and never recovers. Seen on 2026-09-13 for several Polish cities while
+German ones kept rendering: it follows the camera position, not the frame
+count or the browser, so it looks like Google's 3D tile data being updated
+for that area. The script gives up after --stall-minutes, moves on, and
+sweeps the stalled views again in later passes (--passes, --pass-wait-minutes).
+After a stall reload Earth Studio shows an "Uh-oh! Something went wrong. Do
+you want to recover ...?" modal that blocks all clicks; it is dismissed
+automatically.
 
 Keep the Chrome window on screen. Earth Studio pauses local renders when it
 believes the tab is hidden; the script tells the page it is always visible,
@@ -237,7 +249,35 @@ def snap(page, tag):
 def click_button(page, name, timeout_ms=60_000):
     btn = page.get_by_role("button", name=name, exact=True)
     btn.first.wait_for(state="visible", timeout=timeout_ms)
-    btn.first.click()
+    try:
+        btn.first.click(timeout=30_000)
+    except PWTimeout:
+        # Usually something is sitting over the button (a modal); keep the
+        # screenshot so the blocker is visible, and name the button in the log.
+        snap(page, f"click_{name.lower().replace(' ', '_')}_blocked")
+        raise RuntimeError(f"could not click '{name}' (blocked by an overlay? see debug screenshot)")
+
+
+def dismiss_recovery_prompt(page) -> bool:
+    """After a reload mid-render Earth Studio shows a modal: "Uh-oh! Something
+    went wrong. Do you want to recover what you were working on?" with
+    Dismiss / Yes buttons. It sits over the whole page and swallows every
+    click, so Render can never be pressed. We import our own project each
+    time, so Dismiss is always the right answer."""
+    try:
+        if "Uh-oh!" not in body_text(page) and "recover what you were working on" not in body_text(page):
+            return False
+        btn = page.get_by_role("button", name="Dismiss", exact=True)
+        if not btn.count():
+            btn = page.get_by_text("Dismiss", exact=True)
+        btn.first.click(timeout=5_000)
+        log("  dismissed Earth Studio's 'Something went wrong' recovery prompt")
+        time.sleep(1)
+        return True
+    except Exception as e:
+        log(f"  could not dismiss the recovery prompt: {str(e).splitlines()[0]}")
+        snap(page, "recovery_prompt")
+        return False
 
 
 def save_zip_from_page(page, zip_path: Path) -> int:
@@ -270,6 +310,7 @@ def render_one(page, downloads, esp: Path, view: str, args, zip_path: Path) -> i
     if not page.evaluate(CAPTURE_ZIP_JS):
         raise RuntimeError("window.SafeDownloader not found; cannot capture the zip")
 
+    dismiss_recovery_prompt(page)
     page.evaluate(DROP_ESP_JS, [esp.read_text(), esp.name])
     # Title becomes "<project name> - Google Earth Studio" once imported.
     t0 = time.time()
@@ -283,6 +324,7 @@ def render_one(page, downloads, esp: Path, view: str, args, zip_path: Path) -> i
     while "Loading Earth" in body_text(page) and time.time() - t0 < 120:
         time.sleep(2)
 
+    dismiss_recovery_prompt(page)  # can also pop up a moment after the import
     click_button(page, "Render")
     start = page.get_by_role("button", name="Start", exact=True).first
     start.wait_for(state="visible", timeout=60_000)
@@ -356,7 +398,14 @@ def main():
     ap.add_argument("--profile", type=Path, default=Path(".ges-chrome-profile"),
                     help="Chrome profile dir the script launches (keeps your sign-in)")
     ap.add_argument("--cdp", help="attach to a Chrome you started with --remote-debugging-port instead")
-    ap.add_argument("--stall-minutes", type=float, default=4, help="reload+retry if progress freezes this long")
+    ap.add_argument("--stall-minutes", type=float, default=1.5,
+                    help="give up on a render if the frame counter freezes this long (zip packaging "
+                         "at the end takes ~30-40 s, so keep this above 1)")
+    ap.add_argument("--passes", type=int, default=4,
+                    help="how many times to sweep the list; views that stalled are retried on the next "
+                         "pass instead of immediately (stalls are position-specific and usually clear "
+                         "up on their own after a while)")
+    ap.add_argument("--pass-wait-minutes", type=float, default=15, help="pause between passes when only stalled views remain")
     ap.add_argument("--max-minutes", type=float, default=40, help="give up on one render after this long")
     ap.add_argument("--retries", type=int, default=3)
     ap.add_argument("--max-crashes", type=int, default=50,
@@ -448,7 +497,16 @@ def main():
         crashes = 0
 
         durations = []
-        for i, (city, view, esp, view_dir) in enumerate(todo, 1):
+        stalled = []
+        for pass_no in range(1, args.passes + 1):
+          if pass_no > 1:
+            todo = stalled
+            stalled = []
+            if not todo:
+                break
+            log(f"pass {pass_no}: retrying {len(todo)} stalled view(s) after {args.pass_wait_minutes:g} min")
+            time.sleep(args.pass_wait_minutes * 60)
+          for i, (city, view, esp, view_dir) in enumerate(todo, 1):
             eta = ""
             if durations:
                 avg = sum(durations) / len(durations)
@@ -481,13 +539,27 @@ def main():
                     shutil.rmtree(view_dir / "footage", ignore_errors=True)
                     for leftover in view_dir.glob("*.zip") if view_dir.exists() else []:
                         leftover.unlink()
+                    if "no progress" in note:
+                        # A frozen frame counter is Earth Studio failing to finish loading the
+                        # scene at one camera position (seen 2026-09-13: same frame every time,
+                        # any browser, while other cities render fine). Retrying right away just
+                        # burns time; leave it for the next pass.
+                        status = "stalled"
+                        break
                     time.sleep(5)
             secs = time.time() - t0
             if status == "ok":
                 durations.append(secs)
+            elif status == "stalled":
+                stalled.append((city, view, esp, view_dir))
             log(f"  {status} in {timedelta(seconds=int(secs))} ({note})")
             logw.writerow([datetime.now().isoformat(timespec="seconds"), city, view, status, int(secs), attempt, note])
             logfh.flush()
+          if stalled:
+            log(f"pass {pass_no} done: {len(stalled)} view(s) stalled: " + ", ".join(f"{c}/{v}" for c, v, _, _ in stalled))
+        if stalled:
+            log(f"still stalled after {args.passes} passes: " + ", ".join(f"{c}/{v}" for c, v, _, _ in stalled))
+            log("rerun later (python3 render_all.py projects --out <out>) to try them again")
 
         try:
             state["context"].close()

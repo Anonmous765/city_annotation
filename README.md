@@ -205,3 +205,18 @@ look-at to the POI.
 * Earth Studio's internals (drop import, visibility check, zip hand-off) were
   read from its minified bundle and may change with a new release; if a step
   stops working, those hooks in `render_all.py` are the first place to look.
+* Earth Studio sometimes freezes mid-render (frame counter stops, "00:00
+  remaining", no error, nothing loading). It happens at the same frame of the
+  same project every time, in any browser, while other cities keep rendering,
+  so it appears to be Google's 3D tile data for that spot being unavailable or
+  mid-update. The script gives up after `--stall-minutes` (default 1.5), logs
+  the view as `stalled`, carries on, and sweeps the stalled views again in
+  later passes (`--passes`, default 4, `--pass-wait-minutes` between them).
+  Views still stalled at the end are listed in the log; rerun the same
+  command later to try them again. If one never clears, nudge that city's
+  target or radius in the CSV and regenerate its project.
+* After a stall reload Earth Studio shows an "Uh-oh! Something went wrong"
+  recovery modal that blocks every click; the script dismisses it
+  automatically. If a run ever logs repeated `could not click 'Render'`
+  failures, look at `<out>/debug/render_debug_click_render_blocked.png` to
+  see what is in the way.
