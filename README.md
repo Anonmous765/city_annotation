@@ -57,8 +57,43 @@ To run step 3 unattended and keep it alive after closing the terminal:
 setsid nohup python3 render_all.py projects --out $SHARE >> $SHARE/render_all.log 2>&1 < /dev/null &
 tail -f $SHARE/render_all.log                 # progress
 ls -d $SHARE/*/*/footage | wc -l              # finished views (2 per city)
-pkill -f "python3 render_all[.]py"; pkill -f "ges-chrome-profile"   # stop; rerun to resume
 ```
+
+### Stopping and resuming
+
+It is safe to stop at any point. A view is only counted as done once its
+`<view>.json` and all frames are unpacked into `<city>/<view>/footage/`,
+so the view that was mid-render is simply rendered again next time;
+nothing that is already complete is touched.
+
+**Stop.** How depends on how you started step 3:
+
+* Foreground (`python3 render_all.py ...` in a terminal): press `Ctrl+C`.
+  The script and the Chrome it launched exit together.
+* Background (the `setsid nohup ...` line above): `Ctrl+C` does nothing,
+  because the script is detached from the terminal. Closing the Chrome
+  window does not help either: the script treats that as a crash and
+  relaunches Chrome. Kill both explicitly:
+
+  ```bash
+  pkill -f "python3 render_all[.]py"; pkill -f "ges-chrome-profile"
+  pgrep -af "render_all|ges-chrome-profile"   # should print nothing
+  ```
+
+**Resume.** Run the same command you started with, from the project folder.
+`$SHARE` is a plain shell variable and is empty in a new terminal, so set it
+again first:
+
+```bash
+SHARE=cities_351_700                          # your share
+setsid nohup python3 render_all.py projects --out $SHARE >> $SHARE/render_all.log 2>&1 < /dev/null &
+tail -f $SHARE/render_all.log
+```
+
+The first log line reads `N projects listed, M already rendered, K to do`,
+which confirms it picked up where it left off. Pass the same `--only` /
+`--limit` options as before if you used any. Your Google sign-in is kept in
+`.ges-chrome-profile/`, so Chrome should not ask you to log in again.
 
 Useful options: `render_all.py --only koblenz trier` renders named cities
 only, `--limit 2` stops after two views (good for a first test), and
