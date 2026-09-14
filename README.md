@@ -15,6 +15,8 @@ share is cities 10–50 or 351–700.
 ```
 ges_esp.py            .esp schema + orbit geometry (library used by the two scripts below)
 build_city_list.py    "700 cities.pdf" -> CSV with lat/lon and terrain-based target altitude
+snap_to_buildings.py  optional: move each target from the PDF's downtown point onto a real
+                      building nearby (OpenStreetMap footprints) + a review sheet
 batch_generate.py     CSV -> <projects>/<city>/{satellite,ground_truth}/<view>.esp
 render_all.py         drives Earth Studio in Chrome, renders every project, unpacks results
                       (--parallel N runs N Chrome windows at once)
@@ -135,6 +137,33 @@ world_time_utc`). `poi_alt_m` is the absolute altitude of the orbit target:
 terrain elevation + 27 m (see *Target altitude*). `data/cities_sample.csv`
 is a minimal example. To hand-pick a building instead of the PDF's downtown
 anchor, edit `lat`/`lon` in the CSV and rerun step 2.
+
+### Putting the orbit target on a building
+
+The PDF's "downtown anchor" is usually a road junction or a square, so the
+orbit often circles pavement (Venice: the Piazzale Roma bridgehead). Only
+about a fifth of the anchors in rows 351–700 sit on a building footprint.
+`snap_to_buildings.py` moves each target onto a real building nearby using
+OpenStreetMap footprints, preferring landmarks (town hall, cathedral,
+station, castle, museum, ...) and otherwise the largest footprint, discounted
+by distance so the target stays downtown:
+
+```bash
+python3 snap_to_buildings.py data/$SHARE.csv --out data/${SHARE}_snapped.csv
+# review data/${SHARE}_snapped_review.csv (building, distance moved, map links),
+# fix any row by hand, then:
+python3 batch_generate.py data/${SHARE}_snapped.csv --out projects
+```
+
+Terrain elevation is re-fetched for the moved points. Rows where no building
+was found within 400 m are left unchanged and listed at the end; pick those
+by hand; for rows 351–700 those six are listed in `data/handpick_needed.md` and
+are skipped until picked. Overpass results are cached in `data/osm_buildings_cache.json`.
+The public Overpass servers rate-limit aggressively; the script retries and
+rotates mirrors, but a full 350-city run can take the better part of an
+hour. Note the reference dataset itself mostly used Earth Studio's default
+city coordinate, so snapping is an improvement over it, not a requirement
+for matching it.
 
 ## Output layout
 
