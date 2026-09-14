@@ -1,351 +1,351 @@
-n,city,country,continent,anchor,lat,lon,terrain_m,poi_alt_m
-351,Koblenz,Germany,Europe,Altstadt,50.3569,7.5889,72.0,99.0
-352,Trier,Germany,Europe,Innenstadt,49.7499,6.6371,140.0,167.0
-353,Saarbrücken,Germany,Europe,Innenstadt,49.2402,6.9969,195.0,222.0
-354,Osnabrück,Germany,Europe,Innenstadt,52.2799,8.0472,66.0,93.0
-355,Oldenburg,Germany,Europe,Innenstadt,53.1435,8.2146,5.0,32.0
-356,Granada,Spain,Europe,Centro Granada,37.1773,-3.5986,698.0,725.0
-357,Valladolid,Spain,Europe,Centro Valladolid,41.6523,-4.7245,701.0,728.0
-358,Vigo,Spain,Europe,Centro Vigo,42.2406,-8.7207,11.0,38.0
-359,A Coruña,Spain,Europe,Centro A Coruña,43.3623,-8.4115,55.0,82.0
-360,Gijón,Spain,Europe,Centro Gijón,43.5322,-5.6611,17.0,44.0
-361,Oviedo,Spain,Europe,Centro Oviedo,43.3619,-5.8494,236.0,263.0
-362,Santander,Spain,Europe,Centro Santander,43.4623,-3.8099,12.0,39.0
-363,Pamplona,Spain,Europe,Casco Antiguo,42.8125,-1.6458,465.0,492.0
-364,San Sebastián,Spain,Europe,Centro,43.3183,-1.9812,18.0,45.0
-365,Vitoria-Gasteiz,Spain,Europe,Centro,42.8467,-2.6727,529.0,556.0
-366,Salamanca,Spain,Europe,Centro Histórico,40.9701,-5.6635,816.0,843.0
-367,Toledo,Spain,Europe,Casco Histórico,39.8628,-4.0273,472.0,499.0
-368,Burgos,Spain,Europe,Centro Histórico,42.3439,-3.6969,861.0,888.0
-369,León,Spain,Europe,Centro León,42.5987,-5.5671,849.0,876.0
-370,Almería,Spain,Europe,Centro Almería,36.834,-2.4637,7.0,34.0
-371,Cádiz,Spain,Europe,Centro Cádiz,36.5271,-6.2886,20.0,47.0
-372,Jerez de la Frontera,Spain,Europe,Centro,36.685,-6.1261,43.0,70.0
-373,Huelva,Spain,Europe,Centro Huelva,37.2614,-6.9447,34.0,61.0
-374,Badajoz,Spain,Europe,Centro Badajoz,38.8794,-6.9707,192.0,219.0
-375,Cáceres,Spain,Europe,Centro Histórico,39.4753,-6.3724,444.0,471.0
-376,Tarragona,Spain,Europe,Centre Tarragona,41.1189,1.2445,22.0,49.0
-377,Girona,Spain,Europe,Centre Girona,41.9794,2.8214,83.0,110.0
-378,Lleida,Spain,Europe,Centre Lleida,41.6176,0.62,186.0,213.0
-379,Castellón de la Plana,Spain,Europe,Centro,39.9864,-0.0513,47.0,74.0
-380,Logroño,Spain,Europe,Centro Logroño,42.4627,-2.4449,396.0,423.0
-381,Venice,Italy,Europe,Venezia Centro,45.4408,12.3155,2.0,29.0
-382,Palermo,Italy,Europe,Palermo Centro,38.1157,13.3615,28.0,55.0
-383,Catania,Italy,Europe,Catania Centro,37.5079,15.083,46.0,73.0
-384,Bari,Italy,Europe,Bari Centro,41.1171,16.8719,9.0,36.0
-385,Trieste,Italy,Europe,Trieste Centro,45.6495,13.7768,14.0,41.0
-386,Parma,Italy,Europe,Parma Centro,44.8015,10.3279,62.0,89.0
-387,Modena,Italy,Europe,Modena Centro,44.6471,10.9252,46.0,73.0
-388,Reggio Emilia,Italy,Europe,Centro,44.6989,10.6297,67.0,94.0
-389,Perugia,Italy,Europe,Centro Storico,43.1107,12.3908,437.0,464.0
-390,Ravenna,Italy,Europe,Ravenna Centro,44.4184,12.2035,4.0,31.0
-391,Rimini,Italy,Europe,Rimini Centro,44.0678,12.5695,3.0,30.0
-392,Ferrara,Italy,Europe,Ferrara Centro,44.8381,11.6198,10.0,37.0
-393,Livorno,Italy,Europe,Livorno Centro,43.5485,10.3106,16.0,43.0
-394,Pisa,Italy,Europe,Pisa Centro,43.7228,10.4017,5.0,32.0
-395,Lucca,Italy,Europe,Centro Storico,43.8429,10.5027,25.0,52.0
-396,Siena,Italy,Europe,Centro Storico,43.3188,11.3308,339.0,366.0
-397,Arezzo,Italy,Europe,Arezzo Centro,43.4633,11.8796,267.0,294.0
-398,Bergamo,Italy,Europe,Bergamo Centro,45.6983,9.6773,261.0,288.0
-399,Brescia,Italy,Europe,Brescia Centro,45.5416,10.2118,151.0,178.0
-400,Monza,Italy,Europe,Monza Centro,45.5845,9.2744,172.0,199.0
-401,Como,Italy,Europe,Como Centro,45.8081,9.0852,215.0,242.0
-402,Trento,Italy,Europe,Trento Centro,46.0748,11.1217,196.0,223.0
-403,Bolzano,Italy,Europe,Bolzano Centro,46.4983,11.3548,270.0,297.0
-404,Vicenza,Italy,Europe,Vicenza Centro,45.5455,11.5354,34.0,61.0
-405,Lecce,Italy,Europe,Lecce Centro,40.3515,18.175,49.0,76.0
-406,Groningen,Netherlands,Europe,Groningen Centrum,53.2194,6.5665,16.0,43.0
-407,Maastricht,Netherlands,Europe,Maastricht Centrum,50.8514,5.691,51.0,78.0
-408,Tilburg,Netherlands,Europe,Tilburg Centrum,51.5555,5.0913,16.0,43.0
-409,Breda,Netherlands,Europe,Breda Centrum,51.5719,4.7683,2.0,29.0
-410,Nijmegen,Netherlands,Europe,Nijmegen Centrum,51.8126,5.8372,14.0,41.0
-411,Arnhem,Netherlands,Europe,Arnhem Centrum,51.9851,5.8987,32.0,59.0
-412,Haarlem,Netherlands,Europe,Haarlem Centrum,52.3874,4.6462,2.0,29.0
-413,Leiden,Netherlands,Europe,Leiden Centrum,52.1601,4.497,4.0,31.0
-414,Delft,Netherlands,Europe,Delft Centrum,52.0116,4.3571,4.0,31.0
-415,Enschede,Netherlands,Europe,Enschede Centrum,52.2215,6.8937,45.0,72.0
-416,Amersfoort,Netherlands,Europe,Amersfoort Centrum,52.1561,5.3878,6.0,33.0
-417,Zwolle,Netherlands,Europe,Zwolle Centrum,52.5168,6.083,6.0,33.0
-418,Alkmaar,Netherlands,Europe,Alkmaar Centrum,52.6324,4.7534,1.0,28.0
-419,Leeuwarden,Netherlands,Europe,Leeuwarden Centrum,53.2012,5.7999,4.0,31.0
-420,'s- Hertogenbosch,Netherlands,Europe,Centrum,51.6978,5.3037,8.0,35.0
-421,Bruges,Belgium,Europe,Brugge Centrum,51.2093,3.2247,12.0,39.0
-422,Leuven,Belgium,Europe,Leuven Centrum,50.8798,4.7005,28.0,55.0
-423,Liège,Belgium,Europe,Liège Centre,50.6326,5.5797,70.0,97.0
-424,Charleroi,Belgium,Europe,Charleroi Centre,50.4108,4.4446,134.0,161.0
-425,Namur,Belgium,Europe,Namur Centre,50.4674,4.8718,82.0,109.0
-426,Mechelen,Belgium,Europe,Mechelen Centrum,51.0259,4.4776,6.0,33.0
-427,Hasselt,Belgium,Europe,Hasselt Centrum,50.9307,5.3325,41.0,68.0
-428,Mons,Belgium,Europe,Mons Centre,50.4542,3.9567,41.0,68.0
-429,Kortrijk,Belgium,Europe,Kortrijk Centrum,50.828,3.2649,24.0,51.0
-430,Ostend,Belgium,Europe,Oostende Centrum,51.23,2.92,8.0,35.0
-431,Salzburg,Austria,Europe,Salzburg Altstadt,47.8095,13.055,431.0,458.0
-432,Innsbruck,Austria,Europe,Innenstadt,47.2692,11.4041,580.0,607.0
-433,Linz,Austria,Europe,Linz Zentrum,48.3069,14.2858,266.0,293.0
-434,Klagenfurt,Austria,Europe,Innenstadt,46.6247,14.3053,448.0,475.0
-435,Villach,Austria,Europe,Innenstadt,46.6103,13.8558,494.0,521.0
-436,Wels,Austria,Europe,Stadtzentrum,48.1575,14.0289,315.0,342.0
-437,Sankt Pölten,Austria,Europe,Innenstadt,48.2035,15.6256,274.0,301.0
-438,Eisenstadt,Austria,Europe,Stadtzentrum,47.8457,16.5233,182.0,209.0
-439,Bern,Switzerland,Europe,Bern Zentrum,46.948,7.4474,548.0,575.0
-440,Lausanne,Switzerland,Europe,Lausanne Centre,46.5197,6.6323,500.0,527.0
-441,Lucerne,Switzerland,Europe,Luzern Zentrum,47.0502,8.3093,439.0,466.0
-442,Lugano,Switzerland,Europe,Lugano Centro,46.0037,8.9511,285.0,312.0
-443,Winterthur,Switzerland,Europe,Winterthur,47.4988,8.7241,445.0,472.0
-444,St. Gallen,Switzerland,Europe,St. Gallen Zentrum,47.4245,9.3767,681.0,708.0
-445,Fribourg,Switzerland,Europe,Fribourg Centre,46.8065,7.1619,590.0,617.0
-446,Neuchâtel,Switzerland,Europe,Neuchâtel Centre,46.9896,6.9293,435.0,462.0
-447,Gdańsk,Poland,Europe,Śródmieście,54.352,18.6466,8.0,35.0
-448,Gdynia,Poland,Europe,Śródmieście,54.5189,18.5305,21.0,48.0
-449,Sopot,Poland,Europe,Centrum,54.4416,18.5601,20.0,47.0
-450,Poznań,Poland,Europe,Stare Miasto,52.4064,16.9252,81.0,108.0
-451,Łódź,Poland,Europe,Centrum Łodzi,51.7592,19.456,205.0,232.0
-452,Szczecin,Poland,Europe,Centrum,53.4285,14.5528,22.0,49.0
-453,Bydgoszcz,Poland,Europe,Śródmieście,53.1235,18.0084,39.0,66.0
-454,Toruń,Poland,Europe,Stare Miasto,53.0138,18.5984,50.0,77.0
-455,Lublin,Poland,Europe,Śródmieście,51.2465,22.5684,197.0,224.0
-456,Katowice,Poland,Europe,Śródmieście,50.2649,19.0238,264.0,291.0
-457,Rzeszów,Poland,Europe,Śródmieście,50.0412,21.9991,206.0,233.0
-458,Białystok,Poland,Europe,Centrum,53.1325,23.1688,131.0,158.0
-459,Kielce,Poland,Europe,Centrum,50.8661,20.6286,270.0,297.0
-460,Opole,Poland,Europe,Centrum,50.6751,17.9213,157.0,184.0
-461,Olsztyn,Poland,Europe,Śródmieście,53.7784,20.4801,123.0,150.0
-462,Brno,Czechia,Europe,Brno-střed,49.1951,16.6068,227.0,254.0
-463,Ostrava,Czechia,Europe,Moravská Ostrava,49.8209,18.2625,233.0,260.0
-464,Plzeň,Czechia,Europe,Centrum,49.7384,13.3736,333.0,360.0
-465,Liberec,Czechia,Europe,Centrum,50.7663,15.0543,353.0,380.0
-466,Pardubice,Czechia,Europe,Centrum,50.0343,15.7812,222.0,249.0
-467,Zlín,Czechia,Europe,Centrum,49.2244,17.6628,224.0,251.0
-468,Jihlava,Czechia,Europe,Centrum,49.3961,15.5912,525.0,552.0
-469,Karlovy Vary,Czechia,Europe,Centrum,50.2319,12.8719,373.0,400.0
-470,Braga,Portugal,Europe,Centro Braga,41.5454,-8.4265,174.0,201.0
-471,Coimbra,Portugal,Europe,Baixa / Centro,40.2033,-8.4103,42.0,69.0
-472,Aveiro,Portugal,Europe,Centro Aveiro,40.6405,-8.6538,13.0,40.0
-473,Faro,Portugal,Europe,Centro Faro,37.0194,-7.9304,20.0,47.0
-474,Setúbal,Portugal,Europe,Centro Setúbal,38.5244,-8.8882,16.0,43.0
-475,Évora,Portugal,Europe,Centro Histórico,38.5714,-7.9135,287.0,314.0
-476,Viseu,Portugal,Europe,Centro Viseu,40.6566,-7.9125,479.0,506.0
-477,Leiria,Portugal,Europe,Centro Leiria,39.7436,-8.8071,31.0,58.0
-478,Guimarães,Portugal,Europe,Centro Histórico,41.4425,-8.2918,190.0,217.0
-479,Funchal,Portugal,Europe,Centro Funchal,32.6669,-16.9241,315.0,342.0
-480,Aarhus,Denmark,Europe,Aarhus C,56.1629,10.2039,27.0,54.0
-481,Aalborg,Denmark,Europe,Aalborg Centrum,57.0488,9.9217,7.0,34.0
-482,Odense,Denmark,Europe,Odense Centrum,55.4038,10.4024,12.0,39.0
-483,Malmö,Sweden,Europe,Malmö Centrum,55.605,13.0038,15.0,42.0
-484,Gothenburg,Sweden,Europe,Göteborg Centrum,57.7089,11.9746,4.0,31.0
-485,Uppsala,Sweden,Europe,Uppsala Centrum,59.8586,17.6389,22.0,49.0
-486,Västerås,Sweden,Europe,Västerås Centrum,59.6099,16.5448,21.0,48.0
-487,Örebro,Sweden,Europe,Örebro Centrum,59.2753,15.2134,38.0,65.0
-488,Bergen,Norway,Europe,Bergen Sentrum,60.3913,5.3221,12.0,39.0
-489,Trondheim,Norway,Europe,Trondheim Sentrum,63.4305,10.3951,8.0,35.0
-490,Stavanger,Norway,Europe,Stavanger Sentrum,58.97,5.7331,16.0,43.0
-491,Turku,Finland,Europe,Turku Keskusta,60.4518,22.2666,33.0,60.0
-492,Kaunas,Lithuania,Europe,Kaunas Centre,54.8985,23.9036,32.0,59.0
-493,Klaipėda,Lithuania,Europe,Klaipėda Centre,55.7033,21.1443,6.0,33.0
-494,Šiauliai,Lithuania,Europe,City Centre,55.9349,23.3137,131.0,158.0
-495,Daugavpils,Latvia,Europe,City Centre,55.8747,26.5362,104.0,131.0
-496,Liepāja,Latvia,Europe,City Centre,56.5047,21.0108,6.0,33.0
-497,Pärnu,Estonia,Europe,Pärnu Centre,58.3859,24.4971,7.0,34.0
-498,Ljubljana,Slovenia,Europe,Ljubljana Centre,46.0569,14.5058,306.0,333.0
-499,Bratislava,Slovakia,Europe,Staré Mesto,48.1486,17.1077,155.0,182.0
-500,Split,Croatia,Europe,Split Centre,43.5081,16.4402,11.0,38.0
-501,Sakai,Japan,Asia,Central Sakai,34.5733,135.483,17.0,44.0
-502,Saitama,Japan,Asia,Omiya / Central Saitama,35.8617,139.6455,24.0,51.0
-503,Hachioji,Japan,Asia,Central Hachioji,35.6664,139.316,136.0,163.0
-504,Funabashi,Japan,Asia,Funabashi Station Area,35.6947,139.9826,11.0,38.0
-505,Ichikawa,Japan,Asia,Central Ichikawa,35.7219,139.931,7.0,34.0
-506,Matsudo,Japan,Asia,Central Matsudo,35.7877,139.9032,19.0,46.0
-507,Kashiwa,Japan,Asia,Central Kashiwa,35.8676,139.9758,22.0,49.0
-508,Machida,Japan,Asia,Central Machida,35.5486,139.4468,101.0,128.0
-509,Fujisawa,Japan,Asia,Central Fujisawa,35.3392,139.4911,33.0,60.0
-510,Yokosuka,Japan,Asia,Central Yokosuka,35.2813,139.6722,13.0,40.0
-511,Hiratsuka,Japan,Asia,Central Hiratsuka,35.3355,139.3497,10.0,37.0
-512,Odawara,Japan,Asia,Central Odawara,35.2646,139.1521,23.0,50.0
-513,Atsugi,Japan,Asia,Central Atsugi,35.4431,139.3625,27.0,54.0
-514,Sagamihara,Japan,Asia,Central Sagamihara,35.5714,139.3732,137.0,164.0
-515,Kofu,Japan,Asia,Central Kofu,35.6639,138.5683,282.0,309.0
-516,Nagano,Japan,Asia,Central Nagano,36.6485,138.195,363.0,390.0
-517,Matsumoto,Japan,Asia,Central Matsumoto,36.238,137.972,593.0,620.0
-518,Toyama,Japan,Asia,Central Toyama,36.6953,137.2113,19.0,46.0
-519,Fukui,Japan,Asia,Central Fukui,36.0641,136.2196,20.0,47.0
-520,Gifu,Japan,Asia,Central Gifu,35.4233,136.7607,20.0,47.0
-521,Toyota,Japan,Asia,Central Toyota,35.0833,137.1562,48.0,75.0
-522,Okazaki,Japan,Asia,Central Okazaki,34.9543,137.1744,27.0,54.0
-523,Ichinomiya,Japan,Asia,Central Ichinomiya,35.3039,136.8028,10.0,37.0
-524,Yokkaichi,Japan,Asia,Central Yokkaichi,34.965,136.6244,4.0,31.0
-525,Otsu,Japan,Asia,Central Otsu,35.0179,135.8546,95.0,122.0
-526,Nara,Japan,Asia,Central Nara,34.6851,135.8048,70.0,97.0
-527,Wakayama,Japan,Asia,Central Wakayama,34.2305,135.1708,12.0,39.0
-528,Himeji,Japan,Asia,Central Himeji,34.8151,134.6853,16.0,43.0
-529,Kurashiki,Japan,Asia,Central Kurashiki,34.585,133.7721,7.0,34.0
-530,Fukuyama,Japan,Asia,Central Fukuyama,34.4859,133.3623,19.0,46.0
-531,Kure,Japan,Asia,Central Kure,34.2493,132.5657,8.0,35.0
-532,Shimonoseki,Japan,Asia,Central Shimonoseki,33.9578,130.9415,11.0,38.0
-533,Takamatsu,Japan,Asia,Central Takamatsu,34.3428,134.0466,24.0,51.0
-534,Tokushima,Japan,Asia,Central Tokushima,34.0703,134.5548,9.0,36.0
-535,Kochi,Japan,Asia,Central Kochi,33.5597,133.5311,10.0,37.0
-536,Saga,Japan,Asia,Central Saga,33.2635,130.3009,7.0,34.0
-537,Nagasaki,Japan,Asia,Central Nagasaki,32.7503,129.8779,19.0,46.0
-538,Oita,Japan,Asia,Central Oita,33.2396,131.6093,11.0,38.0
-539,Miyazaki,Japan,Asia,Central Miyazaki,31.9077,131.4202,13.0,40.0
-540,Kurume,Japan,Asia,Central Kurume,33.3193,130.5084,17.0,44.0
-541,Changhua,Taiwan,Asia,Changhua City,24.0756,120.544,23.0,50.0
-542,Pingtung,Taiwan,Asia,Pingtung City Centre,22.6761,120.4942,24.0,51.0
-543,Yilan,Taiwan,Asia,Yilan City Centre,24.757,121.753,15.0,42.0
-544,Miaoli,Taiwan,Asia,Miaoli City Centr,24.5602,120.8214,59.0,86.0
-545,Douliu,Taiwan,Asia,Douliu City Centre,23.7092,120.4313,27.0,54.0
-546,Chiayi,Taiwan,Asia,Chiayi City Centr,23.4801,120.4491,39.0,66.0
-547,Nantou,Taiwan,Asia,Nantou City Centre,23.9157,120.6849,91.0,118.0
-548,Zhubei,Taiwan,Asia,Zhubei City Centre,24.8387,121.0177,29.0,56.0
-549,Yuanlin,Taiwan,Asia,Yuanlin City Centre,23.9565,120.576,40.0,67.0
-550,Taitung,Taiwan,Asia,Taitung City Centre,22.7554,121.15,23.0,50.0
-551,Shah Alam,Malaysia,Asia,Shah Alam City Centre,3.0738,101.5183,20.0,47.0
-552,Petaling Jaya,Malaysia,Asia,Petaling Jaya Centre,3.1073,101.6067,45.0,72.0
-553,Subang Jaya,Malaysia,Asia,Subang Jaya Centre,3.0567,101.5851,24.0,51.0
-554,Klang,Malaysia,Asia,Klang City Centre,3.0438,101.4456,13.0,40.0
-555,Malacca City,Malaysia,Asia,Bandar Hilir / Centre,2.1896,102.2501,12.0,39.0
-556,Seremban,Malaysia,Asia,Seremban City,2.7297,101.9381,59.0,86.0
-557,Kota Kinabalu,Malaysia,Asia,Downtown Kota Kinabalu,5.9804,116.0735,13.0,40.0
-558,Miri,Malaysia,Asia,Miri City Centre,4.3995,113.9914,10.0,37.0
-559,Sibu,Malaysia,Asia,Sibu Town Centre,2.2873,111.8305,9.0,36.0
-560,Alor Setar,Malaysia,Asia,Alor Setar Centre,6.1184,100.3685,14.0,41.0
-561,Pasig,Philippines,Asia,Pasig City Centre,14.5764,121.0851,9.0,36.0
-562,Taguig,Philippines,Asia,Central Taguig,14.5176,121.0509,19.0,46.0
-563,Pasay,Philippines,Asia,Pasay City Centre,14.5378,121.0014,9.0,36.0
-564,Mandaluyong,Philippines,Asia,Mandaluyong Centre,14.5794,121.0359,15.0,42.0
-565,Parañaque,Philippines,Asia,Parañaque Centre,14.4793,121.0198,22.0,49.0
-566,Muntinlupa,Philippines,Asia,Muntinlupa Centre,14.4081,121.0415,19.0,46.0
-567,Caloocan,Philippines,Asia,Caloocan Centre,14.6507,120.9676,6.0,33.0
-568,Baguio,Philippines,Asia,Baguio City Centre,16.4023,120.596,1469.0,1496.0
-569,Bacolod,Philippines,Asia,Downtown Bacolod,10.6765,122.9509,10.0,37.0
-570,Cagayan de Oro P,Philippines,Asia,Downtown Cagayan de Oro,8.4542,124.6319,25.0,52.0
-571,Soweto,South Africa,Africa,Central Soweto,-26.2485,27.854,1660.0,1687.0
-572,Sandton,South Africa,Africa,Sandton CBD,-26.1076,28.0567,1621.0,1648.0
-573,Midrand,South Africa,Africa,Midrand Centre,-25.9992,28.1263,1561.0,1588.0
-574,Centurion,South Africa,Africa,Centurion CBD,-25.8603,28.1894,1430.0,1457.0
-575,Germiston,South Africa,Africa,Germiston CBD,-26.2259,28.1708,1644.0,1671.0
-576,Boksburg,South Africa,Africa,Boksburg CBD,-26.212,28.2596,1619.0,1646.0
-577,Alberton,South Africa,Africa,Alberton CBD,-26.2679,28.1223,1574.0,1601.0
-578,Kempton Park,South Africa,Africa,Kempton Park CBD,-26.1009,28.2336,1668.0,1695.0
-579,Roodepoort,South Africa,Africa,Roodepoort CBD,-26.1625,27.8725,1738.0,1765.0
-580,Randburg,South Africa,Africa,Randburg CBD,-26.0941,28.0012,1595.0,1622.0
-581,Springs,South Africa,Africa,Springs CBD,-26.2547,28.4428,1610.0,1637.0
-582,Brakpan,South Africa,Africa,Brakpan CBD,-26.2366,28.3694,1632.0,1659.0
-583,Vereeniging,South Africa,Africa,Vereeniging CBD,-26.6731,27.9261,1444.0,1471.0
-584,Vanderbijlpark,South Africa,Africa,Vanderbijlpark CBD,-26.7117,27.8379,1487.0,1514.0
-585,Krugersdorp,South Africa,Africa,Krugersdorp CBD,-26.0858,27.7752,1724.0,1751.0
-586,Klerksdorp,South Africa,Africa,Klerksdorp CBD,-26.8521,26.6667,1319.0,1346.0
-587,Welkom,South Africa,Africa,Welkom CBD,-27.9774,26.7351,1376.0,1403.0
-588,Bethlehem,South Africa,Africa,Bethlehem CBD,-28.2308,28.3071,1629.0,1656.0
-589,Sasolburg,South Africa,Africa,Sasolburg CBD,-26.8136,27.816,1472.0,1499.0
-590,Richards Bay,South Africa,Africa,Richards Bay CBD,-28.7807,32.0383,8.0,35.0
-591,Empangeni,South Africa,Africa,Empangeni CBD,-28.7616,31.8933,103.0,130.0
-592,Newcastle,South Africa,Africa,Newcastle CBD,-27.7579,29.9318,1194.0,1221.0
-593,Ladysmith,South Africa,Africa,Ladysmith CBD,-28.5539,29.7827,1050.0,1077.0
-594,Paarl,South Africa,Africa,Paarl Centre,-33.7342,18.9621,126.0,153.0
-595,Worcester,South Africa,Africa,Worcester CBD,-33.6465,19.4485,234.0,261.0
-596,Mossel Bay,South Africa,Africa,Mossel Bay CBD,-34.1831,22.146,41.0,68.0
-597,Knysna,South Africa,Africa,Knysna Central,-34.0351,23.0465,16.0,43.0
-598,Oudtshoorn,South Africa,Africa,Oudtshoorn CBD,-33.5907,22.2014,322.0,349.0
-599,Upington,South Africa,Africa,Upington CBD,-28.4478,21.2561,807.0,834.0
-600,Mahikeng,South Africa,Africa,Mahikeng CBD,-25.8652,25.6442,1285.0,1312.0
-601,Ariana,Tunisia,Africa,Ariana Centre,36.8665,10.1647,78.0,105.0
-602,Ben Arous,Tunisia,Africa,Ben Arous Centre,36.7531,10.2189,14.0,41.0
-603,Nabeul,Tunisia,Africa,Nabeul Centre,36.4561,10.7376,15.0,42.0
-604,Kairouan,Tunisia,Africa,Kairouan Centre,35.6781,10.0963,67.0,94.0
-605,Gabès,Tunisia,Africa,Gabès Centre,33.8815,10.0982,8.0,35.0
-606,Gafsa,Tunisia,Africa,Gafsa Centre,34.425,8.7842,295.0,322.0
-607,Mahdia,Tunisia,Africa,Mahdia Centre,35.5047,11.0622,9.0,36.0
-608,Zarzis,Tunisia,Africa,Zarzis Centre,33.5039,11.1122,10.0,37.0
-609,Houmt Souk,Tunisia,Africa,Houmt Souk Centre,33.8758,10.8575,5.0,32.0
-610,Béja,Tunisia,Africa,Béja Centre,36.7256,9.1817,248.0,275.0
-611,Maroochydore,Australia,Oceania,Maroochydore Centre,-26.6527,153.0903,5.0,32.0
-612,Caloundra,Australia,Oceania,Caloundra CBD,-26.804,153.121,8.0,35.0
-613,Noosa Heads,Australia,Oceania,Noosa Centre,-26.396,153.089,23.0,50.0
-614,Hervey Bay,Australia,Oceania,Hervey Bay Centre,-25.288,152.84,14.0,41.0
-615,Bundaberg,Australia,Oceania,Bundaberg CBD,-24.8661,152.3489,18.0,45.0
-616,Gladstone,Australia,Oceania,Gladstone CBD,-23.8487,151.262,16.0,43.0
-617,Maryborough,Australia,Oceania,Maryborough CBD,-25.5377,152.7041,13.0,40.0
-618,Gympie,Australia,Oceania,Gympie CBD,-26.1903,152.6656,70.0,97.0
-619,Ipswich,Australia,Oceania,Ipswich CBD,-27.6167,152.7608,26.0,53.0
-620,Logan City,Australia,Oceania,Logan Central,-27.6392,153.1094,40.0,67.0
-621,Redcliffe,Australia,Oceania,Redcliffe Centre,-27.2307,153.1094,13.0,40.0
-622,Caboolture,Australia,Oceania,Caboolture Centre,-27.0846,152.951,19.0,46.0
-623,Tweed Heads,Australia,Oceania,Tweed Heads Centre,-28.1767,153.5452,14.0,41.0
-624,Port Macquarie,Australia,Oceania,Port Macquarie CBD,-31.4333,152.9167,9.0,36.0
-625,Tamworth,Australia,Oceania,Tamworth CBD,-31.0905,150.929,384.0,411.0
-626,Armidale,Australia,Oceania,Armidale CBD,-30.5142,151.669,978.0,1005.0
-627,Dubbo,Australia,Oceania,Dubbo CBD,-32.2569,148.6011,266.0,293.0
-628,Orange,Australia,Oceania,Orange CBD,-33.2839,149.1013,868.0,895.0
-629,Bathurst,Australia,Oceania,Bathurst CBD,-33.4193,149.5775,677.0,704.0
-630,Wagga Wagga,Australia,Oceania,Wagga Wagga CBD,-35.1082,147.3598,180.0,207.0
-631,Griffith,Australia,Oceania,Griffith CBD,-34.2885,146.0509,128.0,155.0
-632,Goulburn,Australia,Oceania,Goulburn CBD,-34.7516,149.72,641.0,668.0
-633,Nowra,Australia,Oceania,Nowra CBD,-34.8746,150.6005,24.0,51.0
-634,Maitland,Australia,Oceania,Maitland CBD,-32.7337,151.5571,17.0,44.0
-635,Cessnock,Australia,Oceania,Cessnock CBD,-32.8328,151.3514,74.0,101.0
-636,Gosford,Australia,Oceania,Gosford CBD,-33.425,151.3422,6.0,33.0
-637,Wyong,Australia,Oceania,Wyong Centre,-33.2823,151.4255,12.0,39.0
-638,Queanbeyan,Australia,Oceania,Queanbeyan CBD,-35.3549,149.232,581.0,608.0
-639,Lismore,Australia,Oceania,Lismore CBD,-28.8135,153.2773,11.0,38.0
-640,Ballina,Australia,Oceania,Ballina CBD,-28.8689,153.5594,5.0,32.0
-641,Byron Bay,Australia,Oceania,Byron Bay Centre,-28.6474,153.602,15.0,42.0
-642,Broken Hill,Australia,Oceania,Broken Hill CBD,-31.9539,141.4539,330.0,357.0
-643,Mildura,Australia,Oceania,Mildura CBD,-34.1855,142.1625,56.0,83.0
-644,Shepparton,Australia,Oceania,Shepparton CBD,-36.3831,145.3994,114.0,141.0
-645,Warrnambool,Australia,Oceania,Warrnambool CBD,-38.3832,142.485,21.0,48.0
-646,Traralgon,Australia,Oceania,Traralgon CBD,-38.1953,146.5415,48.0,75.0
-647,Sale,Australia,Oceania,Sale CBD,-38.1109,147.068,11.0,38.0
-648,Morwell,Australia,Oceania,Morwell CBD,-38.2348,146.3949,86.0,113.0
-649,Bairnsdale,Australia,Oceania,Bairnsdale CBD,-37.8251,147.6284,18.0,45.0
-650,Wangaratta,Australia,Oceania,Wangaratta CBD,-36.3587,146.3175,149.0,176.0
-651,Wodonga,Australia,Oceania,Wodonga CBD,-36.1218,146.8881,168.0,195.0
-652,Echuca,Australia,Oceania,Echuca CBD,-36.1406,144.7519,100.0,127.0
-653,Horsham,Australia,Oceania,Horsham CBD,-36.7113,142.1998,132.0,159.0
-654,Swan Hill,Australia,Oceania,Swan Hill CBD,-35.3378,143.5544,76.0,103.0
-655,Mount Gambier,Australia,Oceania,Mount Gambier,-37.8284,140.7804,41.0,68.0
-656,Whyalla,Australia,Oceania,Whyalla CBD,-33.0333,137.5833,22.0,49.0
-657,Port Augusta,Australia,Oceania,Port Augusta CBD,-32.4925,137.7658,14.0,41.0
-658,Port Lincoln,Australia,Oceania,Port Lincoln CBD,-34.72,135.858,6.0,33.0
-659,Murray Bridge,Australia,Oceania,Murray Bridge CBD,-35.1199,139.2735,35.0,62.0
-660,Victor Harbor,Australia,Oceania,Victor Harbor CBD,-35.5503,138.6209,9.0,36.0
-661,Alice Springs,Australia,Oceania,Alice Springs CBD,-23.698,133.8807,582.0,609.0
-662,Palmerston,Australia,Oceania,Palmerston Centre,-12.486,130.9833,34.0,61.0
-663,Katherine,Australia,Oceania,Katherine Centre,-14.4652,132.2635,109.0,136.0
-664,Devonport,Australia,Oceania,Devonport CBD,-41.1769,146.3515,28.0,55.0
-665,Burnie,Australia,Oceania,Burnie CBD,-41.0529,145.9064,19.0,46.0
-666,Ulverstone,Australia,Oceania,Ulverstone Centre,-41.1603,146.17,15.0,42.0
-667,Kingston,Australia,Oceania,Kingston TAS Centre,-42.9765,147.3087,27.0,54.0
-668,Glenorchy,Australia,Oceania,Glenorchy Centre,-42.833,147.275,21.0,48.0
-669,Sorell,Australia,Oceania,Sorell Centre,-42.7818,147.5627,17.0,44.0
-670,Karratha,Australia,Oceania,Karratha City Centre,-20.7367,116.8463,18.0,45.0
-671,Geraldton,Australia,Oceania,Geraldton CBD,-28.7774,114.6149,14.0,41.0
-672,Albany,Australia,Oceania,Albany CBD,-35.0269,117.8837,13.0,40.0
-673,Kalgoorlie,Australia,Oceania,Kalgoorlie CBD,-30.7489,121.4658,376.0,403.0
-674,Esperance,Australia,Oceania,Esperance CBD,-33.8613,121.8914,10.0,37.0
-675,Broome,Australia,Oceania,Broome Centre,-17.9614,122.2359,22.0,49.0
-676,Mandurah,Australia,Oceania,Mandurah CBD,-32.5269,115.7217,5.0,32.0
-677,Joondalup,Australia,Oceania,Joondalup City Centre,-31.745,115.766,50.0,77.0
-678,Rockingham,Australia,Oceania,Rockingham Centre,-32.2768,115.7298,8.0,35.0
-679,Fremantle,Australia,Oceania,Fremantle CBD,-32.0569,115.7439,8.0,35.0
-680,Armadale,Australia,Oceania,Armadale Centre,-32.151,116.015,66.0,93.0
-681,Busselton,Australia,Oceania,Busselton CBD,-33.652,115.3455,8.0,35.0
-682,Margaret River,Australia,Oceania,Margaret River,-33.953,115.0739,95.0,122.0
-683,Northam,Australia,Oceania,Northam Centre,-31.654,116.6702,159.0,186.0
-684,Port Hedland,Australia,Oceania,Port Hedland Centre,-20.3107,118.606,10.0,37.0
-685,Newman,Australia,Oceania,Newman Centre,-23.3564,119.731,547.0,574.0
-686,Lower Hutt,New Zealand,Oceania,Lower Hutt CBD,-41.2127,174.8997,7.0,34.0
-687,Upper Hutt,New Zealand,Oceania,Upper Hutt CBD,-41.1244,175.0708,69.0,96.0
-688,Porirua,New Zealand,Oceania,Porirua City Centre,-41.1338,174.8407,6.0,33.0
-689,New Plymouth,New Zealand,Oceania,New Plymouth CBD,-39.0556,174.0752,17.0,44.0
-690,Whangārei,New Zealand,Oceania,Whangārei CBD,-35.7251,174.3237,7.0,34.0
-691,Invercargill,New Zealand,Oceania,Invercargill CBD,-46.4132,168.3538,8.0,35.0
-692,Hastings,New Zealand,Oceania,Hastings CBD,-39.6381,176.8492,21.0,48.0
-693,Gisborne,New Zealand,Oceania,Gisborne CBD,-38.6623,178.0176,10.0,37.0
-694,Blenheim,New Zealand,Oceania,Blenheim CBD,-41.5134,173.9612,6.0,33.0
-695,Timaru,New Zealand,Oceania,Timaru CBD,-44.3967,171.2536,13.0,40.0
-696,Queenstown,New Zealand,Oceania,Queenstown Centre,-45.0312,168.6626,324.0,351.0
-697,Ashburton,New Zealand,Oceania,Ashburton CBD,-43.9036,171.7481,103.0,130.0
-698,Whanganui,New Zealand,Oceania,Whanganui CBD,-39.9333,175.05,18.0,45.0
-699,Taupō,New Zealand,Oceania,Taupō Town Centre,-38.6857,176.0702,379.0,406.0
-700,Masterton,New Zealand,Oceania,Masterton CBD,-40.9511,175.6574,107.0,134.0
+n,city,country,continent,anchor,lat,lon,terrain_m,poi_alt_m,gnd_radius_m,gnd_height_m
+351,Koblenz,Germany,Europe,Altstadt,50.3569,7.5889,72.0,99.0,,
+352,Trier,Germany,Europe,Innenstadt,49.7499,6.6371,140.0,167.0,,
+353,Saarbrücken,Germany,Europe,Innenstadt,49.2402,6.9969,195.0,222.0,,
+354,Osnabrück,Germany,Europe,Innenstadt,52.2799,8.0472,66.0,93.0,,
+355,Oldenburg,Germany,Europe,Innenstadt,53.1435,8.2146,5.0,32.0,,
+356,Granada,Spain,Europe,Centro Granada,37.1773,-3.5986,698.0,725.0,,
+357,Valladolid,Spain,Europe,Centro Valladolid,41.6523,-4.7245,701.0,728.0,,
+358,Vigo,Spain,Europe,Centro Vigo,42.2406,-8.7207,11.0,38.0,,
+359,A Coruña,Spain,Europe,Centro A Coruña,43.3623,-8.4115,55.0,82.0,,
+360,Gijón,Spain,Europe,Centro Gijón,43.5322,-5.6611,17.0,44.0,,
+361,Oviedo,Spain,Europe,Centro Oviedo,43.3619,-5.8494,236.0,263.0,,
+362,Santander,Spain,Europe,Centro Santander,43.4623,-3.8099,12.0,39.0,,
+363,Pamplona,Spain,Europe,Casco Antiguo,42.8125,-1.6458,465.0,492.0,,
+364,San Sebastián,Spain,Europe,Centro,43.3183,-1.9812,18.0,45.0,,
+365,Vitoria-Gasteiz,Spain,Europe,Centro,42.8467,-2.6727,529.0,556.0,,
+366,Salamanca,Spain,Europe,Centro Histórico,40.9701,-5.6635,816.0,843.0,,
+367,Toledo,Spain,Europe,Casco Histórico,39.8628,-4.0273,472.0,499.0,,
+368,Burgos,Spain,Europe,Centro Histórico,42.3439,-3.6969,861.0,888.0,,
+369,León,Spain,Europe,Centro León,42.5987,-5.5671,849.0,876.0,,
+370,Almería,Spain,Europe,Centro Almería,36.834,-2.4637,7.0,34.0,,
+371,Cádiz,Spain,Europe,Centro Cádiz,36.5271,-6.2886,20.0,47.0,,
+372,Jerez de la Frontera,Spain,Europe,Centro,36.685,-6.1261,43.0,70.0,,
+373,Huelva,Spain,Europe,Centro Huelva,37.2614,-6.9447,34.0,61.0,,
+374,Badajoz,Spain,Europe,Centro Badajoz,38.8794,-6.9707,192.0,219.0,,
+375,Cáceres,Spain,Europe,Centro Histórico,39.4753,-6.3724,444.0,471.0,,
+376,Tarragona,Spain,Europe,Centre Tarragona,41.1189,1.2445,22.0,49.0,,
+377,Girona,Spain,Europe,Centre Girona,41.9794,2.8214,83.0,110.0,,
+378,Lleida,Spain,Europe,Centre Lleida,41.6176,0.62,186.0,213.0,,
+379,Castellón de la Plana,Spain,Europe,Centro,39.9864,-0.0513,47.0,74.0,,
+380,Logroño,Spain,Europe,Centro Logroño,42.4627,-2.4449,396.0,423.0,,
+381,Venice,Italy,Europe,Venezia Centro,45.4408,12.3155,2.0,29.0,,
+382,Palermo,Italy,Europe,Palermo Centro,38.1157,13.3615,28.0,55.0,,
+383,Catania,Italy,Europe,Catania Centro,37.5079,15.083,46.0,73.0,,
+384,Bari,Italy,Europe,Bari Centro,41.1171,16.8719,9.0,36.0,,
+385,Trieste,Italy,Europe,Trieste Centro,45.6495,13.7768,14.0,41.0,,
+386,Parma,Italy,Europe,Parma Centro,44.8015,10.3279,62.0,89.0,,
+387,Modena,Italy,Europe,Modena Centro,44.6471,10.9252,46.0,73.0,,
+388,Reggio Emilia,Italy,Europe,Centro,44.6989,10.6297,67.0,94.0,,
+389,Perugia,Italy,Europe,Centro Storico,43.1107,12.3908,437.0,464.0,,
+390,Ravenna,Italy,Europe,Ravenna Centro,44.4184,12.2035,4.0,31.0,,
+391,Rimini,Italy,Europe,Rimini Centro,44.0678,12.5695,3.0,30.0,,
+392,Ferrara,Italy,Europe,Ferrara Centro,44.8381,11.6198,10.0,37.0,,
+393,Livorno,Italy,Europe,Livorno Centro,43.5485,10.3106,16.0,43.0,,
+394,Pisa,Italy,Europe,Pisa Centro,43.7228,10.4017,5.0,32.0,,
+395,Lucca,Italy,Europe,Centro Storico,43.8429,10.5027,25.0,52.0,,
+396,Siena,Italy,Europe,Centro Storico,43.3188,11.3308,339.0,366.0,,
+397,Arezzo,Italy,Europe,Arezzo Centro,43.4633,11.8796,267.0,294.0,,
+398,Bergamo,Italy,Europe,Bergamo Centro,45.6983,9.6773,261.0,288.0,,
+399,Brescia,Italy,Europe,Brescia Centro,45.5416,10.2118,151.0,178.0,,
+400,Monza,Italy,Europe,Monza Centro,45.5845,9.2744,172.0,199.0,,
+401,Como,Italy,Europe,Como Centro,45.8081,9.0852,215.0,242.0,,
+402,Trento,Italy,Europe,Trento Centro,46.0748,11.1217,196.0,223.0,,
+403,Bolzano,Italy,Europe,Bolzano Centro,46.4983,11.3548,270.0,297.0,,
+404,Vicenza,Italy,Europe,Vicenza Centro,45.5455,11.5354,34.0,61.0,,
+405,Lecce,Italy,Europe,Lecce Centro,40.3515,18.175,49.0,76.0,,
+406,Groningen,Netherlands,Europe,Groningen Centrum,53.2194,6.5665,16.0,43.0,,
+407,Maastricht,Netherlands,Europe,Maastricht Centrum,50.8514,5.691,51.0,78.0,,
+408,Tilburg,Netherlands,Europe,Tilburg Centrum,51.5555,5.0913,16.0,43.0,,
+409,Breda,Netherlands,Europe,Breda Centrum,51.5719,4.7683,2.0,29.0,,
+410,Nijmegen,Netherlands,Europe,Nijmegen Centrum,51.8126,5.8372,14.0,41.0,,
+411,Arnhem,Netherlands,Europe,Arnhem Centrum,51.9851,5.8987,32.0,59.0,,
+412,Haarlem,Netherlands,Europe,Haarlem Centrum,52.3874,4.6462,2.0,29.0,,
+413,Leiden,Netherlands,Europe,Leiden Centrum,52.1601,4.497,4.0,31.0,,
+414,Delft,Netherlands,Europe,Delft Centrum,52.0116,4.3571,4.0,31.0,,
+415,Enschede,Netherlands,Europe,Enschede Centrum,52.2215,6.8937,45.0,72.0,,
+416,Amersfoort,Netherlands,Europe,Amersfoort Centrum,52.1561,5.3878,6.0,33.0,,
+417,Zwolle,Netherlands,Europe,Zwolle Centrum,52.5168,6.083,6.0,33.0,,
+418,Alkmaar,Netherlands,Europe,Alkmaar Centrum,52.6324,4.7534,1.0,28.0,,
+419,Leeuwarden,Netherlands,Europe,Leeuwarden Centrum,53.2012,5.7999,4.0,31.0,,
+420,'s- Hertogenbosch,Netherlands,Europe,Centrum,51.6978,5.3037,8.0,35.0,,
+421,Bruges,Belgium,Europe,Brugge Centrum,51.2093,3.2247,12.0,39.0,,
+422,Leuven,Belgium,Europe,Leuven Centrum,50.8798,4.7005,28.0,55.0,,
+423,Liège,Belgium,Europe,Liège Centre,50.6326,5.5797,70.0,97.0,,
+424,Charleroi,Belgium,Europe,Charleroi Centre,50.4108,4.4446,134.0,161.0,,
+425,Namur,Belgium,Europe,Namur Centre,50.4674,4.8718,82.0,109.0,,
+426,Mechelen,Belgium,Europe,Mechelen Centrum,51.0259,4.4776,6.0,33.0,,
+427,Hasselt,Belgium,Europe,Hasselt Centrum,50.9307,5.3325,41.0,68.0,,
+428,Mons,Belgium,Europe,Mons Centre,50.4542,3.9567,41.0,68.0,,
+429,Kortrijk,Belgium,Europe,Kortrijk Centrum,50.828,3.2649,24.0,51.0,,
+430,Ostend,Belgium,Europe,Oostende Centrum,51.23,2.92,8.0,35.0,,
+431,Salzburg,Austria,Europe,Salzburg Altstadt,47.8095,13.055,431.0,458.0,,
+432,Innsbruck,Austria,Europe,Innenstadt,47.2692,11.4041,580.0,607.0,,
+433,Linz,Austria,Europe,Linz Zentrum,48.3069,14.2858,266.0,293.0,,
+434,Klagenfurt,Austria,Europe,Innenstadt,46.6247,14.3053,448.0,475.0,,
+435,Villach,Austria,Europe,Innenstadt,46.6103,13.8558,494.0,521.0,,
+436,Wels,Austria,Europe,Stadtzentrum,48.1575,14.0289,315.0,342.0,,
+437,Sankt Pölten,Austria,Europe,Innenstadt,48.2035,15.6256,274.0,301.0,,
+438,Eisenstadt,Austria,Europe,Stadtzentrum,47.8457,16.5233,182.0,209.0,,
+439,Bern,Switzerland,Europe,Bern Zentrum,46.948,7.4474,548.0,575.0,,
+440,Lausanne,Switzerland,Europe,Lausanne Centre,46.5197,6.6323,500.0,527.0,,
+441,Lucerne,Switzerland,Europe,Luzern Zentrum,47.0502,8.3093,439.0,466.0,,
+442,Lugano,Switzerland,Europe,Lugano Centro,46.0037,8.9511,285.0,312.0,,
+443,Winterthur,Switzerland,Europe,Winterthur,47.4988,8.7241,445.0,472.0,,
+444,St. Gallen,Switzerland,Europe,St. Gallen Zentrum,47.4245,9.3767,681.0,708.0,,
+445,Fribourg,Switzerland,Europe,Fribourg Centre,46.8065,7.1619,590.0,617.0,,
+446,Neuchâtel,Switzerland,Europe,Neuchâtel Centre,46.9896,6.9293,435.0,462.0,,
+447,Gdańsk,Poland,Europe,Śródmieście,54.352,18.6466,8.0,35.0,,
+448,Gdynia,Poland,Europe,Śródmieście,54.5189,18.5305,21.0,48.0,,
+449,Sopot,Poland,Europe,Centrum,54.4416,18.5601,20.0,47.0,,
+450,Poznań,Poland,Europe,Stare Miasto,52.4064,16.9252,81.0,108.0,,
+451,Łódź,Poland,Europe,Centrum Łodzi,51.7592,19.456,205.0,232.0,,
+452,Szczecin,Poland,Europe,Centrum,53.4285,14.5528,22.0,49.0,,
+453,Bydgoszcz,Poland,Europe,Śródmieście,53.1235,18.0084,39.0,66.0,,
+454,Toruń,Poland,Europe,Stare Miasto (moved 250 m N: Earth Studio freezes at the PDF point),53.016,18.5984,50.0,77.0,,
+455,Lublin,Poland,Europe,Śródmieście,51.2465,22.5684,197.0,224.0,562.5,281
+456,Katowice,Poland,Europe,Śródmieście,50.2649,19.0238,264.0,291.0,,
+457,Rzeszów,Poland,Europe,Śródmieście,50.0412,21.9991,206.0,233.0,,
+458,Białystok,Poland,Europe,Centrum,53.1325,23.1688,131.0,158.0,,
+459,Kielce,Poland,Europe,Centrum,50.8661,20.6286,270.0,297.0,,
+460,Opole,Poland,Europe,Centrum,50.6751,17.9213,157.0,184.0,,
+461,Olsztyn,Poland,Europe,Śródmieście,53.7784,20.4801,123.0,150.0,,
+462,Brno,Czechia,Europe,Brno-střed,49.1951,16.6068,227.0,254.0,,
+463,Ostrava,Czechia,Europe,Moravská Ostrava,49.8209,18.2625,233.0,260.0,,
+464,Plzeň,Czechia,Europe,Centrum,49.7384,13.3736,333.0,360.0,,
+465,Liberec,Czechia,Europe,Centrum,50.7663,15.0543,353.0,380.0,,
+466,Pardubice,Czechia,Europe,Centrum,50.0343,15.7812,222.0,249.0,,
+467,Zlín,Czechia,Europe,Centrum,49.2244,17.6628,224.0,251.0,,
+468,Jihlava,Czechia,Europe,Centrum,49.3961,15.5912,525.0,552.0,,
+469,Karlovy Vary,Czechia,Europe,Centrum,50.2319,12.8719,373.0,400.0,,
+470,Braga,Portugal,Europe,Centro Braga,41.5454,-8.4265,174.0,201.0,,
+471,Coimbra,Portugal,Europe,Baixa / Centro,40.2033,-8.4103,42.0,69.0,,
+472,Aveiro,Portugal,Europe,Centro Aveiro,40.6405,-8.6538,13.0,40.0,,
+473,Faro,Portugal,Europe,Centro Faro,37.0194,-7.9304,20.0,47.0,,
+474,Setúbal,Portugal,Europe,Centro Setúbal,38.5244,-8.8882,16.0,43.0,,
+475,Évora,Portugal,Europe,Centro Histórico,38.5714,-7.9135,287.0,314.0,,
+476,Viseu,Portugal,Europe,Centro Viseu,40.6566,-7.9125,479.0,506.0,,
+477,Leiria,Portugal,Europe,Centro Leiria,39.7436,-8.8071,31.0,58.0,,
+478,Guimarães,Portugal,Europe,Centro Histórico,41.4425,-8.2918,190.0,217.0,,
+479,Funchal,Portugal,Europe,Centro Funchal,32.6669,-16.9241,315.0,342.0,,
+480,Aarhus,Denmark,Europe,Aarhus C,56.1629,10.2039,27.0,54.0,,
+481,Aalborg,Denmark,Europe,Aalborg Centrum,57.0488,9.9217,7.0,34.0,,
+482,Odense,Denmark,Europe,Odense Centrum,55.4038,10.4024,12.0,39.0,,
+483,Malmö,Sweden,Europe,Malmö Centrum,55.605,13.0038,15.0,42.0,,
+484,Gothenburg,Sweden,Europe,Göteborg Centrum,57.7089,11.9746,4.0,31.0,,
+485,Uppsala,Sweden,Europe,Uppsala Centrum,59.8586,17.6389,22.0,49.0,,
+486,Västerås,Sweden,Europe,Västerås Centrum,59.6099,16.5448,21.0,48.0,,
+487,Örebro,Sweden,Europe,Örebro Centrum,59.2753,15.2134,38.0,65.0,,
+488,Bergen,Norway,Europe,Bergen Sentrum,60.3913,5.3221,12.0,39.0,,
+489,Trondheim,Norway,Europe,Trondheim Sentrum,63.4305,10.3951,8.0,35.0,,
+490,Stavanger,Norway,Europe,Stavanger Sentrum,58.97,5.7331,16.0,43.0,,
+491,Turku,Finland,Europe,Turku Keskusta,60.4518,22.2666,33.0,60.0,,
+492,Kaunas,Lithuania,Europe,Kaunas Centre,54.8985,23.9036,32.0,59.0,,
+493,Klaipėda,Lithuania,Europe,Klaipėda Centre,55.7033,21.1443,6.0,33.0,,
+494,Šiauliai,Lithuania,Europe,City Centre,55.9349,23.3137,131.0,158.0,,
+495,Daugavpils,Latvia,Europe,City Centre,55.8747,26.5362,104.0,131.0,,
+496,Liepāja,Latvia,Europe,City Centre,56.5047,21.0108,6.0,33.0,,
+497,Pärnu,Estonia,Europe,Pärnu Centre,58.3859,24.4971,7.0,34.0,,
+498,Ljubljana,Slovenia,Europe,Ljubljana Centre,46.0569,14.5058,306.0,333.0,,
+499,Bratislava,Slovakia,Europe,Staré Mesto,48.1486,17.1077,155.0,182.0,,
+500,Split,Croatia,Europe,Split Centre,43.5081,16.4402,11.0,38.0,,
+501,Sakai,Japan,Asia,Central Sakai,34.5733,135.483,17.0,44.0,,
+502,Saitama,Japan,Asia,Omiya / Central Saitama,35.8617,139.6455,24.0,51.0,,
+503,Hachioji,Japan,Asia,Central Hachioji,35.6664,139.316,136.0,163.0,,
+504,Funabashi,Japan,Asia,Funabashi Station Area,35.6947,139.9826,11.0,38.0,,
+505,Ichikawa,Japan,Asia,Central Ichikawa,35.7219,139.931,7.0,34.0,,
+506,Matsudo,Japan,Asia,Central Matsudo,35.7877,139.9032,19.0,46.0,,
+507,Kashiwa,Japan,Asia,Central Kashiwa,35.8676,139.9758,22.0,49.0,,
+508,Machida,Japan,Asia,Central Machida,35.5486,139.4468,101.0,128.0,,
+509,Fujisawa,Japan,Asia,Central Fujisawa,35.3392,139.4911,33.0,60.0,,
+510,Yokosuka,Japan,Asia,Central Yokosuka,35.2813,139.6722,13.0,40.0,,
+511,Hiratsuka,Japan,Asia,Central Hiratsuka,35.3355,139.3497,10.0,37.0,,
+512,Odawara,Japan,Asia,Central Odawara,35.2646,139.1521,23.0,50.0,,
+513,Atsugi,Japan,Asia,Central Atsugi,35.4431,139.3625,27.0,54.0,,
+514,Sagamihara,Japan,Asia,Central Sagamihara,35.5714,139.3732,137.0,164.0,,
+515,Kofu,Japan,Asia,Central Kofu,35.6639,138.5683,282.0,309.0,,
+516,Nagano,Japan,Asia,Central Nagano,36.6485,138.195,363.0,390.0,,
+517,Matsumoto,Japan,Asia,Central Matsumoto,36.238,137.972,593.0,620.0,,
+518,Toyama,Japan,Asia,Central Toyama,36.6953,137.2113,19.0,46.0,,
+519,Fukui,Japan,Asia,Central Fukui,36.0641,136.2196,20.0,47.0,,
+520,Gifu,Japan,Asia,Central Gifu,35.4233,136.7607,20.0,47.0,,
+521,Toyota,Japan,Asia,Central Toyota,35.0833,137.1562,48.0,75.0,,
+522,Okazaki,Japan,Asia,Central Okazaki,34.9543,137.1744,27.0,54.0,,
+523,Ichinomiya,Japan,Asia,Central Ichinomiya,35.3039,136.8028,10.0,37.0,,
+524,Yokkaichi,Japan,Asia,Central Yokkaichi,34.965,136.6244,4.0,31.0,,
+525,Otsu,Japan,Asia,Central Otsu,35.0179,135.8546,95.0,122.0,,
+526,Nara,Japan,Asia,Central Nara,34.6851,135.8048,70.0,97.0,,
+527,Wakayama,Japan,Asia,Central Wakayama,34.2305,135.1708,12.0,39.0,,
+528,Himeji,Japan,Asia,Central Himeji,34.8151,134.6853,16.0,43.0,,
+529,Kurashiki,Japan,Asia,Central Kurashiki,34.585,133.7721,7.0,34.0,,
+530,Fukuyama,Japan,Asia,Central Fukuyama,34.4859,133.3623,19.0,46.0,,
+531,Kure,Japan,Asia,Central Kure,34.2493,132.5657,8.0,35.0,,
+532,Shimonoseki,Japan,Asia,Central Shimonoseki,33.9578,130.9415,11.0,38.0,,
+533,Takamatsu,Japan,Asia,Central Takamatsu,34.3428,134.0466,24.0,51.0,,
+534,Tokushima,Japan,Asia,Central Tokushima,34.0703,134.5548,9.0,36.0,,
+535,Kochi,Japan,Asia,Central Kochi,33.5597,133.5311,10.0,37.0,,
+536,Saga,Japan,Asia,Central Saga,33.2635,130.3009,7.0,34.0,,
+537,Nagasaki,Japan,Asia,Central Nagasaki,32.7503,129.8779,19.0,46.0,,
+538,Oita,Japan,Asia,Central Oita,33.2396,131.6093,11.0,38.0,,
+539,Miyazaki,Japan,Asia,Central Miyazaki,31.9077,131.4202,13.0,40.0,,
+540,Kurume,Japan,Asia,Central Kurume,33.3193,130.5084,17.0,44.0,,
+541,Changhua,Taiwan,Asia,Changhua City,24.0756,120.544,23.0,50.0,,
+542,Pingtung,Taiwan,Asia,Pingtung City Centre,22.6761,120.4942,24.0,51.0,,
+543,Yilan,Taiwan,Asia,Yilan City Centre,24.757,121.753,15.0,42.0,,
+544,Miaoli,Taiwan,Asia,Miaoli City Centr,24.5602,120.8214,59.0,86.0,,
+545,Douliu,Taiwan,Asia,Douliu City Centre,23.7092,120.4313,27.0,54.0,,
+546,Chiayi,Taiwan,Asia,Chiayi City Centr,23.4801,120.4491,39.0,66.0,,
+547,Nantou,Taiwan,Asia,Nantou City Centre,23.9157,120.6849,91.0,118.0,,
+548,Zhubei,Taiwan,Asia,Zhubei City Centre,24.8387,121.0177,29.0,56.0,,
+549,Yuanlin,Taiwan,Asia,Yuanlin City Centre,23.9565,120.576,40.0,67.0,,
+550,Taitung,Taiwan,Asia,Taitung City Centre,22.7554,121.15,23.0,50.0,,
+551,Shah Alam,Malaysia,Asia,Shah Alam City Centre,3.0738,101.5183,20.0,47.0,,
+552,Petaling Jaya,Malaysia,Asia,Petaling Jaya Centre,3.1073,101.6067,45.0,72.0,,
+553,Subang Jaya,Malaysia,Asia,Subang Jaya Centre,3.0567,101.5851,24.0,51.0,,
+554,Klang,Malaysia,Asia,Klang City Centre,3.0438,101.4456,13.0,40.0,,
+555,Malacca City,Malaysia,Asia,Bandar Hilir / Centre,2.1896,102.2501,12.0,39.0,,
+556,Seremban,Malaysia,Asia,Seremban City,2.7297,101.9381,59.0,86.0,,
+557,Kota Kinabalu,Malaysia,Asia,Downtown Kota Kinabalu,5.9804,116.0735,13.0,40.0,,
+558,Miri,Malaysia,Asia,Miri City Centre,4.3995,113.9914,10.0,37.0,,
+559,Sibu,Malaysia,Asia,Sibu Town Centre,2.2873,111.8305,9.0,36.0,,
+560,Alor Setar,Malaysia,Asia,Alor Setar Centre,6.1184,100.3685,14.0,41.0,,
+561,Pasig,Philippines,Asia,Pasig City Centre,14.5764,121.0851,9.0,36.0,,
+562,Taguig,Philippines,Asia,Central Taguig,14.5176,121.0509,19.0,46.0,,
+563,Pasay,Philippines,Asia,Pasay City Centre,14.5378,121.0014,9.0,36.0,,
+564,Mandaluyong,Philippines,Asia,Mandaluyong Centre,14.5794,121.0359,15.0,42.0,,
+565,Parañaque,Philippines,Asia,Parañaque Centre,14.4793,121.0198,22.0,49.0,,
+566,Muntinlupa,Philippines,Asia,Muntinlupa Centre,14.4081,121.0415,19.0,46.0,,
+567,Caloocan,Philippines,Asia,Caloocan Centre,14.6507,120.9676,6.0,33.0,,
+568,Baguio,Philippines,Asia,Baguio City Centre,16.4023,120.596,1469.0,1496.0,,
+569,Bacolod,Philippines,Asia,Downtown Bacolod,10.6765,122.9509,10.0,37.0,,
+570,Cagayan de Oro P,Philippines,Asia,Downtown Cagayan de Oro,8.4542,124.6319,25.0,52.0,,
+571,Soweto,South Africa,Africa,Central Soweto,-26.2485,27.854,1660.0,1687.0,,
+572,Sandton,South Africa,Africa,Sandton CBD,-26.1076,28.0567,1621.0,1648.0,,
+573,Midrand,South Africa,Africa,Midrand Centre,-25.9992,28.1263,1561.0,1588.0,,
+574,Centurion,South Africa,Africa,Centurion CBD,-25.8603,28.1894,1430.0,1457.0,,
+575,Germiston,South Africa,Africa,Germiston CBD,-26.2259,28.1708,1644.0,1671.0,,
+576,Boksburg,South Africa,Africa,Boksburg CBD,-26.212,28.2596,1619.0,1646.0,,
+577,Alberton,South Africa,Africa,Alberton CBD,-26.2679,28.1223,1574.0,1601.0,,
+578,Kempton Park,South Africa,Africa,Kempton Park CBD,-26.1009,28.2336,1668.0,1695.0,,
+579,Roodepoort,South Africa,Africa,Roodepoort CBD,-26.1625,27.8725,1738.0,1765.0,,
+580,Randburg,South Africa,Africa,Randburg CBD,-26.0941,28.0012,1595.0,1622.0,,
+581,Springs,South Africa,Africa,Springs CBD,-26.2547,28.4428,1610.0,1637.0,,
+582,Brakpan,South Africa,Africa,Brakpan CBD,-26.2366,28.3694,1632.0,1659.0,,
+583,Vereeniging,South Africa,Africa,Vereeniging CBD,-26.6731,27.9261,1444.0,1471.0,,
+584,Vanderbijlpark,South Africa,Africa,Vanderbijlpark CBD,-26.7117,27.8379,1487.0,1514.0,,
+585,Krugersdorp,South Africa,Africa,Krugersdorp CBD,-26.0858,27.7752,1724.0,1751.0,,
+586,Klerksdorp,South Africa,Africa,Klerksdorp CBD,-26.8521,26.6667,1319.0,1346.0,,
+587,Welkom,South Africa,Africa,Welkom CBD,-27.9774,26.7351,1376.0,1403.0,,
+588,Bethlehem,South Africa,Africa,Bethlehem CBD,-28.2308,28.3071,1629.0,1656.0,,
+589,Sasolburg,South Africa,Africa,Sasolburg CBD,-26.8136,27.816,1472.0,1499.0,,
+590,Richards Bay,South Africa,Africa,Richards Bay CBD,-28.7807,32.0383,8.0,35.0,,
+591,Empangeni,South Africa,Africa,Empangeni CBD,-28.7616,31.8933,103.0,130.0,,
+592,Newcastle,South Africa,Africa,Newcastle CBD,-27.7579,29.9318,1194.0,1221.0,,
+593,Ladysmith,South Africa,Africa,Ladysmith CBD,-28.5539,29.7827,1050.0,1077.0,,
+594,Paarl,South Africa,Africa,Paarl Centre,-33.7342,18.9621,126.0,153.0,,
+595,Worcester,South Africa,Africa,Worcester CBD,-33.6465,19.4485,234.0,261.0,,
+596,Mossel Bay,South Africa,Africa,Mossel Bay CBD,-34.1831,22.146,41.0,68.0,,
+597,Knysna,South Africa,Africa,Knysna Central,-34.0351,23.0465,16.0,43.0,,
+598,Oudtshoorn,South Africa,Africa,Oudtshoorn CBD,-33.5907,22.2014,322.0,349.0,,
+599,Upington,South Africa,Africa,Upington CBD,-28.4478,21.2561,807.0,834.0,,
+600,Mahikeng,South Africa,Africa,Mahikeng CBD,-25.8652,25.6442,1285.0,1312.0,,
+601,Ariana,Tunisia,Africa,Ariana Centre,36.8665,10.1647,78.0,105.0,,
+602,Ben Arous,Tunisia,Africa,Ben Arous Centre,36.7531,10.2189,14.0,41.0,,
+603,Nabeul,Tunisia,Africa,Nabeul Centre,36.4561,10.7376,15.0,42.0,,
+604,Kairouan,Tunisia,Africa,Kairouan Centre,35.6781,10.0963,67.0,94.0,,
+605,Gabès,Tunisia,Africa,Gabès Centre,33.8815,10.0982,8.0,35.0,,
+606,Gafsa,Tunisia,Africa,Gafsa Centre,34.425,8.7842,295.0,322.0,,
+607,Mahdia,Tunisia,Africa,Mahdia Centre,35.5047,11.0622,9.0,36.0,,
+608,Zarzis,Tunisia,Africa,Zarzis Centre,33.5039,11.1122,10.0,37.0,,
+609,Houmt Souk,Tunisia,Africa,Houmt Souk Centre,33.8758,10.8575,5.0,32.0,,
+610,Béja,Tunisia,Africa,Béja Centre,36.7256,9.1817,248.0,275.0,,
+611,Maroochydore,Australia,Oceania,Maroochydore Centre,-26.6527,153.0903,5.0,32.0,,
+612,Caloundra,Australia,Oceania,Caloundra CBD,-26.804,153.121,8.0,35.0,,
+613,Noosa Heads,Australia,Oceania,Noosa Centre,-26.396,153.089,23.0,50.0,,
+614,Hervey Bay,Australia,Oceania,Hervey Bay Centre,-25.288,152.84,14.0,41.0,,
+615,Bundaberg,Australia,Oceania,Bundaberg CBD,-24.8661,152.3489,18.0,45.0,,
+616,Gladstone,Australia,Oceania,Gladstone CBD,-23.8487,151.262,16.0,43.0,,
+617,Maryborough,Australia,Oceania,Maryborough CBD,-25.5377,152.7041,13.0,40.0,,
+618,Gympie,Australia,Oceania,Gympie CBD,-26.1903,152.6656,70.0,97.0,,
+619,Ipswich,Australia,Oceania,Ipswich CBD,-27.6167,152.7608,26.0,53.0,,
+620,Logan City,Australia,Oceania,Logan Central,-27.6392,153.1094,40.0,67.0,,
+621,Redcliffe,Australia,Oceania,Redcliffe Centre,-27.2307,153.1094,13.0,40.0,,
+622,Caboolture,Australia,Oceania,Caboolture Centre,-27.0846,152.951,19.0,46.0,,
+623,Tweed Heads,Australia,Oceania,Tweed Heads Centre,-28.1767,153.5452,14.0,41.0,,
+624,Port Macquarie,Australia,Oceania,Port Macquarie CBD,-31.4333,152.9167,9.0,36.0,,
+625,Tamworth,Australia,Oceania,Tamworth CBD,-31.0905,150.929,384.0,411.0,,
+626,Armidale,Australia,Oceania,Armidale CBD,-30.5142,151.669,978.0,1005.0,,
+627,Dubbo,Australia,Oceania,Dubbo CBD,-32.2569,148.6011,266.0,293.0,,
+628,Orange,Australia,Oceania,Orange CBD,-33.2839,149.1013,868.0,895.0,,
+629,Bathurst,Australia,Oceania,Bathurst CBD,-33.4193,149.5775,677.0,704.0,,
+630,Wagga Wagga,Australia,Oceania,Wagga Wagga CBD,-35.1082,147.3598,180.0,207.0,,
+631,Griffith,Australia,Oceania,Griffith CBD,-34.2885,146.0509,128.0,155.0,,
+632,Goulburn,Australia,Oceania,Goulburn CBD,-34.7516,149.72,641.0,668.0,,
+633,Nowra,Australia,Oceania,Nowra CBD,-34.8746,150.6005,24.0,51.0,,
+634,Maitland,Australia,Oceania,Maitland CBD,-32.7337,151.5571,17.0,44.0,,
+635,Cessnock,Australia,Oceania,Cessnock CBD,-32.8328,151.3514,74.0,101.0,,
+636,Gosford,Australia,Oceania,Gosford CBD,-33.425,151.3422,6.0,33.0,,
+637,Wyong,Australia,Oceania,Wyong Centre,-33.2823,151.4255,12.0,39.0,,
+638,Queanbeyan,Australia,Oceania,Queanbeyan CBD,-35.3549,149.232,581.0,608.0,,
+639,Lismore,Australia,Oceania,Lismore CBD,-28.8135,153.2773,11.0,38.0,,
+640,Ballina,Australia,Oceania,Ballina CBD,-28.8689,153.5594,5.0,32.0,,
+641,Byron Bay,Australia,Oceania,Byron Bay Centre,-28.6474,153.602,15.0,42.0,,
+642,Broken Hill,Australia,Oceania,Broken Hill CBD,-31.9539,141.4539,330.0,357.0,,
+643,Mildura,Australia,Oceania,Mildura CBD,-34.1855,142.1625,56.0,83.0,,
+644,Shepparton,Australia,Oceania,Shepparton CBD,-36.3831,145.3994,114.0,141.0,,
+645,Warrnambool,Australia,Oceania,Warrnambool CBD,-38.3832,142.485,21.0,48.0,,
+646,Traralgon,Australia,Oceania,Traralgon CBD,-38.1953,146.5415,48.0,75.0,,
+647,Sale,Australia,Oceania,Sale CBD,-38.1109,147.068,11.0,38.0,,
+648,Morwell,Australia,Oceania,Morwell CBD,-38.2348,146.3949,86.0,113.0,,
+649,Bairnsdale,Australia,Oceania,Bairnsdale CBD,-37.8251,147.6284,18.0,45.0,,
+650,Wangaratta,Australia,Oceania,Wangaratta CBD,-36.3587,146.3175,149.0,176.0,,
+651,Wodonga,Australia,Oceania,Wodonga CBD,-36.1218,146.8881,168.0,195.0,,
+652,Echuca,Australia,Oceania,Echuca CBD,-36.1406,144.7519,100.0,127.0,,
+653,Horsham,Australia,Oceania,Horsham CBD,-36.7113,142.1998,132.0,159.0,,
+654,Swan Hill,Australia,Oceania,Swan Hill CBD,-35.3378,143.5544,76.0,103.0,,
+655,Mount Gambier,Australia,Oceania,Mount Gambier,-37.8284,140.7804,41.0,68.0,,
+656,Whyalla,Australia,Oceania,Whyalla CBD,-33.0333,137.5833,22.0,49.0,,
+657,Port Augusta,Australia,Oceania,Port Augusta CBD,-32.4925,137.7658,14.0,41.0,,
+658,Port Lincoln,Australia,Oceania,Port Lincoln CBD,-34.72,135.858,6.0,33.0,,
+659,Murray Bridge,Australia,Oceania,Murray Bridge CBD,-35.1199,139.2735,35.0,62.0,,
+660,Victor Harbor,Australia,Oceania,Victor Harbor CBD,-35.5503,138.6209,9.0,36.0,,
+661,Alice Springs,Australia,Oceania,Alice Springs CBD,-23.698,133.8807,582.0,609.0,,
+662,Palmerston,Australia,Oceania,Palmerston Centre,-12.486,130.9833,34.0,61.0,,
+663,Katherine,Australia,Oceania,Katherine Centre,-14.4652,132.2635,109.0,136.0,,
+664,Devonport,Australia,Oceania,Devonport CBD,-41.1769,146.3515,28.0,55.0,,
+665,Burnie,Australia,Oceania,Burnie CBD,-41.0529,145.9064,19.0,46.0,,
+666,Ulverstone,Australia,Oceania,Ulverstone Centre,-41.1603,146.17,15.0,42.0,,
+667,Kingston,Australia,Oceania,Kingston TAS Centre,-42.9765,147.3087,27.0,54.0,,
+668,Glenorchy,Australia,Oceania,Glenorchy Centre,-42.833,147.275,21.0,48.0,,
+669,Sorell,Australia,Oceania,Sorell Centre,-42.7818,147.5627,17.0,44.0,,
+670,Karratha,Australia,Oceania,Karratha City Centre,-20.7367,116.8463,18.0,45.0,,
+671,Geraldton,Australia,Oceania,Geraldton CBD,-28.7774,114.6149,14.0,41.0,,
+672,Albany,Australia,Oceania,Albany CBD,-35.0269,117.8837,13.0,40.0,,
+673,Kalgoorlie,Australia,Oceania,Kalgoorlie CBD,-30.7489,121.4658,376.0,403.0,,
+674,Esperance,Australia,Oceania,Esperance CBD,-33.8613,121.8914,10.0,37.0,,
+675,Broome,Australia,Oceania,Broome Centre,-17.9614,122.2359,22.0,49.0,,
+676,Mandurah,Australia,Oceania,Mandurah CBD,-32.5269,115.7217,5.0,32.0,,
+677,Joondalup,Australia,Oceania,Joondalup City Centre,-31.745,115.766,50.0,77.0,,
+678,Rockingham,Australia,Oceania,Rockingham Centre,-32.2768,115.7298,8.0,35.0,,
+679,Fremantle,Australia,Oceania,Fremantle CBD,-32.0569,115.7439,8.0,35.0,,
+680,Armadale,Australia,Oceania,Armadale Centre,-32.151,116.015,66.0,93.0,,
+681,Busselton,Australia,Oceania,Busselton CBD,-33.652,115.3455,8.0,35.0,,
+682,Margaret River,Australia,Oceania,Margaret River,-33.953,115.0739,95.0,122.0,,
+683,Northam,Australia,Oceania,Northam Centre,-31.654,116.6702,159.0,186.0,,
+684,Port Hedland,Australia,Oceania,Port Hedland Centre,-20.3107,118.606,10.0,37.0,,
+685,Newman,Australia,Oceania,Newman Centre,-23.3564,119.731,547.0,574.0,,
+686,Lower Hutt,New Zealand,Oceania,Lower Hutt CBD,-41.2127,174.8997,7.0,34.0,,
+687,Upper Hutt,New Zealand,Oceania,Upper Hutt CBD,-41.1244,175.0708,69.0,96.0,,
+688,Porirua,New Zealand,Oceania,Porirua City Centre,-41.1338,174.8407,6.0,33.0,,
+689,New Plymouth,New Zealand,Oceania,New Plymouth CBD,-39.0556,174.0752,17.0,44.0,,
+690,Whangārei,New Zealand,Oceania,Whangārei CBD,-35.7251,174.3237,7.0,34.0,,
+691,Invercargill,New Zealand,Oceania,Invercargill CBD,-46.4132,168.3538,8.0,35.0,,
+692,Hastings,New Zealand,Oceania,Hastings CBD,-39.6381,176.8492,21.0,48.0,,
+693,Gisborne,New Zealand,Oceania,Gisborne CBD,-38.6623,178.0176,10.0,37.0,,
+694,Blenheim,New Zealand,Oceania,Blenheim CBD,-41.5134,173.9612,6.0,33.0,,
+695,Timaru,New Zealand,Oceania,Timaru CBD,-44.3967,171.2536,13.0,40.0,,
+696,Queenstown,New Zealand,Oceania,Queenstown Centre,-45.0312,168.6626,324.0,351.0,,
+697,Ashburton,New Zealand,Oceania,Ashburton CBD,-43.9036,171.7481,103.0,130.0,,
+698,Whanganui,New Zealand,Oceania,Whanganui CBD,-39.9333,175.05,18.0,45.0,,
+699,Taupō,New Zealand,Oceania,Taupō Town Centre,-38.6857,176.0702,379.0,406.0,,
+700,Masterton,New Zealand,Oceania,Masterton CBD,-40.9511,175.6574,107.0,134.0,,
