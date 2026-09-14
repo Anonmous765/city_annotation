@@ -2,7 +2,7 @@
 # ~200 GB of frames plus render_log.csv and render_all.log
 cities_351_700/
 # signed-in Chrome profile used by render_all.py
-.ges-chrome-profile/
+.ges-chrome-profile*/
 # debug screenshots (older runs wrote them to the repo root)
 render_debug_*.png
 *.log

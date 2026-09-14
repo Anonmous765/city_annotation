@@ -7,6 +7,7 @@ like reference/Cities/Koblenz/.
 
     pip install playwright            # one-time
     python3 render_all.py projects --out cities_10_50     # renders everything not yet done
+    python3 render_all.py projects --out cities_10_50 --parallel 3   # 3 Chrome windows at once (~2.3x)
 
 Output layout (same as reference/Cities/Koblenz and reference/city_satellite/cities/<city>):
 
@@ -161,22 +162,92 @@ def is_done(view_dir: Path, view: str) -> bool:
     return len(list(footage.glob(f"{view}_*.jpeg"))) >= N_FRAMES
 
 
-def list_jobs(root: Path, out: Path, only=None):
-    """Yield (city, view, esp_path, output_dir) in render_order.txt order."""
+def list_jobs(root: Path, out: Path, only=None, shard=(0, 1)):
+    """Yield (city, view, esp_path, output_dir) in render_order.txt order.
+    shard=(k, n) keeps every n-th city starting at the k-th, so n processes
+    can split the list without ever touching the same <city>/ folder."""
     order = root / "render_order.txt"
     if order.exists():
         rel = [line.split("\t")[-1].strip() for line in order.read_text().splitlines() if line.strip()]
         esps = [root / r for r in rel]
     else:
         esps = sorted(p for v in VIEWS for p in root.glob(f"*/{v}/{v}.esp"))
-    jobs = []
+    k, n = shard
+    jobs, cities = [], []
     for esp in esps:
         view = esp.stem
         city = esp.parent.parent.name
         if only and city not in only:
             continue
+        if city not in cities:
+            cities.append(city)
+        if (cities.index(city) % n) != k:
+            continue
         jobs.append((city, view, esp, out / city / view))
     return jobs
+
+
+def parse_shard(s):
+    try:
+        k, n = (int(x) for x in s.split("/"))
+        assert n >= 1 and 0 <= k < n
+        return k, n
+    except (ValueError, AssertionError):
+        raise argparse.ArgumentTypeError(f"--shard wants k/N with 0 <= k < N, got {s!r}")
+
+
+def clone_profile(base: Path, dest: Path):
+    """Chrome refuses to open one user-data-dir twice, so every extra process
+    needs its own copy of the signed-in profile. The lock files must not
+    come along or the copy looks 'in use'."""
+    if dest.exists():
+        return
+    if not base.exists():
+        dest.mkdir(parents=True)  # first run: the user signs in inside this window
+        return
+    log(f"copying {base} -> {dest} (keeps the Google sign-in)")
+    shutil.copytree(base, dest, symlinks=True,
+                    ignore=shutil.ignore_patterns("Singleton*", "lockfile", "Cache", "Code Cache", "GPUCache"))
+
+
+def run_parallel(args):
+    """Launch N copies of this script, each on its own shard of the cities,
+    with its own Chrome profile and log, and wait for them all."""
+    import subprocess
+    n = args.parallel
+    out = args.out
+    out.mkdir(parents=True, exist_ok=True)
+    procs = []
+    for k in range(n):
+        profile = args.profile if k == 0 else args.profile.with_name(f"{args.profile.name}-{k}")
+        clone_profile(args.profile, profile)
+        cmd = [sys.executable, str(Path(__file__).resolve()), str(args.projects), "--out", str(out),
+               "--shard", f"{k}/{n}", "--profile", str(profile),
+               "--stall-minutes", str(args.stall_minutes), "--passes", str(args.passes),
+               "--pass-wait-minutes", str(args.pass_wait_minutes), "--max-minutes", str(args.max_minutes),
+               "--retries", str(args.retries), "--max-crashes", str(args.max_crashes),
+               "--login-timeout", str(args.login_timeout)]
+        if args.only:
+            cmd += ["--only", *args.only]
+        if args.limit:
+            cmd += ["--limit", str(args.limit)]
+        logf = out / f"render_all.{k}.log"
+        log(f"shard {k}/{n}: log -> {logf}")
+        procs.append((k, subprocess.Popen(cmd, stdout=open(logf, "a"), stderr=subprocess.STDOUT,
+                                          stdin=subprocess.DEVNULL, start_new_session=True)))
+        time.sleep(20)  # stagger the Chrome launches so sign-in windows are not all at once
+    try:
+        for k, p in procs:
+            p.wait()
+            log(f"shard {k}/{n} finished with exit code {p.returncode}")
+    except KeyboardInterrupt:
+        log("stopping all shards")
+        for _, p in procs:
+            p.terminate()
+        raise
+    jobs = list_jobs(args.projects, out, set(args.only) if args.only else None)
+    done = sum(1 for j in jobs if is_done(j[3], j[1]))
+    log(f"all shards done: {done}/{len(jobs)} views complete")
 
 
 def unzip_into(zip_path: Path, view_dir: Path, view: str, esp: Path):
@@ -411,18 +482,29 @@ def main():
     ap.add_argument("--max-crashes", type=int, default=50,
                     help="stop if Chrome has to be relaunched more than this many times")
     ap.add_argument("--login-timeout", type=float, default=15, help="minutes to wait for sign-in / start screen")
+    ap.add_argument("--parallel", type=int, default=0, metavar="N",
+                    help="run N Chrome windows at once, each on its own share of the cities (3 is a good "
+                         "number on a desktop GPU; each needs ~3 GB RAM). Profiles for the extra windows "
+                         "are copied from --profile so they keep the sign-in; logs go to <out>/render_all.<k>.log")
+    ap.add_argument("--shard", type=parse_shard, default=(0, 1), metavar="k/N",
+                    help="render only every N-th city starting at the k-th (what --parallel uses internally)")
     args = ap.parse_args()
+
+    if args.parallel and args.parallel > 1:
+        return run_parallel(args)
 
     root = args.projects
     out = args.out
     out.mkdir(parents=True, exist_ok=True)
+    k, n = args.shard
     global DEBUG_DIR
-    DEBUG_DIR = out / "debug"
+    DEBUG_DIR = out / "debug" / (f"shard{k}" if n > 1 else "")
     if (root / "metadata.csv").exists():
         shutil.copy2(root / "metadata.csv", out / "metadata.csv")
-    jobs = list_jobs(root, out, set(args.only) if args.only else None)
+    jobs = list_jobs(root, out, set(args.only) if args.only else None, args.shard)
     todo = [j for j in jobs if not is_done(j[3], j[1])]
-    log(f"{len(jobs)} projects listed, {len(jobs) - len(todo)} already rendered, {len(todo)} to do")
+    shard_note = f" (shard {k}/{n})" if n > 1 else ""
+    log(f"{len(jobs)} projects listed{shard_note}, {len(jobs) - len(todo)} already rendered, {len(todo)} to do")
     if not todo:
         return
     if args.limit:
@@ -440,8 +522,13 @@ def main():
         "--disable-backgrounding-occluded-windows",
         "--disable-renderer-backgrounding",
         "--disable-blink-features=AutomationControlled",
-        "--start-maximized",
     ]
+    if n > 1:
+        # Tile the windows instead of stacking maximised ones; Earth Studio
+        # renders off-screen at full size whatever the window is.
+        chrome_args += [f"--window-position={40 + 420 * k},{40 + 60 * k}", "--window-size=1100,800"]
+    else:
+        chrome_args.append("--start-maximized")
     with sync_playwright() as pw:
         state = {"context": None, "page": None, "downloads": []}
 

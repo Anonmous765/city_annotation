@@ -17,6 +17,7 @@ ges_esp.py            .esp schema + orbit geometry (library used by the two scri
 build_city_list.py    "700 cities.pdf" -> CSV with lat/lon and terrain-based target altitude
 batch_generate.py     CSV -> <projects>/<city>/{satellite,ground_truth}/<view>.esp
 render_all.py         drives Earth Studio in Chrome, renders every project, unpacks results
+                      (--parallel N runs N Chrome windows at once)
 
 data/                 700 cities.pdf (the master list), the CSVs you generate from it
 projects/             generated .esp inputs + metadata.csv, manifest.json, render_order.txt
@@ -99,6 +100,32 @@ Useful options: `render_all.py --only koblenz trier` renders named cities
 only, `--limit 2` stops after two views (good for a first test), and
 `batch_generate.py --out projects_test` keeps an experiment separate from
 the main queue.
+
+### Rendering in parallel
+
+One Earth Studio tab renders one view at a time and spends most of it waiting
+on Earth Studio's own JavaScript (tile loading, zipping), so the GPU sits
+mostly idle. `--parallel N` runs N copies of the script at once, each in its
+own Chrome window on its own share of the cities:
+
+```bash
+setsid nohup python3 render_all.py projects --out $SHARE --parallel 3 >> $SHARE/render_all.log 2>&1 < /dev/null &
+tail -f $SHARE/render_all.*.log                 # one log per window
+```
+
+* Each window needs its own Chrome profile (Chrome refuses to open one
+  profile twice). The extra profiles `.ges-chrome-profile-1`, `-2`, ... are
+  copied from `.ges-chrome-profile` on first use and keep the Google sign-in.
+* Cities are dealt out round-robin, so no two windows ever write the same
+  `<city>/` folder. Stopping and resuming works exactly as above; kill all the
+  `render_all.py` processes and the Chromes, then rerun the same command.
+* Measured on an RTX 5080 with 30 GB RAM: 3 windows give ~2.3x the
+  throughput of one (a view takes ~85 s instead of ~65 s when three run at
+  once). Each window uses ~3 GB RAM at peak, so 3–4 is the practical limit.
+  More concurrent tile traffic may also make position-specific stalls (see
+  *Known constraints*) a little more common; they are retried as usual.
+* Windows are tiled rather than maximised. Keep them on screen; a minimised
+  window can be throttled by the OS.
 
 ### Using your own city list instead of the PDF
 
