@@ -102,7 +102,7 @@ n,city,country,continent,anchor,lat,lon,terrain_m,poi_alt_m,gnd_radius_m,gnd_hei
 451,Łódź,Poland,Europe,Sąd Rejonowy dla Łodzi-Śródmieścia w Łodzi,51.757040,19.455850,208.0,235.0,,,51.7592,19.456,Sąd Rejonowy dla Łodzi-Śródmieścia w Łodzi (public),241,1439,yes,way/104511738,snapped
 452,Szczecin,Poland,Europe,Kaskada,53.428254,14.550364,26.0,53.0,,,53.4285,14.5528,Kaskada (retail),164,20902,,way/35319011,snapped
 453,Bydgoszcz,Poland,Europe,Pałac Młodzieży,53.123620,18.011430,36.0,63.0,,,53.1235,18.0084,Pałac Młodzieży (community centre),203,2602,yes,way/46236346,snapped
-454,Toruń,Poland,Europe,Cinema City,53.015213,18.600242,51.0,78.0,,,53.016,18.5984,Cinema City (retail),151,5095,yes,way/49906179,snapped
+454,Toruń,Poland,Europe,Stare Miasto (moved 250 m N: Earth Studio freezes at the PDF point and at Cinema City 150 m SE),53.016,18.5984,50.0,77.0,,,53.016,18.5984,(hand-kept: snapped point freezes in Earth Studio),0,5095,yes,way/49906179,kept
 455,Lublin,Poland,Europe,Archikatedra Świętego Jana Chrzciciela i Świętego Jana Ewangelisty,51.246728,22.568723,199.0,226.0,562.5,281,51.2465,22.5684,Archikatedra Świętego Jana Chrzciciela i Świętego Jana Ewangelisty (church),34,1972,yes,way/66286341,snapped
 456,Katowice,Poland,Europe,Międzynarodowe Centrum Kongresowe,50.266137,19.027573,276.0,303.0,,,50.2649,19.0238,Międzynarodowe Centrum Kongresowe (conference centre),302,21207,yes,way/332311304,snapped
 457,Rzeszów,Poland,Europe,Galeria Rzeszów,50.042454,21.997810,203.0,230.0,,,50.0412,21.9991,Galeria Rzeszów (retail),167,20900,,way/214233129,snapped

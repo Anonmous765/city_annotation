@@ -7,8 +7,9 @@ JPEG frames at 2048×2048 plus Earth Studio's JSON 3D camera track. Output is
 laid out exactly like the reference dataset (`reference/`), so the folders
 can be merged straight into it.
 
-Every step takes a city range, so the same three commands work whether your
-share is cities 10–50 or 351–700.
+Every step takes a city range, so the same commands work whether your
+share is cities 10–50 or 351–700. *How the pipeline works* below walks
+through each stage in detail.
 
 ## Layout
 
@@ -20,6 +21,8 @@ snap_to_buildings.py  optional: move each target from the PDF's downtown point o
 batch_generate.py     CSV -> <projects>/<city>/{satellite,ground_truth}/<view>.esp
 render_all.py         drives Earth Studio in Chrome, renders every project, unpacks results
                       (--parallel N runs N Chrome windows at once)
+inspect_renders.py    viewer: all 61 frames of both views per city side by side, Prev/Next
+                      buttons, flag bad cities to <share>/inspect_flags.csv
 
 data/                 700 cities.pdf (the master list), the CSVs you generate from it
 projects/             generated .esp inputs + metadata.csv, manifest.json, render_order.txt
@@ -102,6 +105,26 @@ Useful options: `render_all.py --only koblenz trier` renders named cities
 only, `--limit 2` stops after two views (good for a first test), and
 `batch_generate.py --out projects_test` keeps an experiment separate from
 the main queue.
+
+### Checking the renders
+
+```bash
+python3 inspect_renders.py $SHARE --csv data/${SHARE}_snapped.csv   # or data/$SHARE.csv
+```
+
+Opens a window with every frame of the satellite view tiled on the left and
+every frame of the ground_truth view on the right, one city at a time, with
+the city's row number, target coordinates and snap status in the title.
+`Next` / `Prev` (or `→` / `←`) step through the cities in list order, the
+text box jumps to a folder name or row number, and `f` flags the current
+city as wrong; flags land in `<share>/inspect_flags.csv`. Click any tile
+to open that frame at full 2048 px in its own window (click more tiles
+for more windows; `←` / `→` there step through the frames, the toolbar
+zooms, `Esc` closes). The first run
+builds one downscaled contact sheet per view into `<share>/.inspect/`
+(about a minute for 350 cities on all cores); later runs are instant, and a
+sheet is rebuilt automatically when its frames are newer. Cities with fewer
+than 61 frames in a view are marked INCOMPLETE in the title.
 
 ### Rendering in parallel
 
@@ -187,36 +210,209 @@ projects/metadata.csv                                    # city_folder,country,l
 cities that share a name get the country appended (`cordoba_argentina`),
 as the reference dataset does.
 
-## Rendering (`render_all.py`)
+## How the pipeline works
 
-Per project the script opens Earth Studio in a Chrome it launches with the
-profile in `.ges-chrome-profile/` (sign in once; the profile keeps it), drops
-the `.esp` onto the page (same as drag-and-drop import), clicks Render, then
-Start, watches the "Rendered: n / 61" counter, catches the zip, and
-unpacks it into `<share>/<city>/<view>/`. It checks 61 frames and 61
-camera poses in the tracking JSON before marking a render done.
+Four scripts, run in order. Each one reads the previous one's output file
+and nothing else, so any stage can be rerun on its own. `ges_esp.py` is a
+library the middle two import; it holds the orbit geometry and the `.esp`
+schema. Only the last stage talks to Earth Studio.
 
-* **Destination folder.** Current Earth Studio asks for an output *folder*
-  through the browser's native folder picker (File System Access API), which
-  a script cannot drive. The script deletes `window.showOpenFilePicker` and
-  friends before the page loads; Earth Studio's support check is
-  `"showOpenFilePicker" in window`, so with them gone it falls back to
-  packaging the render as a zip download (what Brave did for the Koblenz test
-  renders). The properties must be *deleted*, not set to `undefined`.
-* **Tab visibility.** Local renders pause when the tab is hidden. The script
-  pins `document.hidden`/`visibilityState` to visible and starts Chrome with
-  background throttling disabled, but keep the window un-minimised.
-* **Stalls.** No progress for `--stall-minutes` (default 4) reloads the page
-  and retries the project, up to `--retries` (3). The 3D-node preload is the
-  usual place it hangs.
-* **Zip hand-off.** Earth Studio zips the frames in-page and pushes the Blob
-  through Chrome's download subsystem via `SafeDownloader.download`; Chrome
-  crashed (SIGTRAP) on that download here. The script replaces that function
-  so the Blob stays in memory, then copies it out in 16 MB chunks over the
-  automation channel. If Chrome does die, the script relaunches it and retries.
-* ~65–80 s per view on the machine this was developed on (about 13 h for 350
-  cities), roughly 290 MB per view → ~600 MB per city. Budget disk
-  accordingly before starting a large share.
+```
+"700 cities.pdf"
+   │  build_city_list.py        (pdftotext + OpenTopoData)
+   ▼
+data/<share>.csv                 n, city, country, continent, anchor, lat, lon, terrain_m, poi_alt_m
+   │  snap_to_buildings.py      (Overpass / OpenStreetMap + OpenTopoData)   ← optional
+   ▼
+data/<share>_snapped.csv         same columns, lat/lon moved onto a building + snap_* review columns
+   │  batch_generate.py         (ges_esp.build_esp)
+   ▼
+projects/<city>/{satellite,ground_truth}/<view>.esp   + metadata.csv, manifest.json, render_order.txt
+   │  render_all.py             (Playwright → Chrome → Earth Studio)
+   ▼
+<share>/<city>/<view>/footage/<view>_00..60.jpeg + <view>.json + ImagerySources.txt + <view>.esp
+```
+
+### Stage 1 — PDF to CSV (`build_city_list.py`)
+
+1. **Text extraction.** Runs `pdftotext -layout` on the PDF and walks the
+   output line by line. Each page's header row gives the character offsets
+   of the City / Country / Continent / Downtown anchor / Latitude columns,
+   and cells are cut at those offsets.
+2. **Row reassembly.** A row starts with a line whose first token is the
+   city number. The PDF wraps long cells onto the lines above and below, and
+   prints negative latitudes as a lone `-` with the digits on the next line,
+   so the parser looks at neighbouring lines to collect the wrapped text and
+   the sign. A small table of truncated country names (`anada` → `Canada`)
+   repairs cells the layout cut in half. Rows it cannot parse are printed
+   with `skip` and dropped, so check stderr.
+3. **Range.** `--range FIRST LAST` keeps only your rows.
+4. **Elevation.** Sends the anchors to OpenTopoData (`mapzen` dataset, 30 m
+   global DEM) in batches of 100 with a 1 s pause, and writes
+   `terrain_m` plus `poi_alt_m = terrain_m + 27`. The 27 m is the measured
+   offset between a bare-earth DEM and Earth Studio's own 3D surface, where
+   its Orbit quickstart puts the target (see *Target altitude*). No
+   coverage leaves `poi_alt_m` blank for you to fill in by hand.
+
+### Stage 2 — move targets onto buildings (`snap_to_buildings.py`, optional)
+
+The PDF anchor is usually a road junction, so the ground_truth orbit would
+circle pavement. This stage moves it onto a building:
+
+1. **Fetch footprints.** One Overpass query per batch of cities asks for
+   every `way["building"]` within `--radius` (400 m) of each anchor. Results
+   are cached in `data/osm_buildings_cache.json`, so a rerun is instant; the
+   script retries with backoff and rotates between three public mirrors
+   because they rate-limit aggressively.
+2. **Filter.** Footprints smaller than `--min-area` (300 m²) and structures
+   that are not real buildings (canopies, car parks, sheds, construction
+   sites) are dropped.
+3. **Score.** Each remaining footprint gets
+   `min(area, 15 000 m²) × (4 if landmark else 1) × name bonus / (1 + distance / 250 m)`.
+   "Landmark" means a building or amenity tag like town hall, cathedral,
+   church, mosque, castle, palace, station, museum, theatre, university,
+   courthouse, or anything tagged `historic=*` / `tourism=attraction`. The
+   distance divisor halves the score every 250 m so the target stays
+   downtown even when a large mall sits on the edge of the radius.
+4. **Pick a point.** The target is the footprint's centroid, or the nearest
+   interior point if the centroid falls outside an L-shaped building.
+5. **Classify.** If the anchor already lies inside a usable footprint the
+   row is marked `kept` and left as is. If nothing scored, it is marked
+   `no_building` and left unchanged (those are the hand-pick cases in
+   `data/handpick_needed.md`). Otherwise it is `snapped`.
+6. **Re-fetch elevation** for every moved point so `poi_alt_m` is still
+   terrain + 27 m at the new location.
+7. **Write** the snapped CSV (same columns, `anchor` replaced by the building
+   description) with review columns `orig_lat, orig_lon, snap_building,
+   snap_dist_m, snap_area_m2, snap_landmark, snap_osm, snap_status`, plus a
+   separate `_review.csv` with map links for eyeballing.
+
+Nothing downstream depends on the `snap_*` columns; `batch_generate.py`
+reads the CSV exactly as it would the stage 1 file. That is also why the
+six `no_building` rows still render: their coordinates are simply the PDF
+anchor, and the generator does not look at the status.
+
+### Stage 3 — CSV to Earth Studio projects (`batch_generate.py` + `ges_esp.py`)
+
+1. **Parse rows.** Requires `city, lat, lon, poi_alt_m`; rejects rows with
+   unparseable or out-of-range values and warns about latitudes beyond 85°,
+   where orbit longitude spacing degenerates. Optional columns
+   `sat_radius_m, sat_height_m, gnd_radius_m, gnd_height_m` override the
+   orbit for that city (how the Lublin and Toruń fixes are recorded), and
+   `world_time_utc` sets the sun clock.
+2. **Folder names.** Each city becomes a lower-case ASCII slug
+   (`saarbrucken`); cities that share a slug get the country appended
+   (`cordoba_argentina`), matching the reference dataset.
+3. **Two views per city.** `satellite` orbits at 688 m radius, 1190 m above
+   the target (pitch ≈ 60° down); `ground_truth` at 624 m radius, 312 m up
+   (pitch ≈ 27°). These are the modal values across the 300 reference cities
+   (see *Parameters*).
+4. **Orbit geometry** (`ges_esp.orbit_keyframes`). The radius is converted to
+   degrees (`radius / 111 320 m` for latitude, divided again by `cos(lat)`
+   for longitude) and five camera keyframes are placed at normalised times
+   0, ¼, ½, ¾, 1 at north, west, south, east, north of the target. Longitude
+   keyframes use Earth Studio's `auto` bezier tangents at their extrema and
+   `linear` at the zero crossings; latitude is the same one keyframe out of
+   phase. Camera altitude is `round(poi_alt_m + height)` on every keyframe.
+   A `cameraTargetEffect` block pins the look-at to the target's lat / lon /
+   altitude, so heading and pitch follow automatically.
+5. **Encoding** (`ges_esp.build_esp`). Every value is normalised to 0–1 the
+   way Earth Studio stores it (`(lon+180)/360`, `(lat+90)/180`,
+   `(alt+500)/65 117 981`; see *`.esp` schema notes*). The JSON is assembled
+   to mirror a hand-authored `modelVersion 18` quickstart project key for
+   key, including the untouched environment groups, so the file imports by
+   drag-and-drop without any warning. Render settings baked in: 2048×2048,
+   30 fps, duration 60 frames (which Earth Studio renders as 61 images,
+   `00`–`60`), project name `satellite` / `ground_truth` so the frames get
+   the right file prefix.
+6. **Outputs.** `projects/<city>/<view>/<view>.esp` for every view;
+   `metadata.csv` (city_folder, country, latitude, longitude, later copied
+   into the share); `manifest.json` (per-view radius, height, camera
+   altitude, pitch, slant range and an ideal-circle per-frame camera track
+   for sanity checks); `render_order.txt` (the queue stage 4 walks).
+
+### Stage 4 — render in Earth Studio (`render_all.py`)
+
+`render_all.py` drives Earth Studio's web UI through Playwright. Per view it
+opens Earth Studio in a Chrome it launches with the profile in
+`.ges-chrome-profile/` (sign in once; the profile keeps it), drops the `.esp`
+onto the page, clicks Render, then Start, watches the "Rendered: n / 61"
+counter, catches the zip, and unpacks it into `<share>/<city>/<view>/`.
+
+**Setup and queue**
+
+* Copies `projects/metadata.csv` into the share folder and reads
+  `render_order.txt` (falling back to a glob of `*/<view>/<view>.esp`).
+* Skips every view that is already done. "Done" means `<view>.json` exists
+  and `footage/` holds at least 61 `<view>_*.jpeg`. This is what makes the
+  run resumable: stopping mid-render only costs the view in flight.
+* `--only`, `--limit` and `--shard k/N` narrow the queue; `--parallel N`
+  spawns N copies of the script on disjoint shards, each with its own cloned
+  Chrome profile and its own `render_all.<k>.log`.
+* Chrome is launched with background throttling disabled and the automation
+  banner suppressed. Two init scripts run before every page load: one pins
+  `document.hidden` / `visibilityState` to visible (Earth Studio pauses local
+  renders in a hidden tab), the other deletes `showOpenFilePicker`,
+  `showDirectoryPicker` and `chooseFileSystemEntries` from `window`.
+
+**Per view** (`render_one`)
+
+1. Navigate to `earth.google.com/studio` and wait for the start screen. On
+   the first run this is where you sign in; the script waits up to
+   `--login-timeout` minutes.
+2. Confirm the folder-picker API is really gone. Current Earth Studio asks
+   for a *destination folder* through the browser's native picker, which a
+   script cannot drive; its support check is `"showOpenFilePicker" in
+   window`, so with the properties deleted (not set to `undefined`) it falls
+   back to packaging the render as a zip.
+3. Patch the page's `SafeDownloader.download` so the zip Blob stays in
+   memory instead of going through Chrome's download subsystem, which
+   crashed with SIGTRAP on it here.
+4. Dismiss the "Uh-oh! Something went wrong… recover?" modal if present.
+5. Inject the `.esp` text as a synthetic drag-and-drop event (the same code
+   path as importing a file) and wait for the tab title to change to the
+   project name, then for "Loading Earth" to disappear.
+6. Click Render. The dialog is pre-filled from the project (2048×2048,
+   frames 0–60, JPEG, JSON 3D tracking). Dismiss the first-run "Choose
+   folder" tip if it covers the dialog, click Start, and check that the
+   Start button went away.
+7. Poll the page text every 4 s for `Rendered: n / 61` (or `Loading 3D
+   nodes: n / m`). Click "Continue Rendering" if Earth Studio paused
+   itself. If the counter does not move for `--stall-minutes` (1.5), raise a
+   stall; if the whole render passes `--max-minutes` (40), give up.
+8. When the in-page Blob appears, read it out in 16 MB base64 chunks over
+   the automation channel and write `<view>.zip` next to the output folder.
+
+**After each view** (`unzip_into`)
+
+* Extracts the zip (`footage/`, `<view>.json`, `ImagerySources.txt`, and
+  usually Earth Studio's own re-serialised `<view>.esp`; if the zip has no
+  `.esp` the generated one is copied in).
+* Verifies 61 frames and 61 `cameraFrames` entries in the tracking JSON
+  before deleting the zip and marking the view `ok`. Anything short is a
+  failure, the partial `footage/` is deleted, and the view is retried.
+
+**Failure handling**
+
+* Ordinary errors (import timeout, Start not accepted, bad zip) are retried
+  immediately up to `--retries` (3) times. If Chrome has died the script
+  relaunches it and continues, up to `--max-crashes` (50) times.
+* A stall is treated differently. Earth Studio sometimes freezes at one
+  specific frame of one project, every time, in any browser, while other
+  cities keep rendering, which looks like Google's 3D tile data for that
+  spot being unavailable. Retrying right away only burns time, so the view
+  is logged as `stalled` and the script moves on. After the first sweep it
+  waits `--pass-wait-minutes` (15) and retries only the stalled views, up
+  to `--passes` (4) sweeps in total. Views still stalled at the end are
+  listed in the log; rerun the same command later, or nudge that city's
+  target or radius in the CSV and regenerate its project.
+* Every attempt is appended to `<share>/render_log.csv`
+  (`finished_at, city, view, status, seconds, attempts, note`), and a
+  screenshot is written to `<share>/debug/` whenever something goes wrong.
+
+**Cost.** About 65–80 s per view single-window (roughly 13 h for 350
+cities; `--parallel 3` gives ~2.3×), and ~290 MB per view, so ~600 MB per
+city. Budget disk before starting a large share.
 
 ## How the generator was verified
 
@@ -296,18 +492,14 @@ look-at to the POI.
 * Earth Studio's internals (drop import, visibility check, zip hand-off) were
   read from its minified bundle and may change with a new release; if a step
   stops working, those hooks in `render_all.py` are the first place to look.
-* Earth Studio sometimes freezes mid-render (frame counter stops, "00:00
-  remaining", no error, nothing loading). It happens at the same frame of the
-  same project every time, in any browser, while other cities keep rendering,
-  so it appears to be Google's 3D tile data for that spot being unavailable or
-  mid-update. The script gives up after `--stall-minutes` (default 1.5), logs
-  the view as `stalled`, carries on, and sweeps the stalled views again in
-  later passes (`--passes`, default 4, `--pass-wait-minutes` between them).
-  Views still stalled at the end are listed in the log; rerun the same
-  command later to try them again. If one never clears, nudge that city's
-  target or radius in the CSV and regenerate its project.
+* Earth Studio sometimes freezes mid-render at one specific frame of one
+  project (frame counter stops, "00:00 remaining", no error). It follows the
+  camera position, not the browser, so it appears to be Google's 3D tile
+  data for that spot being unavailable or mid-update. `render_all.py` logs
+  the view as `stalled`, moves on, and sweeps stalled views again in later
+  passes; see *Failure handling* under Stage 4. If one never clears, nudge
+  that city's target or radius in the CSV and regenerate its project.
 * After a stall reload Earth Studio shows an "Uh-oh! Something went wrong"
   recovery modal that blocks every click; the script dismisses it
-  automatically. If a run ever logs repeated `could not click 'Render'`
-  failures, look at `<out>/debug/render_debug_click_render_blocked.png` to
-  see what is in the way.
+  automatically. If a run logs repeated `could not click 'Render'`
+  failures, look at `<out>/debug/render_debug_click_render_blocked.png`.
