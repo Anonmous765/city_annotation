@@ -14,25 +14,34 @@ through each stage in detail.
 ## Layout
 
 ```
-ges_esp.py            .esp schema + orbit geometry (library used by the two scripts below)
-build_city_list.py    "700 cities.pdf" -> CSV with lat/lon and terrain-based target altitude
-snap_to_buildings.py  optional: move each target from the PDF's downtown point onto a real
-                      building nearby (OpenStreetMap footprints) + a review sheet
-batch_generate.py     CSV -> <projects>/<city>/{satellite,ground_truth}/<view>.esp
-render_all.py         drives Earth Studio in Chrome, renders every project, unpacks results
-                      (--parallel N runs N Chrome windows at once)
-inspect_renders.py    viewer: all 61 frames of both views per city side by side, Prev/Next
-                      buttons, flag bad cities to <share>/inspect_flags.csv
+scripts/
+  ges_esp.py            .esp schema + orbit geometry (library used by the scripts below)
+  build_city_list.py    "700 cities.pdf" -> CSV with lat/lon and terrain-based target altitude
+  snap_to_buildings.py  optional: move each target from the PDF's downtown point onto a real
+                        building nearby (OpenStreetMap footprints) + a review sheet
+  batch_generate.py     CSV -> <projects>/<city>/{satellite,ground_truth}/<view>.esp
+  render_all.py         drives Earth Studio in Chrome, renders every project, unpacks results
+                        (--parallel N runs N Chrome windows at once)
+  inspect_renders.py    viewer: all 61 frames of both views per city side by side, Prev/Next
+                        buttons, click a tile to enlarge, flag bad cities
 
-data/                 700 cities.pdf (the master list), the CSVs you generate from it
-projects/             generated .esp inputs + metadata.csv, manifest.json, render_order.txt
-cities_<A>_<B>/       rendered output for one share (not for git: ~290 MB per view)
-reference/            the existing dataset used to reverse-engineer parameters:
-                        Cities/Koblenz  – one hand-made city with real frames
-                        city_satellite/ – 300 cities (frames are git-LFS stubs, .esp/.json real)
-archive/              earlier session transcripts, the first generator draft, Koblenz test renders
-.ges-chrome-profile/  Chrome profile render_all.py signs in with (local only, created on first run)
+data/                   700 cities.pdf (the master list), the CSVs you generate from it,
+                        handpick_needed.md, the Overpass cache
+projects/               generated .esp inputs + metadata.csv, manifest.json, render_order.txt
+                        (not tracked: regenerated from the CSV by batch_generate.py)
+cities_<A>_<B>/         rendered output for one share (not for git: ~600 MB per city);
+                        also holds render_log.csv, render_all*.log, debug/ screenshots and
+                        the viewer's .inspect/ cache and inspect_flags.csv
+reference/              the existing dataset used to reverse-engineer parameters:
+                          Cities/Koblenz  – one hand-made city with real frames
+                          city_satellite/ – 300 cities (frames are git-LFS stubs, .esp/.json real)
+archive/                earlier session transcripts, the first generator draft, Koblenz test renders
+.ges-chrome-profile*/   Chrome profiles render_all.py signs in with (local only, created on first run)
 ```
+
+All commands below are run from the repo root. The scripts import each
+other by bare name, which works because Python puts the script's own folder
+on the import path.
 
 ## Quick start: render your share
 
@@ -43,15 +52,15 @@ FIRST=10; LAST=50                 # the rows of "700 cities.pdf" that are yours
 SHARE=cities_${FIRST}_${LAST}
 
 # 1. PDF -> CSV for your rows, with terrain elevation from OpenTopoData
-python3 build_city_list.py "data/700 cities.pdf" --range $FIRST $LAST --out data/$SHARE.csv
+python3 scripts/build_city_list.py "data/700 cities.pdf" --range $FIRST $LAST --out data/$SHARE.csv
 
 # 2. CSV -> two .esp files per city (+ metadata.csv, manifest.json, render_order.txt)
-python3 batch_generate.py data/$SHARE.csv --out projects
+python3 scripts/batch_generate.py data/$SHARE.csv --out projects
 
 # 3. Render every project in Earth Studio (Chrome driven by Playwright).
 #    A Chrome window opens; sign in to Google the first time and leave it open.
 #    Resumable: already-complete <city>/<view> folders are skipped.
-python3 render_all.py projects --out $SHARE
+python3 scripts/render_all.py projects --out $SHARE
 ```
 
 Step 1 prints a warning if any PDF row failed to parse; step 2 warns about
@@ -60,7 +69,7 @@ rows with missing coordinates or altitude. Check both before rendering.
 To run step 3 unattended and keep it alive after closing the terminal:
 
 ```bash
-setsid nohup python3 render_all.py projects --out $SHARE >> $SHARE/render_all.log 2>&1 < /dev/null &
+setsid nohup python3 scripts/render_all.py projects --out $SHARE >> $SHARE/render_all.log 2>&1 < /dev/null &
 tail -f $SHARE/render_all.log                 # progress
 ls -d $SHARE/*/*/footage | wc -l              # finished views (2 per city)
 ```
@@ -74,7 +83,7 @@ nothing that is already complete is touched.
 
 **Stop.** How depends on how you started step 3:
 
-* Foreground (`python3 render_all.py ...` in a terminal): press `Ctrl+C`.
+* Foreground (`python3 scripts/render_all.py ...` in a terminal): press `Ctrl+C`.
   The script and the Chrome it launched exit together.
 * Background (the `setsid nohup ...` line above): `Ctrl+C` does nothing,
   because the script is detached from the terminal. Closing the Chrome
@@ -92,7 +101,7 @@ again first:
 
 ```bash
 SHARE=cities_351_700                          # your share
-setsid nohup python3 render_all.py projects --out $SHARE >> $SHARE/render_all.log 2>&1 < /dev/null &
+setsid nohup python3 scripts/render_all.py projects --out $SHARE >> $SHARE/render_all.log 2>&1 < /dev/null &
 tail -f $SHARE/render_all.log
 ```
 
@@ -101,15 +110,15 @@ which confirms it picked up where it left off. Pass the same `--only` /
 `--limit` options as before if you used any. Your Google sign-in is kept in
 `.ges-chrome-profile/`, so Chrome should not ask you to log in again.
 
-Useful options: `render_all.py --only koblenz trier` renders named cities
+Useful options: `scripts/render_all.py --only koblenz trier` renders named cities
 only, `--limit 2` stops after two views (good for a first test), and
-`batch_generate.py --out projects_test` keeps an experiment separate from
+`scripts/batch_generate.py --out projects_test` keeps an experiment separate from
 the main queue.
 
 ### Checking the renders
 
 ```bash
-python3 inspect_renders.py $SHARE --csv data/${SHARE}_snapped.csv   # or data/$SHARE.csv
+python3 scripts/inspect_renders.py $SHARE --csv data/${SHARE}_snapped.csv   # or data/$SHARE.csv
 ```
 
 Opens a window with every frame of the satellite view tiled on the left and
@@ -134,7 +143,7 @@ mostly idle. `--parallel N` runs N copies of the script at once, each in its
 own Chrome window on its own share of the cities:
 
 ```bash
-setsid nohup python3 render_all.py projects --out $SHARE --parallel 3 >> $SHARE/render_all.log 2>&1 < /dev/null &
+setsid nohup python3 scripts/render_all.py projects --out $SHARE --parallel 3 >> $SHARE/render_all.log 2>&1 < /dev/null &
 tail -f $SHARE/render_all.*.log                 # one log per window
 ```
 
@@ -172,10 +181,10 @@ station, castle, museum, ...) and otherwise the largest footprint, discounted
 by distance so the target stays downtown:
 
 ```bash
-python3 snap_to_buildings.py data/$SHARE.csv --out data/${SHARE}_snapped.csv
+python3 scripts/snap_to_buildings.py data/$SHARE.csv --out data/${SHARE}_snapped.csv
 # review data/${SHARE}_snapped_review.csv (building, distance moved, map links),
 # fix any row by hand, then:
-python3 batch_generate.py data/${SHARE}_snapped.csv --out projects
+python3 scripts/batch_generate.py data/${SHARE}_snapped.csv --out projects
 ```
 
 Terrain elevation is re-fetched for the moved points. Rows where no building

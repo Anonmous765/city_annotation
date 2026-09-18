@@ -3,7 +3,7 @@
 build_city_list.py — Parse "data/700 cities.pdf" into the CSV that batch_generate.py
 consumes, adding terrain elevation from OpenTopoData (Mapzen, global 30 m).
 
-    python3 build_city_list.py "data/700 cities.pdf" --range 351 700 --out data/my_cities_351_700.csv
+    python3 scripts/build_city_list.py "data/700 cities.pdf" --range 351 700 --out data/my_cities_351_700.csv
 
 Columns written: n, city, country, continent, anchor, lat, lon, terrain_m,
 poi_alt_m (= terrain_m + POI_ABOVE_DEM_M, matching where Earth Studio's Orbit

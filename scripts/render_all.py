@@ -6,8 +6,8 @@ ends up with footage/, <view>.json, ImagerySources.txt and the .esp, exactly
 like reference/Cities/Koblenz/.
 
     pip install playwright            # one-time
-    python3 render_all.py projects --out cities_10_50     # renders everything not yet done
-    python3 render_all.py projects --out cities_10_50 --parallel 3   # 3 Chrome windows at once (~2.3x)
+    python3 scripts/render_all.py projects --out cities_10_50     # renders everything not yet done
+    python3 scripts/render_all.py projects --out cities_10_50 --parallel 3   # 3 Chrome windows at once (~2.3x)
 
 Output layout (same as reference/Cities/Koblenz and reference/city_satellite/cities/<city>):
 
@@ -27,7 +27,7 @@ may not be secure"), start Chrome yourself and attach instead:
 
     google-chrome --remote-debugging-port=9222 --user-data-dir=$HOME/.ges-profile &
     # sign in to earth.google.com/studio in that window, then:
-    python3 render_all.py projects --cdp http://localhost:9222
+    python3 scripts/render_all.py projects --cdp http://localhost:9222
 
 What it does per project: open Earth Studio, drop the .esp onto the page
 (same as drag-and-drop import), click Render (the dialog is pre-filled from
@@ -646,7 +646,7 @@ def main():
             log(f"pass {pass_no} done: {len(stalled)} view(s) stalled: " + ", ".join(f"{c}/{v}" for c, v, _, _ in stalled))
         if stalled:
             log(f"still stalled after {args.passes} passes: " + ", ".join(f"{c}/{v}" for c, v, _, _ in stalled))
-            log("rerun later (python3 render_all.py projects --out <out>) to try them again")
+            log("rerun later (python3 scripts/render_all.py projects --out <out>) to try them again")
 
         try:
             state["context"].close()

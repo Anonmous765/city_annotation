@@ -25,8 +25,8 @@ DEM + 27 (build_city_list.py does this for you).
 
 Usage
 -----
-    python3 build_city_list.py "data/700 cities.pdf" --range 351 700 --out data/my_cities_351_700.csv
-    python3 batch_generate.py data/my_cities_351_700.csv --out ./projects
+    python3 scripts/build_city_list.py "data/700 cities.pdf" --range 351 700 --out data/my_cities_351_700.csv
+    python3 scripts/batch_generate.py data/my_cities_351_700.csv --out ./projects
 """
 
 import argparse

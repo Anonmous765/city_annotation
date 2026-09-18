@@ -4,9 +4,9 @@ inspect_renders.py — Eyeball every rendered city: all 61 frames of the
 satellite view and all 61 of the ground_truth view, tiled into two grids side
 by side, with Prev / Next buttons to step through the cities.
 
-    python3 inspect_renders.py cities_351_700
-    python3 inspect_renders.py cities_351_700 --csv data/my_cities_351_700_snapped.csv
-    python3 inspect_renders.py cities_351_700 --start torun
+    python3 scripts/inspect_renders.py cities_351_700
+    python3 scripts/inspect_renders.py cities_351_700 --csv data/my_cities_351_700_snapped.csv
+    python3 scripts/inspect_renders.py cities_351_700 --start torun
 
 Loading 122 full-size 2048x2048 JPEGs per city is far too slow to browse, so
 the first run builds one downscaled contact sheet per <city>/<view> into

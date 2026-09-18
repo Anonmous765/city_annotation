@@ -5,7 +5,7 @@ snap_to_buildings.py — Move each city's orbit target from the generic
 footprints (Overpass API), so the ground_truth orbit circles a building
 instead of a road junction or a square.
 
-    python3 snap_to_buildings.py data/my_cities_351_700.csv --out data/my_cities_351_700_snapped.csv
+    python3 scripts/snap_to_buildings.py data/my_cities_351_700.csv --out data/my_cities_351_700_snapped.csv
 
 For every city it fetches all building footprints within --radius metres of
 the anchor and picks one:
