@@ -26,7 +26,8 @@ scripts/
                         buttons, click a tile to enlarge, flag bad cities
 
 data/                   700 cities.pdf (the master list), the CSVs you generate from it,
-                        handpick_needed.md, the Overpass cache
+                        handpick_needed.md, the Overpass cache, and
+                        no_3d_buildings_<A>_<B>.csv: cities whose ground_truth is flat
 projects/               generated .esp inputs + metadata.csv, manifest.json, render_order.txt
                         (not tracked: regenerated from the CSV by batch_generate.py)
 cities_<A>_<B>/         rendered output for one share (not for git: ~600 MB per city);
@@ -137,6 +138,19 @@ builds one downscaled contact sheet per view into `<share>/.inspect/`
 (about a minute for 350 cities on all cores); later runs are instant, and a
 sheet is rebuilt automatically when its frames are newer. Cities with fewer
 than 61 frames in a view are marked INCOMPLETE in the title.
+
+**Cities without 3D buildings.** Google has no photogrammetry mesh for many
+smaller towns (in rows 351–700: 101 of 350, mostly Taiwan, Malaysia, the
+Philippines, Tunisia, and regional South Africa / Australia / New Zealand).
+Their ground_truth orbit is geometrically correct but shows the satellite
+image draped over bare terrain, so it looks like a skewed satellite view.
+Nothing in the pipeline can fix that. `scripts/check_3d_coverage.py $SHARE`
+finds them automatically (a flat scene is one plane, so neighbouring frames
+fit a single homography; real buildings break it), writes
+`<share>/coverage_check.csv`, and prints `flat` / `borderline` / `3d`
+verdicts. Trust `flat`, eyeball `borderline` with `inspect_renders.py --only`,
+and expect a hilly flat town to hide in `3d` now and then. The confirmed list
+for rows 351–700 is `data/no_3d_buildings_351_700.csv`.
 
 ### Rendering in parallel
 

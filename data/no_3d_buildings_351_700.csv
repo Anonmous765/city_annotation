@@ -1,0 +1,102 @@
+n,city,country,continent,city_folder,lat,lon,homography_score
+413,Leiden,Netherlands,Europe,leiden,52.157968,4.494219,0.935
+427,Hasselt,Belgium,Europe,hasselt,50.930781,5.328174,0.81
+435,Villach,Austria,Europe,villach,46.6103,13.8558,0.885
+437,Sankt Pölten,Austria,Europe,sankt_polten,48.204971,15.625135,0.822
+438,Eisenstadt,Austria,Europe,eisenstadt,47.847096,16.527670,0.587
+454,Toruń,Poland,Europe,torun,53.016,18.5984,0.685
+468,Jihlava,Czechia,Europe,jihlava,49.3961,15.5912,0.603
+469,Karlovy Vary,Czechia,Europe,karlovy_vary,50.231570,12.870041,0.685
+495,Daugavpils,Latvia,Europe,daugavpils,55.872991,26.539753,0.677
+541,Changhua,Taiwan,Asia,changhua,24.075528,120.544802,0.879
+542,Pingtung,Taiwan,Asia,pingtung,22.673989,120.495771,0.852
+543,Yilan,Taiwan,Asia,yilan,24.753520,121.752952,0.837
+544,Miaoli,Taiwan,Asia,miaoli,24.561875,120.822717,0.902
+545,Douliu,Taiwan,Asia,douliu,23.709532,120.433444,0.847
+546,Chiayi,Taiwan,Asia,chiayi,23.4801,120.4491,0.919
+547,Nantou,Taiwan,Asia,nantou,23.914037,120.684937,0.902
+548,Zhubei,Taiwan,Asia,zhubei,24.839393,121.015248,0.843
+549,Yuanlin,Taiwan,Asia,yuanlin,23.957949,120.573686,0.896
+550,Taitung,Taiwan,Asia,taitung,22.755691,121.150095,0.874
+552,Petaling Jaya,Malaysia,Asia,petaling_jaya,3.106704,101.606783,0.84
+553,Subang Jaya,Malaysia,Asia,subang_jaya,3.060042,101.585515,0.856
+555,Malacca City,Malaysia,Asia,malacca_city,2.188664,102.249848,0.864
+556,Seremban,Malaysia,Asia,seremban,2.730712,101.936622,0.816
+557,Kota Kinabalu,Malaysia,Asia,kota_kinabalu,5.983172,116.072863,0.722
+558,Miri,Malaysia,Asia,miri,4.397292,113.993225,0.685
+559,Sibu,Malaysia,Asia,sibu,2.287119,111.828836,0.765
+560,Alor Setar,Malaysia,Asia,alor_setar,6.118498,100.370044,0.869
+561,Pasig,Philippines,Asia,pasig,14.575813,121.085324,0.898
+562,Taguig,Philippines,Asia,taguig,14.515550,121.050765,0.53
+563,Pasay,Philippines,Asia,pasay,14.5378,121.0014,0.916
+564,Mandaluyong,Philippines,Asia,mandaluyong,14.577701,121.033656,0.859
+565,Parañaque,Philippines,Asia,paranaque,14.476506,121.018840,0.865
+566,Muntinlupa,Philippines,Asia,muntinlupa,14.409986,121.038625,0.535
+567,Caloocan,Philippines,Asia,caloocan,14.650767,120.964342,0.859
+568,Baguio,Philippines,Asia,baguio,16.400957,120.595670,0.416
+569,Bacolod,Philippines,Asia,bacolod,10.6765,122.9509,0.821
+570,Cagayan de Oro P,Philippines,Asia,cagayan_de_oro_p,8.453765,124.632191,0.662
+581,Springs,South Africa,Africa,springs,-26.253456,28.441494,0.821
+582,Brakpan,South Africa,Africa,brakpan,-26.2366,28.3694,0.845
+583,Vereeniging,South Africa,Africa,vereeniging,-26.673561,27.929881,0.852
+584,Vanderbijlpark,South Africa,Africa,vanderbijlpark,-26.712374,27.841592,0.888
+586,Klerksdorp,South Africa,Africa,klerksdorp,-26.8521,26.6667,0.886
+587,Welkom,South Africa,Africa,welkom,-27.9774,26.7351,0.848
+588,Bethlehem,South Africa,Africa,bethlehem,-28.2308,28.3071,0.862
+589,Sasolburg,South Africa,Africa,sasolburg,-26.8136,27.816,0.839
+590,Richards Bay,South Africa,Africa,richards_bay,-28.782389,32.038152,0.815
+591,Empangeni,South Africa,Africa,empangeni,-28.7616,31.8933,0.598
+593,Ladysmith,South Africa,Africa,ladysmith,-28.554586,29.783959,0.599
+594,Paarl,South Africa,Africa,paarl,-33.731768,18.963083,0.838
+595,Worcester,South Africa,Africa,worcester,-33.645405,19.445191,0.85
+596,Mossel Bay,South Africa,Africa,mossel_bay,-34.180776,22.143599,0.622
+597,Knysna,South Africa,Africa,knysna,-34.035505,23.045528,0.598
+598,Oudtshoorn,South Africa,Africa,oudtshoorn,-33.591261,22.200113,0.819
+599,Upington,South Africa,Africa,upington,-28.447944,21.252590,0.769
+600,Mahikeng,South Africa,Africa,mahikeng,-25.865164,25.641600,0.804
+603,Nabeul,Tunisia,Africa,nabeul,36.456785,10.736414,0.901
+604,Kairouan,Tunisia,Africa,kairouan,35.676082,10.096831,0.833
+605,Gabès,Tunisia,Africa,gabes,33.880622,10.099877,0.88
+606,Gafsa,Tunisia,Africa,gafsa,34.425,8.7842,0.786
+607,Mahdia,Tunisia,Africa,mahdia,35.506104,11.061707,0.847
+608,Zarzis,Tunisia,Africa,zarzis,33.503546,11.112437,0.825
+609,Houmt Souk,Tunisia,Africa,houmt_souk,33.876600,10.860865,0.925
+610,Béja,Tunisia,Africa,beja,36.725144,9.182777,0.826
+616,Gladstone,Australia,Oceania,gladstone,-23.847081,151.259523,0.736
+641,Byron Bay,Australia,Oceania,byron_bay,-28.645144,153.605112,0.843
+642,Broken Hill,Australia,Oceania,broken_hill,-31.953955,141.457706,0.656
+645,Warrnambool,Australia,Oceania,warrnambool,-38.382491,142.484066,0.829
+646,Traralgon,Australia,Oceania,traralgon,-38.194325,146.539520,0.434
+647,Sale,Australia,Oceania,sale,-38.110043,147.067367,0.897
+648,Morwell,Australia,Oceania,morwell,-38.236704,146.395626,0.506
+649,Bairnsdale,Australia,Oceania,bairnsdale,-37.8251,147.6284,0.868
+652,Echuca,Australia,Oceania,echuca,-36.141829,144.755949,0.896
+655,Mount Gambier,Australia,Oceania,mount_gambier,-37.829891,140.780685,0.824
+656,Whyalla,Australia,Oceania,whyalla,-33.034377,137.585376,0.819
+657,Port Augusta,Australia,Oceania,port_augusta,-32.493575,137.767281,0.766
+658,Port Lincoln,Australia,Oceania,port_lincoln,-34.720060,135.857399,0.86
+659,Murray Bridge,Australia,Oceania,murray_bridge,-35.119430,139.277818,0.63
+660,Victor Harbor,Australia,Oceania,victor_harbor,-35.552932,138.620100,0.877
+661,Alice Springs,Australia,Oceania,alice_springs,-23.699325,133.880652,0.861
+663,Katherine,Australia,Oceania,katherine,-14.465808,132.265326,0.843
+669,Sorell,Australia,Oceania,sorell,-42.780922,147.563763,0.809
+670,Karratha,Australia,Oceania,karratha,-20.735066,116.846188,0.897
+671,Geraldton,Australia,Oceania,geraldton,-28.776612,114.612945,0.816
+672,Albany,Australia,Oceania,albany,-35.028306,117.880074,0.825
+673,Kalgoorlie,Australia,Oceania,kalgoorlie,-30.746117,121.466684,0.857
+674,Esperance,Australia,Oceania,esperance,-33.859654,121.894211,0.884
+675,Broome,Australia,Oceania,broome,-17.960735,122.236485,0.738
+681,Busselton,Australia,Oceania,busselton,-33.650817,115.343193,0.899
+682,Margaret River,Australia,Oceania,margaret_river,-33.952177,115.071152,0.748
+683,Northam,Australia,Oceania,northam,-31.654102,116.672166,0.869
+684,Port Hedland,Australia,Oceania,port_hedland,-20.311493,118.608484,0.839
+685,Newman,Australia,Oceania,newman,-23.356867,119.732397,0.806
+690,Whangārei,New Zealand,Oceania,whangarei,-35.725954,174.324649,0.87
+691,Invercargill,New Zealand,Oceania,invercargill,-46.412516,168.352039,0.923
+693,Gisborne,New Zealand,Oceania,gisborne,-38.661248,178.017072,0.922
+694,Blenheim,New Zealand,Oceania,blenheim,-41.515878,173.959593,0.91
+695,Timaru,New Zealand,Oceania,timaru,-44.397026,171.257694,0.878
+697,Ashburton,New Zealand,Oceania,ashburton,-43.901922,171.749609,0.872
+698,Whanganui,New Zealand,Oceania,whanganui,-39.931066,175.053516,0.75
+699,Taupō,New Zealand,Oceania,taupo,-38.686375,176.068743,0.756
+700,Masterton,New Zealand,Oceania,masterton,-40.951198,175.658793,0.94

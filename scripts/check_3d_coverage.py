@@ -15,16 +15,17 @@ move differently from the ground and no single homography fits. For each
 city the script matches ORB features between two neighbouring frames (on
 opposite sides of the orbit: 0/1 and 30/31), fits a homography with RANSAC,
 and records the inlier fraction. Flat renders score ~0.65-0.85, 3D ones
-~0.25-0.5. The verdict threshold is --threshold (default 0.6); anything
-within 0.05 of it is reported as borderline so you can eyeball it with
-inspect_renders.py.
+~0.25-0.5. Above --threshold + 0.06 (default 0.62, so > 0.68) a render is
+called flat; within 0.06 of the threshold it is borderline, which you should
+eyeball with inspect_renders.py --only.
 
 Blind spot: the test assumes flat ground. A town with no 3D buildings on
 steep terrain (Baguio, Traralgon in rows 351-700) still shows parallax from
 the hills, scores like a 3D city, and is missed. Calibrated against a
-hand-flagged pass over rows 351-700: at 0.58 it agreed on 90 of 95 flagged
-cities, the 5 misses were all hilly, and everything it added above 0.7
-turned out to be a genuine flat render the manual pass had skipped.
+hand-flagged pass over rows 351-700 (101 flat of 350): every city above 0.68
+was flat, every city from 0.59 to 0.65 had 3D, and the only flat cities
+below 0.56 were the five hilly ones. So: trust 'flat', eyeball 'borderline',
+and expect '3d' to hide a flat town now and then when the terrain is steep.
 
 Writes <share>/coverage_check.csv (city, per-pair scores, verdict), sorted
 flattest first, and prints the suspects. Uses all cores; ~10 min for 350
@@ -106,7 +107,7 @@ def main():
     ap = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
     ap.add_argument("share", type=Path)
     ap.add_argument("--only", nargs="*", help="city folder names (default: every city in the share)")
-    ap.add_argument("--threshold", type=float, default=0.6,
+    ap.add_argument("--threshold", type=float, default=0.62,
                     help="mean homography-inlier fraction above which a render counts as flat")
     ap.add_argument("--size", type=int, default=768, help="analysis resolution (px)")
     ap.add_argument("--keypoints", type=int, default=4000)
@@ -128,7 +129,7 @@ def main():
             if k % 25 == 0 or k == len(cities):
                 print(f"  {k}/{len(cities)}", flush=True)
 
-    thr, margin = args.threshold, 0.05
+    thr, margin = args.threshold, 0.06
     for r in rows:
         s = r["score"]
         r["verdict"] = ("unknown" if s == "" else "flat" if s > thr + margin else
