@@ -126,7 +126,10 @@ every frame of the ground_truth view on the right, one city at a time, with
 the city's row number, target coordinates and snap status in the title.
 `Next` / `Prev` (or `→` / `←`) step through the cities in list order, the
 text box jumps to a folder name or row number, and `f` flags the current
-city as wrong; flags land in `<share>/inspect_flags.csv`. Click any tile
+city as wrong; flags land in `<share>/inspect_flags.csv`. To revisit
+them, `]` / `[` jump to the next / previous flagged city, `--flagged`
+opens the viewer on the flagged cities only, and `--list-flagged` just
+prints them. Click any tile
 to open that frame at full 2048 px in its own window (click more tiles
 for more windows; `←` / `→` there step through the frames, the toolbar
 zooms, `Esc` closes). The first run

@@ -7,6 +7,9 @@ by side, with Prev / Next buttons to step through the cities.
     python3 scripts/inspect_renders.py cities_351_700
     python3 scripts/inspect_renders.py cities_351_700 --csv data/my_cities_351_700_snapped.csv
     python3 scripts/inspect_renders.py cities_351_700 --start torun
+    python3 scripts/inspect_renders.py cities_351_700 --only leiden villach   # just these
+    python3 scripts/inspect_renders.py cities_351_700 --flagged          # revisit only flagged cities
+    python3 scripts/inspect_renders.py cities_351_700 --list-flagged     # just print them
 
 Loading 122 full-size 2048x2048 JPEGs per city is far too slow to browse, so
 the first run builds one downscaled contact sheet per <city>/<view> into
@@ -19,6 +22,7 @@ Controls
     Home / End                           first / last city
     f                                    flag the current city as wrong (toggles);
                                          flags are written to <share>/inspect_flags.csv
+    ]  /  [                              jump to the next / previous flagged city
     type a city folder name in the box   jump to it
     click a tile                         open that frame full size (2048 px) in its own
                                          window; click more tiles for more windows.
@@ -159,6 +163,16 @@ def title_for(i, n, folder, info, share, flagged):
     return "\n".join(bits)
 
 
+def load_flags(flags_path: Path) -> dict:
+    """<share>/inspect_flags.csv -> {city_folder: note}."""
+    flags = {}
+    if flags_path.exists():
+        with open(flags_path, newline="") as f:
+            for r in csv.DictReader(f):
+                flags[r["city_folder"]] = r.get("note", "")
+    return flags
+
+
 # --- viewer -------------------------------------------------------------------
 
 def run_viewer(share: Path, cities, start: int, flags_path: Path, cols: int = 8):
@@ -166,11 +180,7 @@ def run_viewer(share: Path, cities, start: int, flags_path: Path, cols: int = 8)
     import matplotlib.pyplot as plt
     from matplotlib.widgets import Button, TextBox
 
-    flags = {}
-    if flags_path.exists():
-        with open(flags_path, newline="") as f:
-            for r in csv.DictReader(f):
-                flags[r["city_folder"]] = r.get("note", "")
+    flags = load_flags(flags_path)
 
     def save_flags():
         with open(flags_path, "w", newline="") as f:
@@ -320,8 +330,20 @@ def run_viewer(share: Path, cities, start: int, flags_path: Path, cols: int = 8)
             state["i"] = len(cities) - 1; show()
         elif ev.key == "f":
             toggle_flag()
+        elif ev.key in ("]", "["):
+            step_flagged(1 if ev.key == "]" else -1)
         elif ev.key == "q":
             plt.close(fig)
+
+    def step_flagged(d):
+        """Jump to the next (d=1) / previous (d=-1) flagged city, wrapping."""
+        n = len(cities)
+        for k in range(1, n + 1):
+            j = (state["i"] + d * k) % n
+            if cities[j][0] in flags:
+                state["i"] = j
+                show()
+                return
 
     b_prev.on_clicked(lambda _: step(-1))
     b_next.on_clicked(lambda _: step(1))
@@ -340,6 +362,12 @@ def main():
     ap.add_argument("share", type=Path, help="rendered share folder, e.g. cities_351_700")
     ap.add_argument("--csv", type=Path, help="the CSV the share was generated from (list order + titles)")
     ap.add_argument("--start", help="city folder name (or row number with --csv) to open first")
+    ap.add_argument("--only", nargs="*", metavar="CITY",
+                    help="show only these city folders (e.g. the disagreements from check_3d_coverage.py)")
+    ap.add_argument("--flagged", action="store_true",
+                    help="show only the cities flagged in <share>/inspect_flags.csv")
+    ap.add_argument("--list-flagged", action="store_true",
+                    help="print the flagged cities and exit")
     ap.add_argument("--thumb", type=int, default=192, help="thumbnail size in px (default 192)")
     ap.add_argument("--cols", type=int, default=8, help="frames per row in each grid (default 8)")
     ap.add_argument("--rebuild", action="store_true", help="regenerate all contact sheets")
@@ -351,6 +379,23 @@ def main():
     cities = cities_from_csv(args.csv) if args.csv else cities_from_folders(args.share)
     if not cities:
         sys.exit("no cities found")
+    if args.only:
+        want = {c.lower() for c in args.only}
+        cities = [(c, info) for c, info in cities if c in want]
+        if not cities:
+            sys.exit("none of the --only cities were found")
+    flags_path = args.share / "inspect_flags.csv"
+    if args.flagged or args.list_flagged:
+        flags = load_flags(flags_path)
+        cities = [(c, info) for c, info in cities if c in flags]
+        if not cities:
+            sys.exit(f"nothing flagged yet in {flags_path}")
+        if args.list_flagged:
+            for c, info in cities:
+                n = f"#{info['n']:>4} " if info.get("n") else ""
+                print(f"{n}{c}  {info.get('city', '')} {('(' + info['country'] + ')') if info.get('country') else ''}"
+                      f"{('  ' + flags[c]) if flags[c] else ''}")
+            return
     build_all(args.share, [c for c, _ in cities], args.thumb, args.cols, args.rebuild)
     if args.build_only:
         return
@@ -361,7 +406,7 @@ def main():
             if folder == s or s == str(info.get("n", "")):
                 start = j
                 break
-    run_viewer(args.share, cities, start, args.share / "inspect_flags.csv", args.cols)
+    run_viewer(args.share, cities, start, flags_path, args.cols)
 
 
 if __name__ == "__main__":
