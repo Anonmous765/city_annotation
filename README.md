@@ -140,17 +140,12 @@ sheet is rebuilt automatically when its frames are newer. Cities with fewer
 than 61 frames in a view are marked INCOMPLETE in the title.
 
 **Cities without 3D buildings.** Google has no photogrammetry mesh for many
-smaller towns (in rows 351–700: 101 of 350, mostly Taiwan, Malaysia, the
-Philippines, Tunisia, and regional South Africa / Australia / New Zealand).
-Their ground_truth orbit is geometrically correct but shows the satellite
-image draped over bare terrain, so it looks like a skewed satellite view.
-Nothing in the pipeline can fix that. `scripts/check_3d_coverage.py $SHARE`
-finds them automatically (a flat scene is one plane, so neighbouring frames
-fit a single homography; real buildings break it), writes
-`<share>/coverage_check.csv`, and prints `flat` / `borderline` / `3d`
-verdicts. Trust `flat`, eyeball `borderline` with `inspect_renders.py --only`,
-and expect a hilly flat town to hide in `3d` now and then. The confirmed list
-for rows 351–700 is `data/no_3d_buildings_351_700.csv`.
+smaller towns (in rows 351–700: 101 of 350). Their ground_truth orbit is
+geometrically correct but shows the satellite image draped over bare
+terrain, so it looks like a skewed satellite view, and nothing in the
+pipeline can fix that. `scripts/check_3d_coverage.py $SHARE` finds them from
+the frames alone; see *How the 3D-coverage check works* below. The confirmed
+list for rows 351–700 is `data/no_3d_buildings_351_700.csv`.
 
 ### Rendering in parallel
 
@@ -439,6 +434,66 @@ counter, catches the zip, and unpacks it into `<share>/<city>/<view>/`.
 **Cost.** About 65–80 s per view single-window (roughly 13 h for 350
 cities; `--parallel 3` gives ~2.3×), and ~290 MB per view, so ~600 MB per
 city. Budget disk before starting a large share.
+
+## How the 3D-coverage check works (`check_3d_coverage.py`)
+
+The script has no access to Google's coverage data. It looks only at the
+rendered ground_truth frames and infers whether a 3D mesh was present from
+**parallax**.
+
+**The idea.** The camera orbits the target, so between two neighbouring
+frames the viewpoint shifts slightly. If the scene is one flat surface,
+which is what a render is when the satellite image is draped over bare
+terrain, every pixel moves according to a single mapping, a homography. If
+there are real buildings, roofs and facades at different heights move by
+different amounts and no single homography fits them all.
+
+**Per city:**
+
+1. Take two pairs of consecutive frames on opposite sides of the orbit,
+   `00`/`01` and `30`/`31`. Two pairs guard against one side being mostly
+   water or park.
+2. Load each frame in greyscale at 768 px.
+3. Detect up to 4000 ORB feature points in each frame and match them
+   between the two, keeping only mutual best matches.
+4. Fit a homography to the matches with RANSAC, which finds the mapping that
+   explains the most points and ignores the rest. A match is an inlier if
+   it lands within ~1.5 px of where the homography predicts.
+5. Record the inlier fraction. In a flat render most matches agree with the
+   one homography, so it is high; with buildings many disagree, so it is
+   low.
+6. Average the two pairs into one score and write it to
+   `<share>/coverage_check.csv`, sorted flattest first.
+
+**Verdicts** are a threshold on that score, calibrated against the
+hand-flagged review of rows 351–700 (101 flat of 350):
+
+| Verdict | Score | What the review showed |
+|---|---|---|
+| `flat` | > 0.68 | every such city had no mesh |
+| `borderline` | 0.56 – 0.68 | a genuine mix; eyeball these with `inspect_renders.py --only …` |
+| `3d` | < 0.56 | 3D mesh, except hilly flat towns (below) |
+
+`--threshold` (default 0.62) moves the centre of that band; `--flag` appends
+the `flat` verdicts to `<share>/inspect_flags.csv` so the viewer can jump
+to them.
+
+**Blind spot: terrain.** Steep hills produce parallax on their own, so a
+town with no mesh on a hillside (Baguio, Traralgon, Morwell, Taguig,
+Muntinlupa in rows 351–700) scores like a 3D city. Those five were caught by
+eye, none by the script. A meshless town on flat ground is caught reliably.
+So for a new share: accept `flat`, review `borderline`, and spot-check hilly
+towns in `3d`.
+
+**Why not the imagery credits?** Earth Studio writes `ImagerySources.txt`
+next to each render, but only for some cities, and it names the 2D imagery
+supplier: Mechelen has a full 3D mesh with the same "Airbus" credit as flat
+towns, so the file says nothing about the mesh.
+
+**Load.** The check runs one process per core. Each worker's BLAS/OpenMP
+threads are pinned to 1 (`OMP_NUM_THREADS` etc. set at import), because 24
+workers each starting their own thread pool drove the load average past 130
+and the run crawled. Expect ~10 min for 350 cities on a 24-core machine.
 
 ## How the generator was verified
 
