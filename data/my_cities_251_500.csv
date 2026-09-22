@@ -1,0 +1,251 @@
+n,city,country,continent,anchor,lat,lon,terrain_m,poi_alt_m
+251,Oberhausen,Germany,Europe,Oberhausen City Center,51.4667,6.85,38.0,65.0
+252,Offenbach,Germany,Europe,Offenbach City Center,50.1,8.7667,109.0,136.0
+253,Paderborn,Germany,Europe,Paderborn City Center,51.7167,8.7667,131.0,158.0
+254,Recklinghausen,Germany,Europe,Recklinghausen City Center,51.6167,7.2,76.0,103.0
+255,Remscheid,Germany,Europe,Remscheid City Center,51.1833,7.2,282.0,309.0
+256,Salzgitter,Germany,Europe,Salzgitter City Center,52.0833,10.3333,226.0,253.0
+257,Siegen,Germany,Europe,Siegen City Center,50.8667,8.0333,254.0,281.0
+258,Solingen,Germany,Europe,Solingen City Center,51.1833,7.0833,232.0,259.0
+259,Witten,Germany,Europe,Witten City Center,51.4333,7.3333,94.0,121.0
+260,Wuppertal,Germany,Europe,Wuppertal City Center,51.2667,7.1833,153.0,180.0
+261,Amstetten,Austria,Europe,Amstetten City Center,48.1167,14.8667,268.0,295.0
+262,Baden,Austria,Europe,Baden City Center,48.0167,16.2333,328.0,355.0
+263,Braunau,Austria,Europe,Braunau City Center,48.2667,13.0333,338.0,365.0
+264,Bregenz,Austria,Europe,Bregenz City Center,47.5,9.7667,706.0,733.0
+265,Bruck an der Mur,Austria,Europe,Bruck an der Mur City Center,47.4167,15.2833,571.0,598.0
+266,Dornbirn,Austria,Europe,Dornbirn City Center,47.4167,9.7333,427.0,454.0
+267,Feldkirch,Austria,Europe,Feldkirch City Center,47.2333,9.6,474.0,501.0
+268,Hallein,Austria,Europe,Hallein City Center,47.6833,13.1,448.0,475.0
+269,Kapfenberg,Austria,Europe,Kapfenberg City Center,47.4333,15.3,752.0,779.0
+270,Klosterneuburg,Austria,Europe,Klosterneuburg City Center,48.3,16.3167,259.0,286.0
+271,Krems,Austria,Europe,Krems City Center,48.4167,15.6,212.0,239.0
+272,Leoben,Austria,Europe,Leoben City Center,47.3833,15.1,538.0,565.0
+273,Mödling,Austria,Europe,Mödling City Center,48.0833,16.4667,181.0,208.0
+274,Steyr,Austria,Europe,Steyr City Center,48.0667,14.4167,313.0,340.0
+275,Traun,Austria,Europe,Traun City Center,48.2167,14.2333,271.0,298.0
+276,Wiener Neustadt,Austria,Europe,Wiener Neustadt City Center,47.8,16.25,269.0,296.0
+277,Wolfsberg,Austria,Europe,Wolfsberg City Center,46.8333,14.8333,455.0,482.0
+278,Biel/Bienne,Switzerland,Europe,Biel/Bienne City Center,47.1371,7.2461,438.0,465.0
+279,Chur,Switzerland,Europe,Chur City Center,46.8333,9.5833,755.0,782.0
+280,Köniz,Switzerland,Europe,Köniz City Center,46.9333,7.4167,564.0,591.0
+281,La Chaux-de- Fonds,Switzerland,Europe,La Chaux-de- Fonds City Center,47.1,6.8333,1009.0,1036.0
+282,Schaffhausen,Switzerland,Europe,Schaffhausen City Center,47.6667,8.6667,540.0,567.0
+283,Thun,Switzerland,Europe,Thun City Center,46.7667,7.6333,603.0,630.0
+284,Borås,Sweden,Europe,Borås City Center,57.7333,12.9167,218.0,245.0
+285,Helsingborg,Sweden,Europe,Helsingborg City Center,56.0833,12.75,51.0,78.0
+286,Jönköping,Sweden,Europe,Jönköping City Center,57.75,14.1667,105.0,132.0
+287,Linköping,Sweden,Europe,Linköping City Center,58.4167,15.5833,86.0,113.0
+288,Norrköping,Sweden,Europe,Norrköping City Center,58.5833,16.1667,38.0,65.0
+289,Drammen,Norway,Europe,Drammen City Center,59.75,10.25,4.0,31.0
+290,Kristiansand,Norway,Europe,Kristiansand City Center,58.1333,8.0167,4.0,31.0
+291,Espoo,Finland,Europe,Espoo City Center,60.1667,24.7,16.0,43.0
+292,Kuopio,Finland,Europe,Kuopio City Center,62.9,27.6667,104.0,131.0
+293,Lahti,Finland,Europe,Lahti City Center,61.0,25.6667,144.0,171.0
+294,Oulu,Finland,Europe,Oulu City Center,65.0,25.4333,8.0,35.0
+295,Pori,Finland,Europe,Pori City Center,61.4667,21.75,10.0,37.0
+296,Tampere,Finland,Europe,Tampere City Center,61.5333,23.75,92.0,119.0
+297,Vantaa,Finland,Europe,Vantaa City Center,60.3,24.95,50.0,77.0
+298,Helsingør,Denmark,Europe,Helsingør City Center,56.05,12.6333,-18.0,9.0
+299,Esbjerg,Denmark,Europe,Esbjerg City Center,55.4667,8.4667,7.0,34.0
+300,Horsens,Denmark,Europe,Horsens City Center,55.8607,9.8503,3.0,30.0
+301,Kolding,Denmark,Europe,Kolding City Center,55.4833,9.5,21.0,48.0
+302,Randers,Denmark,Europe,Randers City Center,56.4667,10.05,26.0,53.0
+303,Roskilde,Denmark,Europe,Roskilde City Center,55.65,12.1167,37.0,64.0
+304,Vejle,Denmark,Europe,Vejle City Center,55.7167,9.55,51.0,78.0
+305,Cork,Ireland,Europe,Cork City Center,51.9,-8.4667,6.0,33.0
+306,Galway,Ireland,Europe,Galway City Center,53.2667,-9.05,5.0,32.0
+307,Limerick,Ireland,Europe,Limerick City Center,52.6667,-8.6333,10.0,37.0
+308,Waterford,Ireland,Europe,Waterford City Center,52.25,-7.1,23.0,50.0
+309,Differdange,Luxembourg,Europe,Differdange City Center,49.5333,5.8833,329.0,356.0
+310,Dudelange,Luxembourg,Europe,Dudelange City Center,49.4667,6.0833,313.0,340.0
+311,Esch-sur-Alzette,Luxembourg,Europe,Esch-sur-Alzette City Center,49.5333,6.0,296.0,323.0
+312,Akureyri,Iceland,Europe,Akureyri City Center,65.6833,-18.0667,-5.0,22.0
+313,Reykjavik,Iceland,Europe,Reykjavik City Center,64.15,-21.95,7.0,34.0
+314,Durrës,Albania,Europe,Durrës City Center,41.3,19.4667,-2.0,25.0
+315,Shkodër,Albania,Europe,Shkodër City Center,42.05,19.0167,-70.0,-43.0
+316,Tirana,Albania,Europe,Tirana City Center,41.3333,19.8333,129.0,156.0
+317,Sarajevo,Bosnia and Herzegovina,Europe,Sarajevo City Center,43.8333,18.4167,747.0,774.0
+318,Skopje,North Macedonia,Europe,Skopje City Center,42.0,21.4833,242.0,269.0
+319,Limassol,Cyprus,Europe,Limassol City Center,34.6667,33.05,-16.0,11.0
+320,Nicosia,Cyprus,Europe,Nicosia City Center,35.1833,33.3833,128.0,155.0
+321,Brăila,Romania,Europe,Brăila City Center,45.2833,27.9667,18.0,45.0
+322,Craiova,Romania,Europe,Craiova City Center,44.3,23.7833,73.0,100.0
+323,Galați,Romania,Europe,Galați City Center,45.45,28.0333,61.0,88.0
+324,Iași,Romania,Europe,Iași City Center,47.15,27.6333,37.0,64.0
+325,Cluj-Napoca,Romania,Europe,Cluj-Napoca City Center,46.7833,23.6167,326.0,353.0
+326,Constanța,Romania,Europe,Constanța City Center,44.2,28.6667,-6.0,21.0
+327,Brașov,Romania,Europe,Brașov City Center,45.65,25.5833,580.0,607.0
+328,Timișoara,Romania,Europe,Timișoara City Center,45.75,21.25,85.0,112.0
+329,Debrecen,Hungary,Europe,Debrecen City Center,47.5,21.6167,108.0,135.0
+330,Győr,Hungary,Europe,Győr City Center,47.6833,17.6667,112.0,139.0
+331,Miskolc,Hungary,Europe,Miskolc City Center,48.1167,20.7833,181.0,208.0
+332,Pécs,Hungary,Europe,Pécs City Center,46.0667,18.25,130.0,157.0
+333,Szeged,Hungary,Europe,Szeged City Center,46.25,20.15,86.0,113.0
+334,Burgas,Bulgaria,Europe,Burgas City Center,42.5,27.4833,16.0,43.0
+335,Plovdiv,Bulgaria,Europe,Plovdiv City Center,42.1333,24.75,165.0,192.0
+336,Ruse,Bulgaria,Europe,Ruse City Center,43.8333,27.9833,197.0,224.0
+337,Stara Zagora,Bulgaria,Europe,Stara Zagora City Center,42.4167,25.6167,208.0,235.0
+338,Varna,Bulgaria,Europe,Varna City Center,43.2,27.95,-3.0,24.0
+339,Chania,Greece,Europe,Chania City Center,35.5167,24.0167,11.0,38.0
+340,Heraklion,Greece,Europe,Heraklion City Center,35.3333,25.2,1.0,28.0
+341,Kavala,Greece,Europe,Kavala City Center,41.0833,24.9167,33.0,60.0
+342,Larissa,Greece,Europe,Larissa City Center,39.6333,22.4167,85.0,112.0
+343,Patras,Greece,Europe,Patras City Center,38.2333,21.7333,15.0,42.0
+344,Piraeus,Greece,Europe,Piraeus City Center,37.95,23.7,30.0,57.0
+345,Serres,Greece,Europe,Serres City Center,41.0833,23.5167,41.0,68.0
+346,Volos,Greece,Europe,Volos City Center,39.3667,22.95,16.0,43.0
+347,Belgrade,Serbia,Europe,Belgrade City Center,44.8333,20.5,71.0,98.0
+348,Niš,Serbia,Europe,Niš City Center,43.3333,21.9,206.0,233.0
+349,Novi Sad,Serbia,Europe,Novi Sad City Center,45.25,19.85,84.0,111.0
+350,Osijek,Croatia,Europe,Osijek City Center,45.55,18.6833,86.0,113.0
+351,Košice,Slovakia,Europe,Košice City Center,48.7333,21.25,216.0,243.0
+352,Apeldoorn,Netherlands,Europe,Apeldoorn City Center,52.2167,5.95,26.0,53.0
+353,L'Hospitalet de Llobregat,Spain,Europe,L'Hospitalet de Llobregat City Center,41.35,2.1,13.0,40.0
+354,Las Palmas de Gran Canaria,Spain,Europe,Las Palmas de Gran Canaria City Center,28.1,-15.4,-35.0,-8.0
+355,Amadora,Portugal,Europe,Amadora City Center,38.75,-9.2167,98.0,125.0
+356,Barreiro,Portugal,Europe,Barreiro City Center,38.6667,-9.0833,0.0,27.0
+357,Vila Nova de Gaia,Portugal,Europe,Vila Nova de Gaia City Center,41.0667,-8.6667,-1.0,26.0
+358,Sosnowiec,Poland,Europe,Sosnowiec City Center,50.2667,19.1167,245.0,272.0
+359,Olomouc,Czechia,Europe,Olomouc City Center,49.6333,17.25,212.0,239.0
+360,Bradford,United Kingdom,Europe,Bradford City Center,53.8,-1.75,99.0,126.0
+361,Abu Dhabi,United Arab Emirates,Asia,Abu Dhabi City Center,24.4667,54.4167,2.0,29.0
+362,Amman,Jordan,Asia,Amman City Center,31.95,35.9333,784.0,811.0
+363,Bandar Seri Begawan,Brunei,Asia,Bandar Seri Begawan City Center,4.9333,114.9667,50.0,77.0
+364,Be'er Sheva,Israel,Asia,Be'er Sheva City Center,31.25,34.7833,282.0,309.0
+365,Beirut,Lebanon,Asia,Beirut City Center,33.8833,35.5,96.0,123.0
+366,Bnei Brak,Israel,Asia,Bnei Brak City Center,32.0833,34.8667,45.0,72.0
+367,Chattogram,Bangladesh,Asia,Chattogram City Center,22.3333,91.8,7.0,34.0
+368,Colombo,Sri Lanka,Asia,Colombo City Center,6.9333,79.85,11.0,38.0
+369,Da Nang,Vietnam,Asia,Da Nang City Center,16.0667,108.2333,9.0,36.0
+370,Dehiwala,Sri Lanka,Asia,Dehiwala City Center,6.8667,79.8667,18.0,45.0
+371,Dhaka,Bangladesh,Asia,Dhaka City Center,23.7167,90.4167,17.0,44.0
+372,Faisalabad,Pakistan,Asia,Faisalabad City Center,31.4167,73.15,184.0,211.0
+373,Galle,Sri Lanka,Asia,Galle City Center,6.0167,80.2167,-7.0,20.0
+374,Gujranwala,Pakistan,Asia,Gujranwala City Center,32.1,74.1833,222.0,249.0
+375,Haifa,Israel,Asia,Haifa City Center,32.8167,34.9833,129.0,156.0
+376,Haiphong,Vietnam,Asia,Haiphong City Center,20.8333,106.6833,2.0,29.0
+377,Hanoi,Vietnam,Asia,Hanoi City Center,21.0333,105.85,22.0,49.0
+378,Ho Chi Minh City,Vietnam,Asia,Ho Chi Minh City City Center,10.75,106.6667,4.0,31.0
+379,Holon,Israel,Asia,Holon City Center,32.0333,34.7833,21.0,48.0
+380,Hyderabad,Pakistan,Asia,Hyderabad City Center,25.3833,68.4,21.0,48.0
+381,Irbid,Jordan,Asia,Irbid City Center,32.55,35.85,569.0,596.0
+382,Islamabad,Pakistan,Asia,Islamabad City Center,33.7,73.1667,526.0,553.0
+383,Jaffna,Sri Lanka,Asia,Jaffna City Center,9.6667,80.0167,9.0,36.0
+384,Jerusalem,Israel,Asia,Jerusalem City Center,31.7833,35.2167,801.0,828.0
+385,Kandy,Sri Lanka,Asia,Kandy City Center,7.2833,80.6667,428.0,455.0
+386,Karachi,Pakistan,Asia,Karachi City Center,24.8667,67.05,36.0,63.0
+387,Kathmandu,Nepal,Asia,Kathmandu City Center,27.7,85.3333,1303.0,1330.0
+388,Kuwait City,Kuwait,Asia,Kuwait City City Center,29.3333,47.9833,20.0,47.0
+389,Lahore,Pakistan,Asia,Lahore City Center,31.5667,74.3667,223.0,250.0
+390,Manama,Bahrain,Asia,Manama City Center,26.2,50.6333,-4.0,23.0
+391,Muscat,Oman,Asia,Muscat City Center,23.6167,58.6333,-46.0,-19.0
+392,Nha Trang,Vietnam,Asia,Nha Trang City Center,12.25,109.1667,2.0,29.0
+393,Petah Tikva,Israel,Asia,Petah Tikva City Center,32.087,34.8781,44.0,71.0
+394,Phnom Penh,Cambodia,Asia,Phnom Penh City Center,11.55,104.9167,16.0,43.0
+395,Quy Nhon,Vietnam,Asia,Quy Nhon City Center,13.7833,109.1833,6.0,33.0
+396,Ramat Gan,Israel,Asia,Ramat Gan City Center,32.0667,34.8,32.0,59.0
+397,Rawalpindi,Pakistan,Asia,Rawalpindi City Center,33.6667,73.1333,501.0,528.0
+398,Sharjah,United Arab Emirates,Asia,Sharjah City Center,25.3333,55.4333,13.0,40.0
+399,Tripoli,Lebanon,Asia,Tripoli City Center,34.45,35.8333,7.0,34.0
+400,Ulaanbaatar,Mongolia,Asia,Ulaanbaatar City Center,47.9167,106.8833,1291.0,1318.0
+401,Mito,Japan,Asia,Mito City Center,36.3659,140.4712,12.0,39.0
+402,Utsunomiya,Japan,Asia,Utsunomiya City Center,36.5551,139.8828,121.0,148.0
+403,Maebashi,Japan,Asia,Maebashi City Center,36.3895,139.0634,116.0,143.0
+404,Takasaki,Japan,Asia,Takasaki City Center,36.3219,139.0033,97.0,124.0
+405,Kawagoe,Japan,Asia,Kawagoe City Center,35.9251,139.4858,32.0,59.0
+406,Kawaguchi,Japan,Asia,Kawaguchi City Center,35.8077,139.7241,8.0,35.0
+407,Tokorozawa,Japan,Asia,Tokorozawa City Center,35.7997,139.4686,73.0,100.0
+408,Koshigaya,Japan,Asia,Koshigaya City Center,35.891,139.7909,7.0,34.0
+409,Hirakata,Japan,Asia,Hirakata City Center,34.8143,135.6507,20.0,47.0
+410,Suita,Japan,Asia,Suita City Center,34.7595,135.5169,4.0,31.0
+411,Toyonaka,Japan,Asia,Toyonaka City Center,34.7813,135.469,28.0,55.0
+412,Akashi,Japan,Asia,Akashi City Center,34.6431,134.9972,8.0,35.0
+413,Nishinomiya,Japan,Asia,Nishinomiya City Center,34.7377,135.3416,14.0,41.0
+414,Amagasaki,Japan,Asia,Amagasaki City Center,34.7337,135.4064,16.0,43.0
+415,Matsue,Japan,Asia,Matsue City Center,35.4681,133.0484,3.0,30.0
+416,Tottori,Japan,Asia,Tottori City Center,35.5011,134.2351,10.0,37.0
+417,Yamagata,Japan,Asia,Yamagata City Center,38.2554,140.3396,154.0,181.0
+418,Fukushima,Japan,Asia,Fukushima City Center,37.7608,140.4747,69.0,96.0
+419,Morioka,Japan,Asia,Morioka City Center,39.7036,141.1527,139.0,166.0
+420,Aomori,Japan,Asia,Aomori City Center,40.8221,140.7474,9.0,36.0
+421,Hachinohe,Japan,Asia,Hachinohe City Center,40.5123,141.4884,20.0,47.0
+422,Koriyama,Japan,Asia,Koriyama City Center,37.4005,140.3597,253.0,280.0
+423,Iwaki,Japan,Asia,Iwaki City Center,37.0505,140.8877,10.0,37.0
+424,Tsukuba,Japan,Asia,Tsukuba City Center,36.0835,140.0764,26.0,53.0
+425,Nagaoka,Japan,Asia,Nagaoka City Center,37.4463,138.8513,28.0,55.0
+426,Abidjan,Côte d'Ivoire,Africa,Abidjan City Center,5.3167,-4.0333,15.0,42.0
+427,Accra,Ghana,Africa,Accra City Center,5.6037,-0.187,60.0,87.0
+428,Agadir,Morocco,Africa,Agadir City Center,30.4278,-9.5981,56.0,83.0
+429,Algiers,Algeria,Africa,Algiers City Center,36.7833,3.05,119.0,146.0
+430,Annaba,Algeria,Africa,Annaba City Center,36.9167,7.7833,-4.0,23.0
+431,Arusha,Tanzania,Africa,Arusha City Center,-3.3833,36.6667,1359.0,1386.0
+432,Blida,Algeria,Africa,Blida City Center,36.5,2.8333,179.0,206.0
+433,Bouaké,Côte d'Ivoire,Africa,Bouaké City Center,7.7,-5.0,348.0,375.0
+434,Bulawayo,Zimbabwe,Africa,Bulawayo City Center,-20.1667,28.7167,1376.0,1403.0
+435,Casablanca,Morocco,Africa,Casablanca City Center,33.5731,-7.5898,47.0,74.0
+436,Chingola,Zambia,Africa,Chingola City Center,-12.5167,27.8833,1330.0,1357.0
+437,Constantine,Algeria,Africa,Constantine City Center,36.3667,6.6667,698.0,725.0
+438,Dakar,Senegal,Africa,Dakar City Center,14.6667,-17.4333,36.0,63.0
+439,Daloa,Côte d'Ivoire,Africa,Daloa City Center,6.9333,-6.4667,263.0,290.0
+440,Dar es Salaam,Tanzania,Africa,Dar es Salaam City Center,-6.8,39.2833,12.0,39.0
+441,Dodoma,Tanzania,Africa,Dodoma City Center,-6.1667,35.6667,1139.0,1166.0
+442,Entebbe,Uganda,Africa,Entebbe City Center,0.0667,32.45,1141.0,1168.0
+443,Fez,Morocco,Africa,Fez City Center,34.0331,-5.0003,406.0,433.0
+444,Francistown,Botswana,Africa,Francistown City Center,-21.1167,27.5333,1030.0,1057.0
+445,Gaborone,Botswana,Africa,Gaborone City Center,-24.75,25.9167,1133.0,1160.0
+446,Gweru,Zimbabwe,Africa,Gweru City Center,-19.45,29.8167,1412.0,1439.0
+447,Harare,Zimbabwe,Africa,Harare City Center,-17.8333,31.05,1482.0,1509.0
+448,Jinja,Uganda,Africa,Jinja City Center,0.45,33.2333,1163.0,1190.0
+449,Kampala,Uganda,Africa,Kampala City Center,0.3333,32.5833,1180.0,1207.0
+450,Kaolack,Senegal,Africa,Kaolack City Center,14.15,-16.1333,4.0,31.0
+451,Keetmanshoop,Namibia,Africa,Keetmanshoop City Center,-26.6,18.1333,949.0,976.0
+452,Kénitra,Morocco,Africa,Kénitra City Center,34.261,-6.5802,13.0,40.0
+453,Kisumu,Kenya,Africa,Kisumu City Center,-0.1333,34.7833,1143.0,1170.0
+454,Kitwe,Zambia,Africa,Kitwe City Center,-12.8333,28.1833,1250.0,1277.0
+455,Kumasi,Ghana,Africa,Kumasi City Center,6.6885,-1.6244,271.0,298.0
+456,Lusaka,Zambia,Africa,Lusaka City Center,-15.3875,28.3228,1251.0,1278.0
+457,Marrakesh,Morocco,Africa,Marrakesh City Center,31.6342,-7.9999,457.0,484.0
+458,Mbale,Uganda,Africa,Mbale City Center,1.0667,34.2,1165.0,1192.0
+459,Meknes,Morocco,Africa,Meknes City Center,33.8935,-5.5473,532.0,559.0
+460,Mombasa,Kenya,Africa,Mombasa City Center,-4.0435,39.6682,23.0,50.0
+461,Mwanza,Tanzania,Africa,Mwanza City Center,-2.5167,32.9333,1277.0,1304.0
+462,Nairobi,Kenya,Africa,Nairobi City Center,-1.2864,36.8172,1667.0,1694.0
+463,Nakuru,Kenya,Africa,Nakuru City Center,-0.2667,36.0667,1949.0,1976.0
+464,Ndola,Zambia,Africa,Ndola City Center,-13.0,28.65,1263.0,1290.0
+465,Oran,Algeria,Africa,Oran City Center,35.75,-0.6333,-80.0,-53.0
+466,Oujda,Morocco,Africa,Oujda City Center,34.6814,-1.9086,550.0,577.0
+467,Port Louis,Mauritius,Africa,Port Louis City Center,-20.1667,57.5,16.0,43.0
+468,Rabat,Morocco,Africa,Rabat City Center,34.0209,-6.8416,23.0,50.0
+469,Safi,Morocco,Africa,Safi City Center,32.2994,-9.2372,50.0,77.0
+470,Saint-Louis,Senegal,Africa,Saint-Louis City Center,16.0167,-16.5,3.0,30.0
+471,Zanzibar City,Tanzania,Africa,Zanzibar City City Center,-6.2,39.2,0.0,27.0
+472,Sétif,Algeria,Africa,Sétif City Center,36.1833,5.4,1046.0,1073.0
+473,Sidi Bel Abbès,Algeria,Africa,Sidi Bel Abbès City Center,35.25,-0.65,448.0,475.0
+474,Tamale,Ghana,Africa,Tamale City Center,9.4333,-0.8167,141.0,168.0
+475,Tangier,Morocco,Africa,Tangier City Center,35.7673,-5.7998,21.0,48.0
+476,Tetouan,Morocco,Africa,Tetouan City Center,35.5889,-5.3626,128.0,155.0
+477,Thies,Senegal,Africa,Thies City Center,14.8167,-16.8667,45.0,72.0
+478,Tlemcen,Algeria,Africa,Tlemcen City Center,34.8833,-1.35,753.0,780.0
+479,Windhoek,Namibia,Africa,Windhoek City Center,-22.5609,17.0658,1657.0,1684.0
+480,Ziguinchor,Senegal,Africa,Ziguinchor City Center,12.5833,-16.3333,5.0,32.0
+481,Levin,New Zealand,Oceania,Levin City Center,-40.6223,175.2867,36.0,63.0
+482,Paraparaumu,New Zealand,Oceania,Paraparaumu City Center,-40.9167,175.0167,78.0,105.0
+483,Oamaru,New Zealand,Oceania,Oamaru City Center,-45.0976,170.9704,13.0,40.0
+484,Gore,New Zealand,Oceania,Gore City Center,-46.1028,168.9436,74.0,101.0
+485,Feilding,New Zealand,Oceania,Feilding City Center,-40.2258,175.5656,74.0,101.0
+486,Tokoroa,New Zealand,Oceania,Tokoroa City Center,-38.2248,175.8708,343.0,370.0
+487,Cambridge,New Zealand,Oceania,Cambridge City Center,-37.8918,175.4691,74.0,101.0
+488,Te Awamutu,New Zealand,Oceania,Te Awamutu City Center,-38.0095,175.3252,60.0,87.0
+489,Pukekohe,New Zealand,Oceania,Pukekohe City Center,-37.2012,174.9031,74.0,101.0
+490,Kerikeri,New Zealand,Oceania,Kerikeri City Center,-35.228,173.947,76.0,103.0
+491,Suva,Fiji,Oceania,Suva City Center,-18.1416,178.4419,59.0,86.0
+492,Port Moresby,Papua New Guinea,Oceania,Port Moresby City Center,-9.4438,147.1803,80.0,107.0
+493,Lae,Papua New Guinea,Oceania,Lae City Center,-6.7155,146.9999,16.0,43.0
+494,Apia,Samoa,Oceania,Apia City Center,-13.8333,-171.7667,10.0,37.0
+495,Nuku'alofa,Tonga,Oceania,Nuku'alofa City Center,-21.1394,-175.2049,9.0,36.0
+496,Port Vila,Vanuatu,Oceania,Port Vila City Center,-17.7333,168.3273,52.0,79.0
+497,Honiara,Solomon Islands,Oceania,Honiara City Center,-9.4333,159.95,50.0,77.0
+498,Nouméa,New Caledonia,Oceania,Nouméa City Center,-22.2758,166.458,2.0,29.0
+499,Majuro,Marshall Islands,Oceania,Majuro City Center,7.1164,171.1858,-7.0,20.0
+500,Koror,Palau,Oceania,Koror City Center,7.3419,134.4792,20.0,47.0
