@@ -17,8 +17,9 @@ through each stage in detail.
 scripts/
   ges_esp.py            .esp schema + orbit geometry (library used by the scripts below)
   build_city_list.py    "700 cities.pdf" -> CSV with lat/lon and terrain-based target altitude
-  snap_to_buildings.py  optional: move each target from the PDF's downtown point onto a real
-                        building nearby (OpenStreetMap footprints) + a review sheet
+  snap_to_buildings.py  move each target from the PDF's downtown point onto a real building
+                        nearby (OpenStreetMap footprints) + a review sheet; run before
+                        batch_generate.py, since it changes lat/lon
   batch_generate.py     CSV -> <projects>/<city>/{satellite,ground_truth}/<view>.esp
   render_all.py         drives Earth Studio in Chrome, renders every project, unpacks results
                         (--parallel N runs N Chrome windows at once)
@@ -55,19 +56,32 @@ SHARE=cities_${FIRST}_${LAST}
 # 1. PDF -> CSV for your rows, with terrain elevation from OpenTopoData
 python3 scripts/build_city_list.py "data/700 cities.pdf" --range $FIRST $LAST --out data/$SHARE.csv
 
-# 2. CSV -> two .esp files per city (+ metadata.csv, manifest.json, render_order.txt)
-python3 scripts/batch_generate.py data/$SHARE.csv --out projects
+# 2. Move each target off the PDF's downtown anchor onto a real building.
+#    Do this before step 3: it changes lat/lon, so anything already rendered
+#    would have to be rendered again. See *Putting the orbit target on a
+#    building* for the review sheet and the rows it cannot place.
+python3 scripts/snap_to_buildings.py data/$SHARE.csv --out data/${SHARE}_snapped.csv
 
-# 3. Render every project in Earth Studio (Chrome driven by Playwright).
+# 3. CSV -> two .esp files per city (+ metadata.csv, manifest.json, render_order.txt)
+python3 scripts/batch_generate.py data/${SHARE}_snapped.csv --out projects
+
+# 4. Render every project in Earth Studio (Chrome driven by Playwright).
 #    A Chrome window opens; sign in to Google the first time and leave it open.
 #    Resumable: already-complete <city>/<view> folders are skipped.
 python3 scripts/render_all.py projects --out $SHARE
 ```
 
-Step 1 prints a warning if any PDF row failed to parse; step 2 warns about
-rows with missing coordinates or altitude. Check both before rendering.
+Step 2 is the one stage you can skip — the orbit still works, it just circles
+whatever the PDF pointed at. Skip it by feeding `data/$SHARE.csv` to step 3
+instead. Everything downstream reads the file you name, so the only cost of
+changing your mind later is re-rendering.
 
-To run step 3 unattended and keep it alive after closing the terminal:
+Step 1 prints a warning if any PDF row failed to parse, step 2 lists the rows
+it could not place on a building, and step 3 warns about rows with missing
+coordinates or altitude. Check all three before rendering: a render is the
+expensive part (~600 MB and several minutes per city).
+
+To run step 4 unattended and keep it alive after closing the terminal:
 
 ```bash
 setsid nohup python3 scripts/render_all.py projects --out $SHARE >> $SHARE/render_all.log 2>&1 < /dev/null &
@@ -82,7 +96,7 @@ It is safe to stop at any point. A view is only counted as done once its
 so the view that was mid-render is simply rendered again next time;
 nothing that is already complete is touched.
 
-**Stop.** How depends on how you started step 3:
+**Stop.** How depends on how you started step 4:
 
 * Foreground (`python3 scripts/render_all.py ...` in a terminal): press `Ctrl+C`.
   The script and the Chrome it launched exit together.
@@ -180,9 +194,15 @@ tail -f $SHARE/render_all.*.log                 # one log per window
 world_time_utc`). `poi_alt_m` is the absolute altitude of the orbit target:
 terrain elevation + 27 m (see *Target altitude*). `data/cities_sample.csv`
 is a minimal example. To hand-pick a building instead of the PDF's downtown
-anchor, edit `lat`/`lon` in the CSV and rerun step 2.
+anchor, edit `lat`/`lon` in the CSV and rerun step 3.
 
 ### Putting the orbit target on a building
+
+This is step 2 of the quick start. It has to happen **before**
+`batch_generate.py`, because it rewrites `lat`/`lon` and re-fetches the
+elevation for the moved point: the `.esp` files, and so every frame rendered
+from them, are built around those coordinates. Snapping after a render means
+rendering that city twice.
 
 The PDF's "downtown anchor" is usually a road junction or a square, so the
 orbit often circles pavement (Venice: the Piazzale Roma bridgehead). Only
@@ -199,7 +219,10 @@ python3 scripts/snap_to_buildings.py data/$SHARE.csv --out data/${SHARE}_snapped
 python3 scripts/batch_generate.py data/${SHARE}_snapped.csv --out projects
 ```
 
-Terrain elevation is re-fetched for the moved points. Rows where no building
+Terrain elevation is re-fetched for the moved points, which also repairs
+anchors whose rounded coordinates fell offshore and came back with a negative
+`terrain_m` (17 of rows 251–500: Oran −80 m, Shkodër −70 m, Muscat −46 m).
+Rows where no building
 was found within 400 m are left unchanged and listed at the end; pick those
 by hand; for rows 351–700 those six are listed in `data/handpick_needed.md` and
 are skipped until picked. Overpass results are cached in `data/osm_buildings_cache.json`.
@@ -243,7 +266,8 @@ schema. Only the last stage talks to Earth Studio.
    │  build_city_list.py        (pdftotext + OpenTopoData)
    ▼
 data/<share>.csv                 n, city, country, continent, anchor, lat, lon, terrain_m, poi_alt_m
-   │  snap_to_buildings.py      (Overpass / OpenStreetMap + OpenTopoData)   ← optional
+   │  snap_to_buildings.py      (Overpass / OpenStreetMap + OpenTopoData)   ← skippable, but
+   │                              run it before batch_generate.py: it moves lat/lon
    ▼
 data/<share>_snapped.csv         same columns, lat/lon moved onto a building + snap_* review columns
    │  batch_generate.py         (ges_esp.build_esp)
@@ -256,17 +280,24 @@ projects/<city>/{satellite,ground_truth}/<view>.esp   + metadata.csv, manifest.j
 
 ### Stage 1 — PDF to CSV (`build_city_list.py`)
 
-1. **Text extraction.** Runs `pdftotext -layout` on the PDF and walks the
-   output line by line. Each page's header row gives the character offsets
-   of the City / Country / Continent / Downtown anchor / Latitude columns,
-   and cells are cut at those offsets.
-2. **Row reassembly.** A row starts with a line whose first token is the
-   city number. The PDF wraps long cells onto the lines above and below, and
-   prints negative latitudes as a lone `-` with the digits on the next line,
-   so the parser looks at neighbouring lines to collect the wrapped text and
-   the sign. A small table of truncated country names (`anada` → `Canada`)
-   repairs cells the layout cut in half. Rows it cannot parse are printed
-   with `skip` and dropped, so check stderr.
+1. **Text extraction.** Runs `pdftotext -bbox-layout` on the PDF, which
+   gives the box of every word rather than a page of reflowed text. Cells are
+   rebuilt from those positions: the column each word belongs to is the
+   rightmost heading it starts at or after, taking each heading's leftmost
+   position anywhere in the document, because the table is re-laid-out per
+   page and a row's cell can begin left of the heading printed above it.
+   (`-layout` cannot be used here: it reflows a long cell into its neighbour,
+   rendering row 11 of `500cities.pdf` as `11 Baton Rouge U.S.A.` with
+   nothing marking where the city ends and the country begins.)
+2. **Row reassembly.** A row is anchored by the city number in the first
+   column; every word within half a row's pitch belongs to it. Four things
+   the table does that the reassembly has to undo: cells wrap over several
+   lines; an accented letter is a separate word set a hair above its line
+   (`Ś` + `ródmieś` + `cie`), so words that touch are closed up without a
+   space; a negative latitude is a bare `-` with its digits on another line;
+   and a cell clipped by a page break continues at the top of the next page,
+   which is how a latitude can lose its minus sign. Rows it cannot parse are
+   printed with `skip` and dropped, so check stderr.
 3. **Range.** `--range FIRST LAST` keeps only your rows.
 4. **Elevation.** Sends the anchors to OpenTopoData (`mapzen` dataset, 30 m
    global DEM) in batches of 100 with a 1 s pause, and writes
@@ -275,7 +306,7 @@ projects/<city>/{satellite,ground_truth}/<view>.esp   + metadata.csv, manifest.j
    its Orbit quickstart puts the target (see *Target altitude*). No
    coverage leaves `poi_alt_m` blank for you to fill in by hand.
 
-### Stage 2 — move targets onto buildings (`snap_to_buildings.py`, optional)
+### Stage 2 — move targets onto buildings (`snap_to_buildings.py`)
 
 The PDF anchor is usually a road junction, so the ground_truth orbit would
 circle pavement. This stage moves it onto a building:
