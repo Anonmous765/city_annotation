@@ -23,12 +23,22 @@ scripts/
   batch_generate.py     CSV -> <projects>/<city>/{satellite,ground_truth}/<view>.esp
   render_all.py         drives Earth Studio in Chrome, renders every project, unpacks results
                         (--parallel N runs N Chrome windows at once)
-  inspect_renders.py    viewer: all 61 frames of both views per city side by side, Prev/Next
-                        buttons, click a tile to enlarge, flag bad cities
+  check_renders.py      after rendering: broken files, blank / open-water renders, stale renders
+  check_3d_coverage.py  after rendering: ground_truth renders with no 3D buildings (flat)
+  inspect_renders.py    viewer: all 61 frames of both views per city side by side, flag bad
+                        cities, open a city's project in Earth Studio (see *Inspecting renders*)
+  open_in_studio.py     opens .esp files in Earth Studio tabs (used by the viewer; works alone too)
 
-data/                   700 cities.pdf (the master list), the CSVs you generate from it,
-                        handpick_needed.md, the Overpass cache, and
-                        no_3d_buildings_<A>_<B>.csv: cities whose ground_truth is flat
+data/
+  pdfs/                 the master lists: "700 cities.pdf", 500cities.pdf
+  cities_<A>_<B>/       everything for one share, e.g. data/cities_251_500/:
+    cities.csv            build_city_list.py output (PDF anchors + terrain)
+    handpicked_anchors.csv  your own downtown points for rows the PDF gets wrong (optional)
+    snapped.csv           snap_to_buildings.py output: what batch_generate.py reads
+    snapped_review.csv    one line per city with the building picked and map links
+    no_3d_buildings.csv, downtown_anchors.csv, handpick_needed.md   (351-700 only)
+  cache/                osm_buildings_cache.json (Overpass answers, shared by all shares)
+  examples/             cities_sample.csv, a minimal hand-written city list
 projects/               generated .esp inputs + metadata.csv, manifest.json, render_order.txt
                         (not tracked: regenerated from the CSV by batch_generate.py)
 cities_<A>_<B>/         rendered output for one share (not for git: ~600 MB per city);
@@ -38,7 +48,9 @@ reference/              the existing dataset used to reverse-engineer parameters
                           Cities/Koblenz  – one hand-made city with real frames
                           city_satellite/ – 300 cities (frames are git-LFS stubs, .esp/.json real)
 archive/                earlier session transcripts, the first generator draft, Koblenz test renders
-.ges-chrome-profile*/   Chrome profiles render_all.py signs in with (local only, created on first run)
+.ges-chrome-profile*/   Chrome profiles (local only): the main one you sign in to on the first run,
+                        -1, -2, ... for --parallel windows, -inspect for the viewer's Earth Studio
+                        window; the extra ones are copied from the main one
 ```
 
 All commands below are run from the repo root. The scripts import each
@@ -50,36 +62,50 @@ on the import path.
 ```bash
 pip install -r requirements.txt   # playwright; also needs Google Chrome and poppler-utils (pdftotext)
 
-FIRST=10; LAST=50                 # the rows of "700 cities.pdf" that are yours
+FIRST=10; LAST=50                 # the rows of the PDF that are yours
 SHARE=cities_${FIRST}_${LAST}
+mkdir -p data/$SHARE
 
 # 1. PDF -> CSV for your rows, with terrain elevation from OpenTopoData
-python3 scripts/build_city_list.py "data/700 cities.pdf" --range $FIRST $LAST --out data/$SHARE.csv
+python3 scripts/build_city_list.py "data/pdfs/700 cities.pdf" --range $FIRST $LAST --out data/${SHARE:?}/cities.csv
 
 # 2. Move each target off the PDF's downtown anchor onto a real building.
 #    Do this before step 3: it changes lat/lon, so anything already rendered
-#    would have to be rendered again. See *Putting the orbit target on a
-#    building* for the review sheet and the rows it cannot place.
-python3 scripts/snap_to_buildings.py data/$SHARE.csv --out data/${SHARE}_snapped.csv
+#    would have to be rendered again. Read what it prints at the end: rows it
+#    could not place and rows that look offshore go into
+#    data/$SHARE/handpicked_anchors.csv, then rerun this step
+#    (see *Putting the orbit target on a building*).
+python3 scripts/snap_to_buildings.py data/${SHARE:?}/cities.csv --out data/$SHARE/snapped.csv
 
 # 3. CSV -> two .esp files per city (+ metadata.csv, manifest.json, render_order.txt)
-python3 scripts/batch_generate.py data/${SHARE}_snapped.csv --out projects
+python3 scripts/batch_generate.py data/${SHARE:?}/snapped.csv --out projects
 
 # 4. Render every project in Earth Studio (Chrome driven by Playwright).
 #    A Chrome window opens; sign in to Google the first time and leave it open.
 #    Resumable: already-complete <city>/<view> folders are skipped.
-python3 scripts/render_all.py projects --out $SHARE
+python3 scripts/render_all.py projects --out ${SHARE:?}
+
+# 5. Check the results (see *Checking the renders*)
+python3 scripts/check_renders.py ${SHARE:?} --csv data/$SHARE/snapped.csv
+python3 scripts/check_3d_coverage.py $SHARE
+python3 scripts/inspect_renders.py $SHARE --csv data/$SHARE/snapped.csv
 ```
 
+`${SHARE:?}` is plain `$SHARE` that stops the command with an error when the
+variable is empty (for example in a new terminal) instead of quietly writing
+to `data//cities.csv` or `data/.csv`.
+
 Step 2 is the one stage you can skip — the orbit still works, it just circles
-whatever the PDF pointed at. Skip it by feeding `data/$SHARE.csv` to step 3
-instead. Everything downstream reads the file you name, so the only cost of
-changing your mind later is re-rendering.
+whatever the PDF pointed at. Skip it by feeding `data/$SHARE/cities.csv` to
+step 3 instead. Everything downstream reads the file you name, so the only
+cost of changing your mind later is re-rendering.
 
 Step 1 prints a warning if any PDF row failed to parse, step 2 lists the rows
-it could not place on a building, and step 3 warns about rows with missing
-coordinates or altitude. Check all three before rendering: a render is the
-expensive part (~600 MB and several minutes per city).
+it could not place on a building and the targets that look offshore, and
+step 3 warns about rows with missing coordinates or altitude. Check all
+three before rendering: a render is the expensive part (~600 MB and several
+minutes per city), and a target in the sea renders "successfully" as 61
+frames of water.
 
 To run step 4 unattended and keep it alive after closing the terminal:
 
@@ -147,26 +173,39 @@ the main queue.
 
 ### Checking the renders
 
+`render_all.py` logs a view `ok` as soon as 61 frames and the tracking JSON
+arrive; it never looks at the pictures. Three checks, in this order:
+
 ```bash
-python3 scripts/inspect_renders.py $SHARE --csv data/${SHARE}_snapped.csv   # or data/$SHARE.csv
+python3 scripts/check_renders.py $SHARE --csv data/$SHARE/snapped.csv   # 1-2 min
+python3 scripts/check_3d_coverage.py $SHARE                              # ~10 min
+python3 scripts/inspect_renders.py $SHARE --csv data/$SHARE/snapped.csv --only <cities they flagged>
 ```
 
-Opens a window with every frame of the satellite view tiled on the left and
-every frame of the ground_truth view on the right, one city at a time, with
-the city's row number, target coordinates and snap status in the title.
-`Next` / `Prev` (or `→` / `←`) step through the cities in list order, the
-text box jumps to a folder name or row number, and `f` flags the current
-city as wrong; flags land in `<share>/inspect_flags.csv`. To revisit
-them, `]` / `[` jump to the next / previous flagged city, `--flagged`
-opens the viewer on the flagged cities only, and `--list-flagged` just
-prints them. Click any tile
-to open that frame at full 2048 px in its own window (click more tiles
-for more windows; `←` / `→` there step through the frames, the toolbar
-zooms, `Esc` closes). The first run
-builds one downscaled contact sheet per view into `<share>/.inspect/`
-(about a minute for 350 cities on all cores); later runs are instant, and a
-sheet is rebuilt automatically when its frames are newer. Cities with fewer
-than 61 frames in a view are marked INCOMPLETE in the title.
+1. **`check_renders.py`** catches what is broken or empty: missing or
+   extra frames, wrong image size, bad tracking JSON, leftover zips, a
+   camera path that no longer matches `projects/` (rendered from an older
+   project), frames that are one flat colour (Earth Studio's blue
+   placeholder globe when imagery never loads), views with almost no detail
+   (open water), views that rendered in under 30 s, and, with `--csv`,
+   targets whose `terrain_m` is ≤ 0 (offshore). Results go to
+   `<share>/render_check.csv`, and it prints the `inspect_renders.py --only`
+   command for everything it flagged. The detail and speed tests are hints:
+   in rows 251–500 they caught every sea render and nothing else except
+   harbour-front Horsens (`terrain_m` 0.0, rendered fine).
+2. **`check_3d_coverage.py`** finds ground_truth renders with no 3D
+   buildings (below). Its `flat` list also contains any sea renders, since
+   water is flat too.
+3. **`inspect_renders.py`** is how you actually decide. Go through what the
+   two checks flagged, flag the bad ones with `f`, and open a city's project
+   in Earth Studio with `s` / `g` when the frames alone don't tell you
+   enough. See *Inspecting renders* below for the full guide.
+
+To fix a city whose target is wrong (sea, fields, the wrong district), give
+it a downtown point in `data/$SHARE/handpicked_anchors.csv`, rerun
+`snap_to_buildings.py` and `batch_generate.py`, delete its
+`$SHARE/<city>/` folder so it is not skipped as done, and rerun
+`render_all.py --only <city>`.
 
 **Cities without 3D buildings.** Google has no photogrammetry mesh for many
 smaller towns (in rows 351–700: 101 of 350). Their ground_truth orbit is
@@ -174,7 +213,10 @@ geometrically correct but shows the satellite image draped over bare
 terrain, so it looks like a skewed satellite view, and nothing in the
 pipeline can fix that. `scripts/check_3d_coverage.py $SHARE` finds them from
 the frames alone; see *How the 3D-coverage check works* below. The confirmed
-list for rows 351–700 is `data/no_3d_buildings_351_700.csv`.
+list for rows 351–700 is `data/cities_351_700/no_3d_buildings.csv`. Rows
+251–500 (from `500cities.pdf`) score 102 flat, 29 borderline and 118 3D in
+`cities_251_500/coverage_check.csv` (after the sea anchors were re-picked);
+that list has not been reviewed by eye yet.
 
 ### Rendering in parallel
 
@@ -208,9 +250,10 @@ tail -f $SHARE/render_all.*.log                 # one log per window
 `batch_generate.py` only needs a CSV with `city, lat, lon, poi_alt_m`
 (optional: `country, sat_radius_m, sat_height_m, gnd_radius_m, gnd_height_m,
 world_time_utc`). `poi_alt_m` is the absolute altitude of the orbit target:
-terrain elevation + 27 m (see *Target altitude*). `data/cities_sample.csv`
-is a minimal example. To hand-pick a building instead of the PDF's downtown
-anchor, edit `lat`/`lon` in the CSV and rerun step 3.
+terrain elevation + 27 m (see *Target altitude*). `data/examples/cities_sample.csv`
+is a minimal example. To replace the PDF's downtown anchor for a few rows,
+use `handpicked_anchors.csv` (next section) rather than editing
+`snapped.csv`: the snapped file is rewritten every time step 2 runs.
 
 ### Putting the orbit target on a building
 
@@ -229,24 +272,182 @@ station, castle, museum, ...) and otherwise the largest footprint, discounted
 by distance so the target stays downtown:
 
 ```bash
-python3 scripts/snap_to_buildings.py data/$SHARE.csv --out data/${SHARE}_snapped.csv
-# review data/${SHARE}_snapped_review.csv (building, distance moved, map links),
-# fix any row by hand, then:
-python3 scripts/batch_generate.py data/${SHARE}_snapped.csv --out projects
+python3 scripts/snap_to_buildings.py data/$SHARE/cities.csv --out data/$SHARE/snapped.csv
+# review data/$SHARE/snapped_review.csv (building, distance moved, map links),
+# put any row it got wrong into data/$SHARE/handpicked_anchors.csv, rerun, then:
+python3 scripts/batch_generate.py data/$SHARE/snapped.csv --out projects
 ```
 
-Terrain elevation is re-fetched for the moved points, which also repairs
-anchors whose rounded coordinates fell offshore and came back with a negative
-`terrain_m` (17 of rows 251–500: Oran −80 m, Shkodër −70 m, Muscat −46 m).
-Rows where no building
-was found within 400 m are left unchanged and listed at the end; pick those
-by hand; for rows 351–700 those six are listed in `data/handpick_needed.md` and
-are skipped until picked. Overpass results are cached in `data/osm_buildings_cache.json`.
-The public Overpass servers rate-limit aggressively; the script retries and
-rotates mirrors, but a full 350-city run can take the better part of an
-hour. Note the reference dataset itself mostly used Earth Studio's default
+Terrain elevation is re-fetched for every point that moved. Rows where no
+building was found within 400 m are marked `no_building` and left exactly
+where the PDF put them, **including their elevation**, and the script lists
+them at the end. Many of those are not downtown at all. The PDF rounds
+coordinates to about 2 km (1 arc-minute), and some rows are simply wrong.
+In rows 251–500, 18 anchors were in the sea, and it showed:
+`terrain_m` came back negative (OpenTopoData returns sea depth: Oran −80 m,
+Shkodër −70 m, Muscat −46 m, whose renders were then 61 frames of blank
+blue), and the render was 61 frames of open water. The script now warns
+about every target with `terrain_m` ≤ 0. Other `no_building` rows landed
+in fields or forest (Ruse, Olomouc, Gaborone). Treat every `no_building`
+row and every offshore warning as a row to hand-pick.
+
+**Hand-picking.** Put your own downtown point in
+`data/$SHARE/handpicked_anchors.csv` and rerun step 2:
+
+```
+n,city,lat,lon,anchor,snap,note
+465,Oran,35.6973,-0.6336,Place du 1er Novembre / Town Hall,yes,PDF point in the Mediterranean
+388,Kuwait City,29.3333,47.9833,Kuwait City City Center,no,keep this exact point
+```
+
+* `n` and `city` must match the row in `cities.csv` (the script refuses to
+  run otherwise, so a typo cannot move the wrong city).
+* `snap=yes` treats your point as the new anchor and snaps to the best
+  building within 400 m, as for any other row. A point near a cathedral,
+  town hall or old-town square is enough; you don't need to hit the roof.
+  `snap=no` uses your point exactly (`snap_status` becomes `handpicked`).
+* Elevation is always re-fetched for hand-picked rows, and the output gets
+  `anchor_source=handpicked`, so they are easy to tell apart later.
+* Overpass answers for a hand-picked point are cached under
+  `"<city> @ <lat>,<lon>"`, so moving the point fetches fresh footprints.
+* Then regenerate, delete the old render, and render again:
+  `rm -r $SHARE/<city>` and `render_all.py ... --only <city> ...`.
+
+`data/cities_251_500/handpicked_anchors.csv` is a worked example: 18 sea
+anchors moved to their old towns, plus Kuwait City pinned to its PDF
+downtown point. That pin exists because the auto-snapped building was a
+small school whose ground_truth stalls at frame 32/33, and the stall
+persists at the downtown point too.
+
+For rows 351–700, the six `no_building` rows are listed in
+`data/cities_351_700/handpick_needed.md`. Overpass results are cached in
+`data/cache/osm_buildings_cache.json`. The public Overpass servers
+rate-limit aggressively; the script retries and rotates mirrors, but a full
+350-city run can take the better part of an hour, and even a handful of new
+points can take 10–20 minutes on a bad day. Note the reference dataset itself mostly used Earth Studio's default
 city coordinate, so snapping is an improvement over it, not a requirement
 for matching it.
+
+## Inspecting renders (`inspect_renders.py`)
+
+The viewer is where you decide whether a city is right. It shows one city at
+a time: all 61 satellite frames tiled on the left, all 61 ground_truth frames
+on the right, and above them the row number, city, target coordinates and
+altitude, snap status and the building the target sits on.
+
+```bash
+python3 scripts/inspect_renders.py $SHARE --csv data/$SHARE/snapped.csv
+```
+
+Always pass `--csv` if you have it. Without it the cities are alphabetical
+by folder and the title is just the folder name; with it they come in list
+order and the title tells you *why* the target is where it is (`snapped`
+onto a named landmark, `kept`, `no_building`, hand-picked).
+
+The first run builds one downscaled contact sheet per view into
+`<share>/.inspect/` (a minute or two for 350 cities, all cores). Later runs
+open instantly, and a sheet is rebuilt by itself when its frames are newer,
+e.g. after a re-render.
+
+### What to look for
+
+* **Both views** should show the same town from two heights. Water, fields
+  or forest in both means the target is in the wrong place: hand-pick it
+  (see *Putting the orbit target on a building*).
+* **Blank blue or grey frames**: imagery never loaded (target offshore, or
+  an Earth Studio hiccup). Re-render; if it repeats, hand-pick.
+* **ground_truth looks like a tilted satellite photo**, with no facades and
+  roofs that don't rise: Google has no 3D mesh there. Nothing to fix; flag
+  it so it can be listed (see *Cities without 3D buildings*).
+* **`INCOMPLETE` in the title**: a view has fewer than 61 frames or none
+  (e.g. a stalled render); the missing side says `no render`.
+* **Frame 00 vs 30**: the orbit starts north of the target looking south
+  and is on the south side looking north at frame 30, so the same building
+  should appear from opposite sides.
+
+### Controls
+
+| Key / mouse | Action |
+|---|---|
+| `→` `n` `space` / `←` `p` `backspace` | next / previous city (also the **Next ▶** / **◀ Prev** buttons) |
+| `Home` / `End` | first / last city |
+| `f` | flag or unflag the current city (**flag** button); saved at once to `<share>/inspect_flags.csv` |
+| `]` / `[` | jump to the next / previous flagged city (wraps around) |
+| **go to** box | type a folder name, row number or city name, press Enter |
+| `s` / `g` | open this city's **satellite** / **ground_truth** project in Earth Studio (also the two **Studio** buttons) |
+| click a tile | that frame at full 2048 px in its own window; click more tiles for more windows. There, `←` `→` step frames, the toolbar zooms, `Esc` / `q` closes |
+| `q` | quit |
+
+The toolbar's zoom and pan work on the contact sheets too; while one of them
+is active, clicking a tile zooms instead of opening the frame.
+
+### Options
+
+| Option | What it does |
+|---|---|
+| `--csv FILE` | list order, row numbers and target details from the snapped CSV |
+| `--only CITY ...` | just these folders, e.g. what `check_renders.py` or `check_3d_coverage.py` flagged |
+| `--start CITY` | open at this folder (or row number with `--csv`); handy to resume a long pass |
+| `--flagged` | only cities flagged in `inspect_flags.csv` |
+| `--list-flagged` | print the flagged cities and exit |
+| `--projects DIR` | where the generated projects live (default `projects`), for Earth Studio |
+| `--thumb PX`, `--cols N` | thumbnail size (192) and frames per row (8) |
+| `--rebuild` | rebuild every contact sheet |
+| `--build-only` | build the sheets and exit, e.g. ahead of time on a big share |
+
+Feeding it the checkers' output:
+
+```bash
+# everything check_renders.py complained about
+python3 scripts/inspect_renders.py $SHARE --csv data/$SHARE/snapped.csv \
+    --only $(tail -n +2 $SHARE/render_check.csv | cut -d, -f1 | sort -u)
+# the borderline 3D-coverage verdicts
+python3 scripts/inspect_renders.py $SHARE --csv data/$SHARE/snapped.csv \
+    --only $(awk -F, '$3 == "borderline" {print $1}' $SHARE/coverage_check.csv)
+```
+
+### Opening a city in Earth Studio
+
+Press `s` or `g` (or click **Studio: satellite** / **Studio: ground
+truth**) to load that view's project into Google Earth Studio, exactly as
+if you had dragged the `.esp` onto the page. You can then scrub the
+timeline (timeline frame *n* is image `_nn.jpeg`), look around freely, or
+check what the orbit target sits on, which the frames alone often don't
+make clear.
+
+* **Which project:** the `.esp` saved with the render
+  (`<share>/<city>/<view>/<view>.esp`), i.e. the one that produced the frames
+  you are looking at. If the view has not been rendered, the generated one
+  in `projects/` (or `--projects`) is used. The status line under the
+  frames says which.
+* **The browser:** the first press starts a Chrome window (~10 s); every
+  later press opens another tab in the same window. It uses its own
+  profile, `.ges-chrome-profile-inspect/`, copied from
+  `.ges-chrome-profile/` the first time, so you are already signed in if
+  `render_all.py` has ever run, and it can stay open while a render is
+  running. If it was never signed in, sign in in that window once.
+* **Nothing is saved or rendered.** Edits you make stay in that tab. To
+  keep a change, carry it back to the CSV (target in
+  `handpicked_anchors.csv`, orbit in the `sat_*` / `gnd_*` columns) and
+  regenerate.
+* Closing the viewer leaves the Chrome window open; close it yourself when
+  done. Closing Chrome first is fine too: the next press opens a new one.
+
+The same helper works without the viewer:
+
+```bash
+python3 scripts/open_in_studio.py $SHARE/oran/ground_truth/ground_truth.esp
+python3 scripts/open_in_studio.py projects/oran/*/*.esp          # both views, two tabs
+```
+
+### Flags
+
+`inspect_flags.csv` has one row per flagged city
+(`city_folder, flagged_at, note`). `check_3d_coverage.py --flag` adds its
+`flat` verdicts there with the note `no 3D buildings`; flags you set by hand
+have an empty note, which you can fill in with any editor. No other script
+reads the file. It is a to-do list for you, so re-render or hand-pick the
+cities, then unflag them.
 
 ## Output layout
 
@@ -263,8 +464,16 @@ projects/metadata.csv                                    # city_folder,country,l
 <share>/<city_folder>/ground_truth/…                     # same four things
 <share>/metadata.csv                                     # copy of projects/metadata.csv
 <share>/render_log.csv                                   # one row per render attempt
+<share>/render_all.log, render_all.<k>.log               # progress logs (per window with --parallel)
 <share>/debug/                                           # screenshots taken when something goes wrong
+<share>/render_check.csv                                 # check_renders.py: problems per view
+<share>/coverage_check.csv                               # check_3d_coverage.py: flat / borderline / 3d
+<share>/inspect_flags.csv                                # cities you flagged in the viewer
+<share>/.inspect/                                        # the viewer's contact-sheet cache (safe to delete)
 ```
+
+Only `<share>/<city_folder>/` and `metadata.csv` belong in the dataset; the
+rest is bookkeeping for this pipeline.
 
 `city_folder` is the lower-case ASCII slug of the city name (`saarbrucken`);
 cities that share a name get the country appended (`cordoba_argentina`),
@@ -278,20 +487,23 @@ library the middle two import; it holds the orbit geometry and the `.esp`
 schema. Only the last stage talks to Earth Studio.
 
 ```
-"700 cities.pdf"
+data/pdfs/"700 cities.pdf"
    │  build_city_list.py        (pdftotext + OpenTopoData)
    ▼
-data/<share>.csv                 n, city, country, continent, anchor, lat, lon, terrain_m, poi_alt_m
+data/<share>/cities.csv          n, city, country, continent, anchor, lat, lon, terrain_m, poi_alt_m
    │  snap_to_buildings.py      (Overpass / OpenStreetMap + OpenTopoData)   ← skippable, but
-   │                              run it before batch_generate.py: it moves lat/lon
+   │    + handpicked_anchors.csv   run it before batch_generate.py: it moves lat/lon
    ▼
-data/<share>_snapped.csv         same columns, lat/lon moved onto a building + snap_* review columns
+data/<share>/snapped.csv         same columns, lat/lon moved onto a building + snap_* review columns
    │  batch_generate.py         (ges_esp.build_esp)
    ▼
 projects/<city>/{satellite,ground_truth}/<view>.esp   + metadata.csv, manifest.json, render_order.txt
    │  render_all.py             (Playwright → Chrome → Earth Studio)
    ▼
 <share>/<city>/<view>/footage/<view>_00..60.jpeg + <view>.json + ImagerySources.txt + <view>.esp
+   │  check_renders.py, check_3d_coverage.py, inspect_renders.py
+   ▼
+<share>/render_check.csv, coverage_check.csv, inspect_flags.csv
 ```
 
 ### Stage 1 — PDF to CSV (`build_city_list.py`)
@@ -327,9 +539,12 @@ projects/<city>/{satellite,ground_truth}/<view>.esp   + metadata.csv, manifest.j
 The PDF anchor is usually a road junction, so the ground_truth orbit would
 circle pavement. This stage moves it onto a building:
 
+0. **Hand-picked anchors** from `handpicked_anchors.csv` next to the input
+   (or `--anchors`) replace those rows' PDF coordinates before anything
+   else; rows with `snap=no` skip steps 1–5.
 1. **Fetch footprints.** One Overpass query per batch of cities asks for
    every `way["building"]` within `--radius` (400 m) of each anchor. Results
-   are cached in `data/osm_buildings_cache.json`, so a rerun is instant; the
+   are cached in `data/cache/osm_buildings_cache.json`, so a rerun is instant; the
    script retries with backoff and rotates between three public mirrors
    because they rate-limit aggressively.
 2. **Filter.** Footprints smaller than `--min-area` (300 m²) and structures
@@ -346,19 +561,23 @@ circle pavement. This stage moves it onto a building:
    interior point if the centroid falls outside an L-shaped building.
 5. **Classify.** If the anchor already lies inside a usable footprint the
    row is marked `kept` and left as is. If nothing scored, it is marked
-   `no_building` and left unchanged (those are the hand-pick cases in
-   `data/handpick_needed.md`). Otherwise it is `snapped`.
-6. **Re-fetch elevation** for every moved point so `poi_alt_m` is still
-   terrain + 27 m at the new location.
+   `no_building` and left unchanged (hand-pick those). Otherwise it is
+   `snapped`; hand-picked `snap=no` rows are `handpicked`.
+6. **Re-fetch elevation** for every moved or hand-picked point so
+   `poi_alt_m` is still terrain + 27 m at the new location, then warn about
+   every row whose `terrain_m` is ≤ 0 (offshore).
 7. **Write** the snapped CSV (same columns, `anchor` replaced by the building
    description) with review columns `orig_lat, orig_lon, snap_building,
-   snap_dist_m, snap_area_m2, snap_landmark, snap_osm, snap_status`, plus a
-   separate `_review.csv` with map links for eyeballing.
+   snap_dist_m, snap_area_m2, snap_landmark, snap_osm, snap_status,
+   anchor_source`, plus a separate `_review.csv` with map links for
+   eyeballing. `orig_lat/orig_lon` is the anchor the search started from:
+   the PDF point, or your hand-picked one.
 
 Nothing downstream depends on the `snap_*` columns; `batch_generate.py`
-reads the CSV exactly as it would the stage 1 file. That is also why the
-six `no_building` rows still render: their coordinates are simply the PDF
-anchor, and the generator does not look at the status.
+reads the CSV exactly as it would the stage 1 file. That is also why
+`no_building` rows still render, even when they are in the sea: their
+coordinates are simply the PDF anchor, and the generator does not look at
+the status.
 
 ### Stage 3 — CSV to Earth Studio projects (`batch_generate.py` + `ges_esp.py`)
 
@@ -617,6 +836,14 @@ look-at to the POI.
 * OpenTopoData is rate-limited (1 req/s, 100 points/req); a few hundred
   cities take a few seconds. Cities with no coverage get a blank `poi_alt_m`
   to fill by hand.
+* The PDFs' coordinates are rounded to 1 arc-minute (~2 km) and a few are
+  plainly wrong (Shkodër's longitude is 40 km out, Majuro's 20 km). Coastal
+  cities often land in the sea. Nothing stops such a row from rendering, so
+  watch for `terrain_m` ≤ 0 and `no_building` after step 2 and hand-pick
+  them; see *Putting the orbit target on a building*.
+* `render_all.py` treats a view as done when its files are complete, not
+  when the picture is right: open water or a blank globe is logged `ok`.
+  Run `check_renders.py` after every share.
 * Earth Studio's internals (drop import, visibility check, zip hand-off) were
   read from its minified bundle and may change with a new release; if a step
   stops working, those hooks in `render_all.py` are the first place to look.

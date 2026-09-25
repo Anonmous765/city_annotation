@@ -3,8 +3,13 @@
 `snap_to_buildings.py` found no OpenStreetMap building footprint within 400 m of the
 PDF anchor for these cities, so their target is still the PDF's downtown point.
 Skip them when regenerating/re-rendering from the snapped CSV until a building
-has been chosen by hand (edit `lat`/`lon`/`poi_alt_m` in `data/my_cities_351_700_snapped.csv`,
-set `snap_status` to `snapped`, then rerun `batch_generate.py`).
+has been chosen by hand.
+
+To pick one: add a row to `data/cities_351_700/handpicked_anchors.csv`
+(`n,city,lat,lon,anchor,snap,note`; see *Hand-picking* in the README), rerun
+`snap_to_buildings.py data/cities_351_700/cities.csv --out data/cities_351_700/snapped.csv`,
+then `batch_generate.py`. Don't edit `snapped.csv` by hand: the next snapping
+run overwrites it.
 
 | # | City | Country | Current anchor (lat, lon) |
 |---|---|---|---|

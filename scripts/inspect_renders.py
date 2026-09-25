@@ -5,7 +5,7 @@ satellite view and all 61 of the ground_truth view, tiled into two grids side
 by side, with Prev / Next buttons to step through the cities.
 
     python3 scripts/inspect_renders.py cities_351_700
-    python3 scripts/inspect_renders.py cities_351_700 --csv data/my_cities_351_700_snapped.csv
+    python3 scripts/inspect_renders.py cities_351_700 --csv data/cities_351_700/snapped.csv
     python3 scripts/inspect_renders.py cities_351_700 --start torun
     python3 scripts/inspect_renders.py cities_351_700 --only leiden villach   # just these
     python3 scripts/inspect_renders.py cities_351_700 --flagged          # revisit only flagged cities
@@ -23,6 +23,9 @@ Controls
     f                                    flag the current city as wrong (toggles);
                                          flags are written to <share>/inspect_flags.csv
     ]  /  [                              jump to the next / previous flagged city
+    s  /  g                              open this city's satellite / ground_truth project
+                                         in Google Earth Studio (a tab in one Chrome window,
+                                         via open_in_studio.py); also the Studio buttons
     type a city folder name in the box   jump to it
     click a tile                         open that frame full size (2048 px) in its own
                                          window; click more tiles for more windows.
@@ -151,6 +154,8 @@ def title_for(i, n, folder, info, share, flagged):
             line2 += f"   snap: {status}"
             if info.get("snap_dist_m"):
                 line2 += f" ({info['snap_dist_m']} m)"
+            if info.get("anchor_source") == "handpicked":
+                line2 += "   hand-picked anchor"
         bits.append(line2)
         anchor = (info.get("anchor") or "").strip()
         if anchor:
@@ -175,12 +180,60 @@ def load_flags(flags_path: Path) -> dict:
 
 # --- viewer -------------------------------------------------------------------
 
-def run_viewer(share: Path, cities, start: int, flags_path: Path, cols: int = 8):
+VIEWER_KEYS = {"f", "s", "g", "q", "n", "p", " ", "left", "right", "backspace", "home", "end", "[", "]"}
+
+
+def esp_for(share: Path, projects: Path, folder: str, view: str):
+    """The .esp that produced the frames (<share>/<city>/<view>/), else the
+    generated project (projects/<city>/<view>/) for a view not rendered yet."""
+    for base, label in ((share, "rendered"), (projects, "project")):
+        p = base / folder / view / f"{view}.esp"
+        if p.is_file():
+            return p, label
+    return None, None
+
+
+class Studio:
+    """One open_in_studio.py --stdin process shared by every request, so all
+    projects open as tabs of the same Chrome window."""
+
+    def __init__(self):
+        self.proc = None
+
+    def open(self, esp: Path):
+        import subprocess
+        for _ in range(2):
+            if self.proc is None or self.proc.poll() is not None:
+                self.proc = subprocess.Popen(
+                    [sys.executable, str(Path(__file__).with_name("open_in_studio.py")), "--stdin"],
+                    stdin=subprocess.PIPE, text=True)
+            try:
+                self.proc.stdin.write(f"{esp.resolve()}\n")
+                self.proc.stdin.flush()
+                return
+            except (BrokenPipeError, OSError):
+                self.proc = None
+
+    def close(self):
+        # EOF lets the helper keep Chrome open until you close it yourself.
+        if self.proc is not None and self.proc.poll() is None:
+            try:
+                self.proc.stdin.close()
+            except OSError:
+                pass
+
+
+def run_viewer(share: Path, cities, start: int, flags_path: Path, cols: int = 8, projects: Path = Path("projects")):
     import matplotlib
     import matplotlib.pyplot as plt
     from matplotlib.widgets import Button, TextBox
 
+    # matplotlib's own shortcuts would fire too (f = fullscreen, s = save, g = grid, p = pan, ...)
+    for k in [k for k in matplotlib.rcParams if k.startswith("keymap.")]:
+        matplotlib.rcParams[k] = [x for x in matplotlib.rcParams[k] if x not in VIEWER_KEYS]
+
     flags = load_flags(flags_path)
+    studio = Studio()
 
     def save_flags():
         with open(flags_path, "w", newline="") as f:
@@ -198,10 +251,15 @@ def run_viewer(share: Path, cities, start: int, flags_path: Path, cols: int = 8)
     ax_next = fig.add_axes([0.60, 0.02, 0.10, 0.05])
     ax_flag = fig.add_axes([0.45, 0.02, 0.10, 0.05])
     ax_jump = fig.add_axes([0.80, 0.02, 0.15, 0.05])
+    ax_sat = fig.add_axes([0.01, 0.02, 0.11, 0.05])
+    ax_gt = fig.add_axes([0.13, 0.02, 0.11, 0.05])
     b_prev = Button(ax_prev, "◀ Prev")
     b_next = Button(ax_next, "Next ▶")
     b_flag = Button(ax_flag, "flag (f)")
+    b_sat = Button(ax_sat, "Studio: satellite (s)")
+    b_gt = Button(ax_gt, "Studio: ground truth (g)")
     t_jump = TextBox(ax_jump, "go to ", initial="")
+    status = fig.text(0.01, 0.075, "", fontsize=9, color="dimgray")
     state = {"i": start}
     cache = {}
 
@@ -238,7 +296,19 @@ def run_viewer(share: Path, cities, start: int, flags_path: Path, cols: int = 8)
 
     def step(d):
         state["i"] = max(0, min(len(cities) - 1, state["i"] + d))
+        status.set_text("")
         show()
+
+    def open_studio(view):
+        folder = cities[state["i"]][0]
+        esp, label = esp_for(share, projects, folder, view)
+        if esp is None:
+            status.set_text(f"no {view}.esp for {folder} in {share} or {projects}")
+        else:
+            studio.open(esp)
+            status.set_text(f"opening {esp} ({label}) in Earth Studio; a Chrome window opens, "
+                            "the first one takes ~10 s")
+        fig.canvas.draw_idle()
 
     def toggle_flag():
         folder = cities[state["i"]][0]
@@ -330,6 +400,10 @@ def run_viewer(share: Path, cities, start: int, flags_path: Path, cols: int = 8)
             state["i"] = len(cities) - 1; show()
         elif ev.key == "f":
             toggle_flag()
+        elif ev.key == "s":
+            open_studio("satellite")
+        elif ev.key == "g":
+            open_studio("ground_truth")
         elif ev.key in ("]", "["):
             step_flagged(1 if ev.key == "]" else -1)
         elif ev.key == "q":
@@ -348,11 +422,14 @@ def run_viewer(share: Path, cities, start: int, flags_path: Path, cols: int = 8)
     b_prev.on_clicked(lambda _: step(-1))
     b_next.on_clicked(lambda _: step(1))
     b_flag.on_clicked(lambda _: toggle_flag())
+    b_sat.on_clicked(lambda _: open_studio("satellite"))
+    b_gt.on_clicked(lambda _: open_studio("ground_truth"))
     t_jump.on_submit(jump)
     fig.canvas.mpl_connect("key_press_event", on_key)
     fig.canvas.mpl_connect("button_press_event", on_click)
     show()
     plt.show()
+    studio.close()
     if flags:
         print(f"{len(flags)} flagged: {', '.join(flags)}  -> {flags_path}")
 
@@ -372,6 +449,9 @@ def main():
     ap.add_argument("--cols", type=int, default=8, help="frames per row in each grid (default 8)")
     ap.add_argument("--rebuild", action="store_true", help="regenerate all contact sheets")
     ap.add_argument("--build-only", action="store_true", help="build the sheets and exit (no window)")
+    ap.add_argument("--projects", type=Path, default=Path("projects"),
+                    help="generated projects folder; its .esp is opened in Earth Studio when a view has "
+                         "not been rendered (default: projects)")
     args = ap.parse_args()
 
     if not args.share.is_dir():
@@ -406,7 +486,7 @@ def main():
             if folder == s or s == str(info.get("n", "")):
                 start = j
                 break
-    run_viewer(args.share, cities, start, flags_path, args.cols)
+    run_viewer(args.share, cities, start, flags_path, args.cols, args.projects)
 
 
 if __name__ == "__main__":

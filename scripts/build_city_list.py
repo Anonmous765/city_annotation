@@ -3,8 +3,8 @@
 build_city_list.py — Parse a city-list PDF into the CSV that batch_generate.py
 consumes, adding terrain elevation from OpenTopoData (Mapzen, global 30 m).
 
-    python3 scripts/build_city_list.py "data/700 cities.pdf" --range 351 700 --out data/my_cities_351_700.csv
-    python3 scripts/build_city_list.py data/500cities.pdf --range 251 500 --out data/my_cities_251_500.csv
+    python3 scripts/build_city_list.py "data/pdfs/700 cities.pdf" --range 351 700 --out data/cities_351_700/cities.csv
+    python3 scripts/build_city_list.py data/pdfs/500cities.pdf --range 251 500 --out data/cities_251_500/cities.csv
 
 The two lists are laid out differently — column positions move from page to
 page and the heading block wraps in different places — so the parser reads the

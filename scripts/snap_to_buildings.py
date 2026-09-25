@@ -5,7 +5,7 @@ snap_to_buildings.py — Move each city's orbit target from the generic
 footprints (Overpass API), so the ground_truth orbit circles a building
 instead of a road junction or a square.
 
-    python3 scripts/snap_to_buildings.py data/my_cities_351_700.csv --out data/my_cities_351_700_snapped.csv
+    python3 scripts/snap_to_buildings.py data/cities_351_700/cities.csv --out data/cities_351_700/snapped.csv
 
 For every city it fetches all building footprints within --radius metres of
 the anchor and picks one:
@@ -31,6 +31,17 @@ snap_status is "snapped", "kept" (anchor already inside a building), or
 "no_building" (nothing usable within --radius; row left unchanged — pick
 one by hand or widen the radius). A --review CSV with just the review
 columns and map links is written next to it for eyeballing.
+
+Hand-picked anchors: if --anchors (default: handpicked_anchors.csv next to
+the input CSV) exists, each of its rows (columns n, city, lat, lon, anchor,
+snap, note; matched on n) replaces that city's PDF anchor before snapping.
+snap=yes searches for a building around the new point as usual; snap=no uses
+the point exactly as given (snap_status "handpicked"). Elevation is always
+re-fetched for these rows, and anchor_source says "handpicked" or "pdf".
+
+Rows whose final terrain_m is <= 0 are listed as a warning: that is
+OpenTopoData returning sea depth, i.e. the target is offshore and the render
+will show open water.
 
 Overpass results are cached in --cache (JSON) so a rerun is instant; delete
 the cache to refetch. The public Overpass servers are rate-limited, so the
@@ -157,6 +168,21 @@ def overpass(query, url, tries=8):
     return None
 
 
+def cache_key(r):
+    # Hand-picked rows are searched around a different point than the PDF
+    # anchor that the plain city-name entry was fetched for.
+    if r.get("anchor_source") == "handpicked":
+        return f"{r['city']} @ {float(r['lat']):.5f},{float(r['lon']):.5f}"
+    return r["city"]
+
+
+def load_handpicked(path):
+    if not path.exists():
+        return {}
+    with open(path, newline="", encoding="utf-8-sig") as f:
+        return {r["n"].strip(): r for r in csv.DictReader(f) if not r["n"].strip().startswith("#")}
+
+
 def fetch_buildings(rows, radius, batch, cache_path):
     """One worker thread per Overpass mirror, each pulling batches of cities
     off a shared queue; a batch a mirror cannot get is put back for another.
@@ -164,7 +190,7 @@ def fetch_buildings(rows, radius, batch, cache_path):
     import queue
     import threading
     cache = json.load(open(cache_path)) if cache_path.exists() else {}
-    todo = [r for r in rows if r["city"] not in cache]
+    todo = [r for r in rows if cache_key(r) not in cache]
     q = queue.Queue()
     for i in range(0, len(todo), batch):
         q.put((0, todo[i:i + batch]))
@@ -201,7 +227,7 @@ def fetch_buildings(rows, radius, batch, cache_path):
                                for p in g[:: max(1, len(g) // 8)] + [g[0]]):
                             mine.append({"id": e["id"], "tags": e.get("tags", {}),
                                          "geom": [(p["lat"], p["lon"]) for p in g]})
-                    cache[r["city"]] = mine
+                    cache[cache_key(r)] = mine
                 done[0] += len(chunk)
                 print(f"  overpass: {done[0]}/{len(todo)} cities fetched ({url.split('/')[2]})", flush=True)
                 json.dump(cache, open(cache_path, "w"))
@@ -214,7 +240,7 @@ def fetch_buildings(rows, radius, batch, cache_path):
         time.sleep(3)
     for t in threads:
         t.join()
-    missing = [r["city"] for r in rows if r["city"] not in cache]
+    missing = [r["city"] for r in rows if cache_key(r) not in cache]
     if missing:
         print(f"WARNING: no Overpass answer for {len(missing)} cities (treated as no_building; rerun to retry): "
               + ", ".join(missing), file=sys.stderr)
@@ -260,7 +286,7 @@ def main():
     ap.add_argument("csv", help="city list from build_city_list.py")
     ap.add_argument("--out", required=True, help="snapped CSV for batch_generate.py")
     ap.add_argument("--review", help="review sheet CSV (default: <out> with _review suffix)")
-    ap.add_argument("--cache", default="data/osm_buildings_cache.json")
+    ap.add_argument("--cache", default="data/cache/osm_buildings_cache.json")
     ap.add_argument("--radius", type=float, default=400, help="search radius around the anchor, m")
     ap.add_argument("--min-area", type=float, default=300, help="ignore footprints smaller than this, m²")
     ap.add_argument("--area-cap", type=float, default=15000, help="area above this counts no extra, m²")
@@ -268,15 +294,33 @@ def main():
     ap.add_argument("--distance-scale", type=float, default=250, help="score halves at this distance, m")
     ap.add_argument("--batch", type=int, default=8, help="cities per Overpass request")
     ap.add_argument("--no-elevation", action="store_true", help="keep the old poi_alt_m (flat cities only)")
+    ap.add_argument("--anchors", help="hand-picked anchors CSV (default: handpicked_anchors.csv next to the input)")
     args = ap.parse_args()
 
     with open(args.csv, newline="", encoding="utf-8-sig") as f:
         rows = list(csv.DictReader(f))
     fields = list(rows[0].keys())
-    extra = ["orig_lat", "orig_lon", "snap_building", "snap_dist_m", "snap_area_m2", "snap_landmark", "snap_osm", "snap_status"]
+    extra = ["orig_lat", "orig_lon", "snap_building", "snap_dist_m", "snap_area_m2", "snap_landmark", "snap_osm",
+             "snap_status", "anchor_source"]
     for c in extra:
         if c not in fields:
             fields.append(c)
+
+    anchors_path = Path(args.anchors) if args.anchors else Path(args.csv).with_name("handpicked_anchors.csv")
+    hand = load_handpicked(anchors_path)
+    unknown = set(hand) - {r.get("n", "") for r in rows}
+    if unknown:
+        sys.exit(f"{anchors_path}: row numbers not in {args.csv}: {', '.join(sorted(unknown))}")
+    for r in rows:
+        h = hand.get(r.get("n", ""))
+        r["anchor_source"] = "handpicked" if h else "pdf"
+        if h:
+            if h["city"].strip() != r["city"]:
+                sys.exit(f"{anchors_path}: row {h['n']} is {r['city']!r} in {args.csv}, not {h['city']!r}")
+            r["lat"], r["lon"] = h["lat"].strip(), h["lon"].strip()
+            r["anchor"] = h.get("anchor", "").strip() or r.get("anchor", "")
+    if hand:
+        print(f"{len(hand)} hand-picked anchor(s) from {anchors_path}")
 
     print(f"{len(rows)} cities; fetching building footprints within {args.radius:g} m of each anchor")
     cache = fetch_buildings(rows, args.radius, args.batch, Path(args.cache))
@@ -284,7 +328,13 @@ def main():
     moved = []
     for r in rows:
         r["orig_lat"], r["orig_lon"] = r["lat"], r["lon"]
-        pick = choose(r, cache.get(r["city"], []), args)
+        h = hand.get(r.get("n", ""))
+        if h and h.get("snap", "yes").strip().lower() == "no":
+            r.update(snap_building="", snap_dist_m=0, snap_area_m2="", snap_landmark="", snap_osm="",
+                     snap_status="handpicked")
+            moved.append(r)
+            continue
+        pick = choose(r, cache.get(cache_key(r), []), args)
         if pick is None:
             r.update(snap_building="", snap_dist_m="", snap_area_m2="", snap_landmark="", snap_osm="", snap_status="no_building")
             continue
@@ -296,6 +346,8 @@ def main():
             r["lat"], r["lon"] = f"{lat:.6f}", f"{lon:.6f}"
             r["anchor"] = b["tags"].get("name") or b["tags"].get("name:en") or r.get("anchor", "")
             moved.append(r)
+        elif h:
+            moved.append(r)  # the PDF anchor's terrain_m does not apply to a hand-picked point
 
     if moved and not args.no_elevation:
         print(f"fetching terrain elevation for {len(moved)} moved targets ...")
@@ -322,12 +374,17 @@ def main():
                         f"https://www.openstreetmap.org/{r['snap_osm']}" if r["snap_osm"] else "",
                         f"https://www.google.com/maps/@{r['lat']},{r['lon']},200m/data=!3m1!1e3"])
 
-    n = {s: sum(1 for r in rows if r["snap_status"] == s) for s in ("snapped", "kept", "no_building")}
+    n = {s: sum(1 for r in rows if r["snap_status"] == s) for s in ("snapped", "kept", "no_building", "handpicked")}
     print(f"snapped {n['snapped']}, kept {n['kept']} (anchor already on a building), "
-          f"no building found {n['no_building']}")
+          f"handpicked {n['handpicked']} (used as given), no building found {n['no_building']}")
     print(f"wrote {args.out} and {review}")
     if n["no_building"]:
-        print("no building within radius: " + ", ".join(r["city"] for r in rows if r["snap_status"] == "no_building"))
+        print("no building within radius (add them to handpicked_anchors.csv): "
+              + ", ".join(r["city"] for r in rows if r["snap_status"] == "no_building"))
+    sea = [r for r in rows if r.get("terrain_m") not in (None, "") and float(r["terrain_m"]) <= 0]
+    if sea:
+        print(f"WARNING: {len(sea)} target(s) with terrain_m <= 0, probably offshore (the render would be open "
+              "water); hand-pick them: " + ", ".join(f"{r.get('n', '')} {r['city']} ({r['terrain_m']})" for r in sea))
 
 
 if __name__ == "__main__":
