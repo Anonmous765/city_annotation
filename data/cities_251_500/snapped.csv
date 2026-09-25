@@ -1,0 +1,251 @@
+n,city,country,continent,anchor,lat,lon,terrain_m,poi_alt_m,orig_lat,orig_lon,snap_building,snap_dist_m,snap_area_m2,snap_landmark,snap_osm,snap_status,anchor_source
+251,Oberhausen,Germany,Europe,Herz-Jesu-Kirche,51.469656,6.850203,38.0,65.0,51.4667,6.85,Herz-Jesu-Kirche (church),329,1609,yes,way/154854316,snapped,pdf
+252,Offenbach,Germany,Europe,Evangelische Mirjamgemeinde - Lutherkirche,50.098605,8.766629,113.0,140.0,50.1,8.7667,Evangelische Mirjamgemeinde - Lutherkirche (church),155,751,yes,way/59426603,snapped,pdf
+253,Paderborn,Germany,Europe,Paderborn City Center,51.714699,8.767006,138.0,165.0,51.7167,8.7667,"unnamed civic, 643 m²",224,643,yes,way/111312523,snapped,pdf
+254,Recklinghausen,Germany,Europe,St. Peter,51.615265,7.197972,84.0,111.0,51.6167,7.2,St. Peter (church),213,1201,yes,way/82309615,snapped,pdf
+255,Remscheid,Germany,Europe,Remscheid City Center,51.182429,7.201205,286.0,313.0,51.1833,7.2,"unnamed government, 609 m²",128,609,yes,way/275188339,snapped,pdf
+256,Salzgitter,Germany,Europe,BraWo Carree Salzgitter,52.151606,10.329556,91.0,118.0,52.1540,10.3320,BraWo Carree Salzgitter (commercial),314,19100,,way/201515204,snapped,handpicked
+257,Siegen,Germany,Europe,Siegen City Center,50.8667,8.0333,254.0,281.0,50.8667,8.0333,"unnamed building, 612 m²",0,612,,way/148641248,kept,pdf
+258,Solingen,Germany,Europe,Solingen City Center,51.181664,7.085319,229.0,256.0,51.1833,7.0833,"unnamed industrial, 5,598 m²",230,5598,,way/310052807,snapped,pdf
+259,Witten,Germany,Europe,Saalbau Witten,51.433640,7.334197,97.0,124.0,51.4333,7.3333,Saalbau Witten (civic),73,4774,yes,way/74481100,snapped,pdf
+260,Wuppertal,Germany,Europe,Wuppertal City Center,51.267298,7.186329,153.0,180.0,51.2667,7.1833,"unnamed school, 5,645 m²",221,5645,,way/232965434,snapped,pdf
+261,Amstetten,Austria,Europe,Amstetten City Center,48.115239,14.869359,268.0,295.0,48.1167,14.8667,"unnamed building, 4,071 m²",256,4071,,way/351401148,snapped,pdf
+262,Baden,Austria,Europe,Rudolfshof,48.017885,16.229483,367.0,394.0,48.0167,16.2333,Rudolfshof (residential),313,323,,way/222232059,snapped,pdf
+263,Braunau,Austria,Europe,Braunau City Center,48.267049,13.031047,346.0,373.0,48.2667,13.0333,"unnamed building, 1,030 m²",171,1030,,way/242574905,snapped,pdf
+264,Bregenz,Austria,Europe,Bregenz City Center,47.496954,9.764418,681.0,708.0,47.5,9.7667,"unnamed service, 603 m²",380,603,,way/119023240,snapped,pdf
+265,Bruck an der Mur,Austria,Europe,Bruck an der Mur City Center,47.416942,15.278123,492.0,519.0,47.4167,15.2833,"unnamed industrial, 3,206 m²",391,3206,,way/333532350,snapped,pdf
+266,Dornbirn,Austria,Europe,Dornbirn City Center,47.415111,9.733238,427.0,454.0,47.4167,9.7333,"unnamed industrial, 4,936 m²",177,4936,,way/163627041,snapped,pdf
+267,Feldkirch,Austria,Europe,Montforthaus,47.235962,9.597766,462.0,489.0,47.2333,9.6,Montforthaus (community centre),341,2563,yes,way/318382633,snapped,pdf
+268,Hallein,Austria,Europe,Bahnhof Hallein,47.685077,13.099128,443.0,470.0,47.6833,13.1,Bahnhof Hallein (train station),208,979,yes,way/91241450,snapped,pdf
+269,Kapfenberg,Austria,Europe,Kapfenberg City Center,47.435540,15.296887,645.0,672.0,47.4333,15.3,"unnamed house, 441 m²",342,441,,way/377848587,snapped,pdf
+270,Klosterneuburg,Austria,Europe,Kerbl am Weinberg,48.300281,16.320214,221.0,248.0,48.3,16.3167,Kerbl am Weinberg (restaurant),262,978,,way/543120379,snapped,pdf
+271,Krems,Austria,Europe,Krems City Center,48.418432,15.600437,207.0,234.0,48.4167,15.6,"unnamed residential, 1,147 m²",196,1147,,way/709684455,snapped,pdf
+272,Leoben,Austria,Europe,LCS,47.381983,15.095492,542.0,569.0,47.3833,15.1,LCS (building),370,18739,,way/90119079,snapped,pdf
+273,Mödling,Austria,Europe,Mödling City Center,48.083978,16.462822,177.0,204.0,48.0833,16.4667,"unnamed farm auxiliary, 932 m²",298,932,,way/556344417,snapped,pdf
+274,Steyr,Austria,Europe,Steyr City Center,48.066697,14.416791,313.0,340.0,48.0667,14.4167,"unnamed building, 3,825 m²",7,3825,,way/1099784460,snapped,pdf
+275,Traun,Austria,Europe,Spinnerei,48.219262,14.235966,272.0,299.0,48.2167,14.2333,Spinnerei (community centre),347,1905,yes,way/493996804,snapped,pdf
+276,Wiener Neustadt,Austria,Europe,Kleinwasserkraftwerk Akademie,47.799238,16.246286,272.0,299.0,47.8,16.25,Kleinwasserkraftwerk Akademie (industrial),290,669,,way/448827134,snapped,pdf
+277,Wolfsberg,Austria,Europe,Wolfsberg City Center,46.833774,14.834397,457.0,484.0,46.8333,14.8333,"unnamed building, 1,260 m²",99,1260,,way/243493330,snapped,pdf
+278,Biel/Bienne,Switzerland,Europe,Biel/Bienne City Center,47.1371,7.2461,438.0,465.0,47.1371,7.2461,"unnamed apartments, 407 m²",0,407,,way/926274065,kept,pdf
+279,Chur,Switzerland,Europe,Rathaus,46.849017,9.532563,605.0,632.0,46.8497,9.5313,Rathaus (government),123,902,yes,way/316092000,snapped,handpicked
+280,Köniz,Switzerland,Europe,VIDMARhallen,46.934976,7.417540,559.0,586.0,46.9333,7.4167,VIDMARhallen (building),197,11070,,way/284270145,snapped,pdf
+281,La Chaux-de- Fonds,Switzerland,Europe,La Chaux-de- Fonds City Center,47.1,6.8333,1009.0,1036.0,47.1,6.8333,"unnamed industrial, 656 m²",0,656,,way/49190807,kept,pdf
+282,Schaffhausen,Switzerland,Europe,St. Johann,47.696447,8.636020,400.0,427.0,47.6963,8.6345,St. Johann (church),115,1637,yes,way/159312646,snapped,handpicked
+283,Thun,Switzerland,Europe,Thun City Center,46.769879,7.632149,582.0,609.0,46.7667,7.6333,"unnamed industrial, 2,236 m²",365,2236,,way/465597687,snapped,pdf
+284,Borås,Sweden,Europe,Borås City Center,57.730595,12.920426,144.0,171.0,57.7333,12.9167,"unnamed office, 3,776 m²",374,3776,,way/85127497,snapped,pdf
+285,Helsingborg,Sweden,Europe,Helsingborg City Center,56.080986,12.749410,49.0,76.0,56.0833,12.75,"unnamed building, 8,247 m²",260,8247,,way/1191570224,snapped,pdf
+286,Jönköping,Sweden,Europe,Jönköping City Center,57.75,14.1667,105.0,132.0,57.75,14.1667,DB Schenker (warehouse),0,27802,,way/103722965,kept,pdf
+287,Linköping,Sweden,Europe,Linköping City Center,58.414342,15.588020,68.0,95.0,58.4167,15.5833,"unnamed apartments, 471 m²",380,471,,way/205311334,snapped,pdf
+288,Norrköping,Sweden,Europe,Victoriaskolan,58.584077,16.169847,38.0,65.0,58.5833,16.1667,Victoriaskolan (school),202,3197,,way/101272756,snapped,pdf
+289,Drammen,Norway,Europe,Drammen City Center,59.750132,10.249251,4.0,31.0,59.75,10.25,"unnamed commercial, 2,411 m²",44,2411,,way/141546731,snapped,pdf
+290,Kristiansand,Norway,Europe,Kristiansand domkirke,58.146124,7.994610,13.0,40.0,58.1460,7.9948,Kristiansand domkirke (cathedral),18,1396,yes,way/173829550,snapped,handpicked
+291,Espoo,Finland,Europe,Retail Park Finno,60.164888,24.705225,16.0,43.0,60.1667,24.7,Retail Park Finno (retail),353,7062,,way/80932003,snapped,pdf
+292,Kuopio,Finland,Europe,RIISA - Suomen ortodoksinen kirkkomuseo,62.898795,27.666365,107.0,134.0,62.9,27.6667,RIISA - Suomen ortodoksinen kirkkomuseo (commercial),135,1987,yes,way/87819398,snapped,pdf
+293,Lahti,Finland,Europe,Lahti City Center,60.998615,25.667157,143.0,170.0,61.0,25.6667,"unnamed school, 5,563 m²",156,5563,,way/46652422,snapped,pdf
+294,Oulu,Finland,Europe,Kartonkikone BM7,64.999795,25.428571,8.0,35.0,65.0,25.4333,Kartonkikone BM7 (industrial),224,28157,,way/127246195,snapped,pdf
+295,Pori,Finland,Europe,Pori City Center,61.466566,21.747886,9.0,36.0,61.4667,21.75,"unnamed industrial, 2,793 m²",113,2793,,way/473919680,snapped,pdf
+296,Tampere,Finland,Europe,Tampereen kauppahalli,61.496949,23.758748,138.0,165.0,61.4980,23.7610,Tampereen kauppahalli (retail),167,2626,yes,way/93480494,snapped,handpicked
+297,Vantaa,Finland,Europe,Vantaa City Center,60.299128,24.945643,52.0,79.0,60.3,24.95,"unnamed industrial, 21,765 m²",259,21765,,way/27518483,snapped,pdf
+298,Helsingør,Denmark,Europe,Toldkammeret,56.033908,12.613959,5.0,32.0,56.0334,12.6126,Toldkammeret (community centre),102,1317,yes,way/113512834,snapped,handpicked
+299,Esbjerg,Denmark,Europe,Esbjerg City Center,55.4667,8.4667,7.0,34.0,55.4667,8.4667,"unnamed building, 322 m²",0,322,,way/132442997,kept,pdf
+300,Horsens,Denmark,Europe,Bilka,55.857669,9.852195,0.0,27.0,55.8607,9.8503,Bilka (retail),358,16600,,way/127577174,snapped,pdf
+301,Kolding,Denmark,Europe,Kolding City Center,55.484357,9.502199,23.0,50.0,55.4833,9.5,"unnamed building, 3,350 m²",182,3350,,way/106026653,snapped,pdf
+302,Randers,Denmark,Europe,Randers City Center,56.467549,10.049720,29.0,56.0,56.4667,10.05,"unnamed building, 2,659 m²",96,2659,,way/568911820,snapped,pdf
+303,Roskilde,Denmark,Europe,Roskilde City Center,55.650003,12.116373,38.0,65.0,55.65,12.1167,"unnamed detached, 432 m²",21,432,,way/566720395,snapped,pdf
+304,Vejle,Denmark,Europe,Sygehusvaskeriet,55.716644,9.544040,27.0,54.0,55.7167,9.55,Sygehusvaskeriet (building),374,2737,,way/41748336,snapped,pdf
+305,Cork,Ireland,Europe,City Hall,51.896914,-8.465354,9.0,36.0,51.9,-8.4667,City Hall (civic),356,7157,yes,way/120291202,snapped,pdf
+306,Galway,Ireland,Europe,Aengus House,53.268719,-9.050392,5.0,32.0,53.2667,-9.05,Aengus House (apartments),226,1428,,way/163414619,snapped,pdf
+307,Limerick,Ireland,Europe,Limerick City Center,52.667475,-8.633456,14.0,41.0,52.6667,-8.6333,"unnamed hospital, 2,685 m²",87,2685,yes,way/25561063,snapped,pdf
+308,Waterford,Ireland,Europe,Newtown School (secondary),52.251383,-7.100757,20.0,47.0,52.25,-7.1,Newtown School (secondary) (school),162,3902,,way/44029408,snapped,pdf
+309,Differdange,Luxembourg,Europe,Hôpital Intercommunal Princesse Marie-Astrid,49.532653,5.886175,317.0,344.0,49.5333,5.8833,Hôpital Intercommunal Princesse Marie-Astrid (hospital),220,7524,yes,way/25586929,snapped,pdf
+310,Dudelange,Luxembourg,Europe,Ancien laminoir de Dudelange,49.465573,6.080248,305.0,332.0,49.4667,6.0833,Ancien laminoir de Dudelange (industrial),254,38209,,way/327517165,snapped,pdf
+311,Esch-sur-Alzette,Luxembourg,Europe,Monnerecher Scouten,49.534114,6.003803,310.0,337.0,49.5333,6.0,Monnerecher Scouten (detached),289,400,,way/162953871,snapped,pdf
+312,Akureyri,Iceland,Europe,Menningarhúsið Hof,65.683357,-18.087414,3.0,30.0,65.6815,-18.0900,Menningarhúsið Hof (arts centre),238,2567,yes,way/423897306,snapped,handpicked
+313,Reykjavik,Iceland,Europe,Saga Museum,64.152564,-21.951277,3.0,30.0,64.15,-21.95,Saga Museum (retail),292,750,yes,way/106469186,snapped,pdf
+314,Durrës,Albania,Europe,Great Mosque / Amphitheatre,41.310575,19.444859,7.0,34.0,41.3133,19.4457,"unnamed college, 4,516 m²",311,4516,yes,way/750428324,snapped,handpicked
+315,Shkodër,Albania,Europe,Teatri Migjeni,42.068894,19.511070,13.0,40.0,42.0683,19.5117,Teatri Migjeni (theatre),84,1756,yes,way/324756972,snapped,handpicked
+316,Tirana,Albania,Europe,Tirana City Center,41.3333,19.8333,129.0,156.0,41.3333,19.8333,"unnamed apartments, 676 m²",0,676,,way/1232992063,kept,pdf
+317,Sarajevo,Bosnia and Herzegovina,Europe,Gazi Husrev-begov bezistan,43.858819,18.428070,550.0,577.0,43.8590,18.4295,Gazi Husrev-begov bezistan (marketplace),117,2054,yes,way/188836329,snapped,handpicked
+318,Skopje,North Macedonia,Europe,Skopje City Center,41.999640,21.479654,245.0,272.0,42.0,21.4833,"unnamed building, 17,336 m²",304,17336,,way/37996988,snapped,pdf
+319,Limassol,Cyprus,Europe,Μεσαιωνικό Κάστρο Λεμεσού,34.672249,33.041666,7.0,34.0,34.6730,33.0418,Μεσαιωνικό Κάστρο Λεμεσού (attraction),85,1219,yes,way/175830695,snapped,handpicked
+320,Nicosia,Cyprus,Europe,Kaimakli Local Hospital,35.184216,33.382088,131.0,158.0,35.1833,33.3833,Kaimakli Local Hospital (hospital),150,515,yes,way/489031375,snapped,pdf
+321,Brăila,Romania,Europe,Brăila City Center,45.282438,27.971306,20.0,47.0,45.2833,27.9667,"unnamed retail, 2,840 m²",373,2840,,way/91728187,snapped,pdf
+322,Craiova,Romania,Europe,Craiova City Center,44.302079,23.782396,71.0,98.0,44.3,23.7833,"unnamed house, 349 m²",242,349,,way/1457834405,snapped,pdf
+323,Galați,Romania,Europe,Shopping City Galați,45.452180,28.031285,61.0,88.0,45.45,28.0333,Shopping City Galați (commercial),289,52010,,way/249168970,snapped,pdf
+324,Iași,Romania,Europe,Iași City Center,47.149477,27.634132,38.0,65.0,47.15,27.6333,"unnamed building, 3,115 m²",86,3115,,way/216503074,snapped,pdf
+325,Cluj-Napoca,Romania,Europe,Kaufland,46.782102,23.614514,328.0,355.0,46.7833,23.6167,Kaufland (building),213,5638,,way/154946779,snapped,pdf
+326,Constanța,Romania,Europe,Edificiul Roman cu Mozaic,44.173103,28.658472,13.0,40.0,44.1737,28.6573,Edificiul Roman cu Mozaic (museum),115,2426,yes,way/272823081,snapped,handpicked
+327,Brașov,Romania,Europe,Brașov City Center,45.651305,25.585260,571.0,598.0,45.65,25.5833,"unnamed building, 1,239 m²",211,1239,,way/272866368,snapped,pdf
+328,Timișoara,Romania,Europe,Timișoara City Center,45.752728,21.247188,87.0,114.0,45.75,21.25,"unnamed building, 7,278 m²",374,7278,,way/219155285,snapped,pdf
+329,Debrecen,Hungary,Europe,Debrecen City Center,47.499248,21.614587,108.0,135.0,47.5,21.6167,"unnamed building, 396 m²",180,396,,way/1228574448,snapped,pdf
+330,Győr,Hungary,Europe,Glovita Kesztyű Zrt.,47.685205,17.665602,116.0,143.0,47.6833,17.6667,Glovita Kesztyű Zrt. (building),227,4444,,way/498841987,snapped,pdf
+331,Miskolc,Hungary,Europe,Miskolc City Center,48.117925,20.787792,135.0,162.0,48.1167,20.7833,"unnamed school, 1,137 m²",361,1137,,way/119136393,snapped,pdf
+332,Pécs,Hungary,Europe,Pécsi Nemzeti Színház,46.076108,18.230735,156.0,183.0,46.0762,18.2283,Pécsi Nemzeti Színház (public),188,1663,yes,way/225990862,snapped,handpicked
+333,Szeged,Hungary,Europe,Magyarok Nagyasszonya-székesegyház Dóm,46.248906,20.149138,85.0,112.0,46.25,20.15,Magyarok Nagyasszonya-székesegyház Dóm (cathedral),139,2592,yes,way/82422804,snapped,pdf
+334,Burgas,Bulgaria,Europe,Летен театър,42.498485,27.482533,23.0,50.0,42.5,27.4833,Летен театър (civic),180,2029,yes,way/1127701746,snapped,pdf
+335,Plovdiv,Bulgaria,Europe,Plovdiv City Center,42.1333,24.75,165.0,192.0,42.1333,24.75,"unnamed building, 1,711 m²",0,1711,,way/135437982,kept,pdf
+336,Ruse,Bulgaria,Europe,Доходното здание,43.847921,25.952547,38.0,65.0,43.8485,25.9545,Доходното здание (building),169,4633,yes,way/212128643,snapped,handpicked
+337,Stara Zagora,Bulgaria,Europe,Stara Zagora City Center,42.414960,25.618495,197.0,224.0,42.4167,25.6167,"unnamed building, 6,366 m²",243,6366,,way/891253013,snapped,pdf
+338,Varna,Bulgaria,Europe,Свето Успение Богородично,43.205255,27.909985,37.0,64.0,43.2049,27.9106,Свето Успение Богородично (place of worship),64,1181,yes,way/1177863780,snapped,handpicked
+339,Chania,Greece,Europe,Φρούριο Φιρκά,35.518729,24.015569,6.0,33.0,35.5167,24.0167,Φρούριο Φιρκά (castle),248,2390,yes,way/1069616183,snapped,pdf
+340,Heraklion,Greece,Europe,Heraklion City Center,35.331619,25.200546,2.0,29.0,35.3333,25.2,"unnamed building, 420 m²",194,420,,way/626700177,snapped,pdf
+341,Kavala,Greece,Europe,ΠΕΔΥ,40.936146,24.407493,6.0,33.0,40.9385,24.4110,ΠΕΔΥ (public),394,1661,yes,way/320111060,snapped,handpicked
+342,Larissa,Greece,Europe,Άγιος Νικόλαος,39.633897,22.414868,80.0,107.0,39.6333,22.4167,Άγιος Νικόλαος (church),171,1283,yes,way/135401060,snapped,pdf
+343,Patras,Greece,Europe,Μουσείο Λαϊκής Τέχνης,38.234951,21.731428,9.0,36.0,38.2333,21.7333,Μουσείο Λαϊκής Τέχνης (museum),246,620,yes,way/165471347,snapped,pdf
+344,Piraeus,Greece,Europe,Πολιτιστικό Κέντρο Μελίνα Μερκούρη,37.947683,23.700900,28.0,55.0,37.95,23.7,Πολιτιστικό Κέντρο Μελίνα Μερκούρη (community centre),270,627,yes,way/349191268,snapped,pdf
+345,Serres,Greece,Europe,Serres City Center,41.082350,23.516101,39.0,66.0,41.0833,23.5167,"unnamed building, 1,485 m²",117,1485,,way/1088247619,snapped,pdf
+346,Volos,Greece,Europe,Δικαστικό Μέγαρο,39.363817,22.947358,11.0,38.0,39.3667,22.95,Δικαστικό Μέγαρο (courthouse),393,1269,yes,way/36836243,snapped,pdf
+347,Belgrade,Serbia,Europe,Epic Event Center,44.831960,20.495371,71.0,98.0,44.8333,20.5,Epic Event Center (restaurant),395,694,,way/1091680795,snapped,pdf
+348,Niš,Serbia,Europe,Niš City Center,43.333755,21.900945,207.0,234.0,43.3333,21.9,"unnamed building, 1,195 m²",92,1195,,way/691546486,snapped,pdf
+349,Novi Sad,Serbia,Europe,Novi Sad City Center,45.25,19.85,84.0,111.0,45.25,19.85,"unnamed apartments, 505 m²",0,505,,way/219748913,kept,pdf
+350,Osijek,Croatia,Europe,Osijek City Center,45.55,18.6833,86.0,113.0,45.55,18.6833,"unnamed house, 7,640 m²",0,7640,,way/555758622,kept,pdf
+351,Košice,Slovakia,Europe,Stavebná fakulta TUKE,48.734314,21.245110,215.0,242.0,48.7333,21.25,Stavebná fakulta TUKE (university),376,3438,yes,way/170007143,snapped,pdf
+352,Apeldoorn,Netherlands,Europe,Apeldoorn City Center,52.219678,5.952873,23.0,50.0,52.2167,5.95,"unnamed civic, 7,374 m²",385,7374,yes,way/263025973,snapped,pdf
+353,L'Hospitalet de Llobregat,Spain,Europe,L'Hospitalet de Llobregat City Center,41.346708,2.101536,17.0,44.0,41.35,2.1,"unnamed stadium, 6,150 m²",388,6150,yes,way/733891114,snapped,pdf
+354,Las Palmas de Gran Canaria,Spain,Europe,Catedral de Santa Ana (Vegueta),28.1011,-15.4146,24.0,51.0,28.1011,-15.4146,Catedral de Santa Ana (cathedral),0,3633,yes,way/38062745,kept,handpicked
+355,Amadora,Portugal,Europe,Amadora City Center,38.750256,-9.217056,99.0,126.0,38.75,-9.2167,"unnamed building, 5,010 m²",42,5010,,way/768600410,snapped,pdf
+356,Barreiro,Portugal,Europe,Piscina Municipal do Barreiro,38.663338,-9.083020,1.0,28.0,38.6667,-9.0833,Piscina Municipal do Barreiro (building),375,1219,,way/1540990486,snapped,pdf
+357,Vila Nova de Gaia,Portugal,Europe,Cenáculo do Espírito Santo,41.122869,-8.607840,116.0,143.0,41.1238,-8.6118,Cenáculo do Espírito Santo (place of worship),348,3054,yes,way/485232275,snapped,handpicked
+358,Sosnowiec,Poland,Europe,Sosnowiec City Center,50.268843,19.121122,253.0,280.0,50.2667,19.1167,"unnamed service, 885 m²",395,885,,way/193163625,snapped,pdf
+359,Olomouc,Czechia,Europe,sv. Mořic,49.595134,17.251341,227.0,254.0,49.5941,17.2509,sv. Mořic (church),119,1976,yes,way/23344425,snapped,handpicked
+360,Bradford,United Kingdom,Europe,LIFE Church UK,53.799984,-1.744949,131.0,158.0,53.8,-1.75,LIFE Church UK (place of worship),332,2853,yes,way/201348458,snapped,pdf
+361,Abu Dhabi,United Arab Emirates,Asia,قصر الحصن,24.482796,54.357364,13.0,40.0,24.4823,54.3548,قصر الحصن (civic),266,8836,yes,way/397390538,snapped,handpicked
+362,Amman,Jordan,Asia,Husseini Mosque,31.949667,35.934669,761.0,788.0,31.95,35.9333,Husseini Mosque (place of worship),135,1844,yes,way/178938551,snapped,pdf
+363,Bandar Seri Begawan,Brunei,Asia,Masjid Rashidah Sa'adatul Bolkiah,4.935297,114.967131,55.0,82.0,4.9333,114.9667,Masjid Rashidah Sa'adatul Bolkiah (mosque),227,1813,yes,way/512473353,snapped,pdf
+364,Be'er Sheva,Israel,Asia,Be'er Sheva City Center,31.249772,34.782711,282.0,309.0,31.25,34.7833,"unnamed building, 3,090 m²",62,3090,,way/319163005,snapped,pdf
+365,Beirut,Lebanon,Asia,Beirut City Center,33.885069,35.499798,100.0,127.0,33.8833,35.5,"unnamed mosque, 565 m²",198,565,yes,way/547932117,snapped,pdf
+366,Bnei Brak,Israel,Asia,מרכז גריאטרי גיל עוז,32.084014,34.864731,41.0,68.0,32.0833,34.8667,מרכז גריאטרי גיל עוז (social facility),202,2153,,way/209972745,snapped,pdf
+367,Chattogram,Bangladesh,Asia,Chattogram City Center,22.332765,91.799439,6.0,33.0,22.3333,91.8,"unnamed building, 585 m²",83,585,,way/513775728,snapped,pdf
+368,Colombo,Sri Lanka,Asia,Colombo Fort,6.933727,79.850080,12.0,39.0,6.9333,79.85,Colombo Fort (train station),48,1073,yes,way/232514810,snapped,pdf
+369,Da Nang,Vietnam,Asia,Da Nang City Center,16.064828,108.230956,4.0,31.0,16.0667,108.2333,"unnamed building, 3,573 m²",326,3573,,way/1558455141,snapped,pdf
+370,Dehiwala,Sri Lanka,Asia,Dehiwala Jummah Masjid,6.864181,79.865942,13.0,40.0,6.8667,79.8667,Dehiwala Jummah Masjid (building),293,1460,,way/609212779,snapped,pdf
+371,Dhaka,Bangladesh,Asia,Dhaka City Center,23.7167,90.4167,17.0,44.0,23.7167,90.4167,Babuly Rose Villa (apartments),0,616,,way/441227069,kept,pdf
+372,Faisalabad,Pakistan,Asia,Clock Tower (Ghanta Ghar),31.415984,73.081960,186.0,213.0,31.4185,73.0791,"unnamed building, 4,756 m²",390,4756,,way/1385756073,snapped,handpicked
+373,Galle,Sri Lanka,Asia,Galle town centre (north of the Fort),6.0330,80.2155,8.0,35.0,6.0330,80.2155,"unnamed transportation, 2,439 m²",0,2439,,way/137308920,kept,handpicked
+374,Gujranwala,Pakistan,Asia,PTCL Exchange,32.161995,74.188033,231.0,258.0,32.1600,74.1880,PTCL Exchange (commercial),222,1532,,way/287517984,snapped,handpicked
+375,Haifa,Israel,Asia,Haifa City Center,32.8167,34.9833,129.0,156.0,32.8167,34.9833,"unnamed building, 330 m²",0,330,,way/179243044,kept,pdf
+376,Haiphong,Vietnam,Asia,Tòa án nhân dân khu vực 5 - Hải Phòng,20.831021,106.680618,9.0,36.0,20.8333,106.6833,Tòa án nhân dân khu vực 5 - Hải Phòng (courthouse),377,5433,yes,way/1189415115,snapped,pdf
+377,Hanoi,Vietnam,Asia,Nhà hát Hồng Hà,21.031524,105.847248,19.0,46.0,21.0333,105.85,Nhà hát Hồng Hà (theatre),348,838,yes,way/700853373,snapped,pdf
+378,Ho Chi Minh City,Vietnam,Asia,Chung Cư Felisa Riverside,10.749351,106.666103,6.0,33.0,10.75,106.6667,Chung Cư Felisa Riverside (apartments),97,3159,,way/1389992942,snapped,pdf
+379,Holon,Israel,Asia,בית הכנסת,32.031480,34.783174,34.0,61.0,32.0333,34.7833,בית הכנסת (place of worship),203,474,yes,way/663504618,snapped,pdf
+380,Hyderabad,Pakistan,Asia,Pakka Qila / Shahi Bazaar,25.3920,68.3740,40.0,67.0,25.3920,68.3740,,0,,,,handpicked,handpicked
+381,Irbid,Jordan,Asia,Irbid City Center,32.551302,35.850541,567.0,594.0,32.55,35.85,"unnamed building, 1,987 m²",154,1987,,way/1338613552,snapped,pdf
+382,Islamabad,Pakistan,Asia,Blue Area / Jinnah Avenue,33.708861,73.058616,551.0,578.0,33.7110,73.0600,"unnamed place of worship, 1,034 m²",270,1034,yes,way/1425522904,snapped,handpicked
+383,Jaffna,Sri Lanka,Asia,Jaffna City Center,9.665710,80.015023,7.0,34.0,9.6667,80.0167,"unnamed building, 2,839 m²",215,2839,,way/571493796,snapped,pdf
+384,Jerusalem,Israel,Asia,Jerusalem City Center,31.7833,35.2167,801.0,828.0,31.7833,35.2167,"unnamed building, 852 m²",0,852,,way/160373398,kept,pdf
+385,Kandy,Sri Lanka,Asia,Kandy City Center,7.281643,80.669486,473.0,500.0,7.2833,80.6667,"unnamed apartments, 2,845 m²",359,2845,,way/221352787,snapped,pdf
+386,Karachi,Pakistan,Asia,Dar-us-Salaam,24.866975,67.048909,32.0,59.0,24.8667,67.05,Dar-us-Salaam (place of worship),114,843,yes,way/783741231,snapped,pdf
+387,Kathmandu,Nepal,Asia,Kathmandu City Center,27.702670,85.334971,1304.0,1331.0,27.7,85.3333,"unnamed house, 577 m²",340,577,,way/341368762,snapped,pdf
+388,Kuwait City,Kuwait,Asia,Kuwait City City Center,29.3333,47.9833,20.0,47.0,29.3333,47.9833,,0,,,,handpicked,handpicked
+389,Lahore,Pakistan,Asia,کھڑک سنگھ کی حویلی,31.588282,74.315880,221.0,248.0,31.5870,74.3140,کھڑک سنگھ کی حویلی (castle),228,1582,yes,way/604910486,snapped,handpicked
+390,Manama,Bahrain,Asia,سوق باب البحرين,26.233298,50.576059,16.0,43.0,26.2345,50.5760,سوق باب البحرين (marketplace),134,8142,yes,way/1361385174,snapped,handpicked
+391,Muscat,Oman,Asia,المتحف الوطني,23.611617,58.593602,10.0,37.0,23.6147,58.5945,المتحف الوطني (museum),355,4803,yes,way/269436905,snapped,handpicked
+392,Nha Trang,Vietnam,Asia,Nhà Thiếu nhi tỉnh Khánh Hòa,12.248453,109.188067,9.0,36.0,12.2465,109.1880,Nhà Thiếu nhi tỉnh Khánh Hòa (no),218,25400,yes,way/1241549485,snapped,handpicked
+393,Petah Tikva,Israel,Asia,מקור חיים,32.085271,34.880590,53.0,80.0,32.087,34.8781,מקור חיים (place of worship),304,500,yes,way/208635328,snapped,pdf
+394,Phnom Penh,Cambodia,Asia,អាហារូបករណ៍គ្រីស្ទានអន្តរជាតិ,11.549912,104.918379,12.0,39.0,11.55,104.9167,អាហារូបករណ៍គ្រីស្ទានអន្តរជាតិ (building),183,722,,way/520781284,snapped,pdf
+395,Quy Nhon,Vietnam,Asia,Trung tâm Hội nghị tỉnh Bình Định,13.773124,109.221701,7.0,34.0,13.7760,109.2230,Trung tâm Hội nghị tỉnh Bình Định (building),350,5668,,way/157532085,snapped,handpicked
+396,Ramat Gan,Israel,Asia,Ramat Gan City Center,32.064477,34.798400,38.0,65.0,32.0667,34.8,"unnamed hospital, 636 m²",290,636,yes,way/198418152,snapped,pdf
+397,Rawalpindi,Pakistan,Asia,PTCL,33.593231,73.049578,507.0,534.0,33.5960,73.0510,PTCL (building),335,7487,,way/230173320,snapped,handpicked
+398,Sharjah,United Arab Emirates,Asia,Sharjah City Center,25.334972,55.430283,12.0,39.0,25.3333,55.4333,"unnamed building, 3,335 m²",356,3335,,way/1094074471,snapped,pdf
+399,Tripoli,Lebanon,Asia,برج السبع,34.449886,35.830624,4.0,31.0,34.45,35.8333,برج السبع (castle),246,566,yes,way/301669700,snapped,pdf
+400,Ulaanbaatar,Mongolia,Asia,Төмөр замын их сургууль,47.915852,106.884135,1291.0,1318.0,47.9167,106.8833,Төмөр замын их сургууль (university),113,3407,yes,way/177856640,snapped,pdf
+401,Mito,Japan,Asia,Mito City Center,36.3659,140.4712,12.0,39.0,36.3659,140.4712,"unnamed public, 5,349 m²",0,5349,yes,way/664697073,kept,pdf
+402,Utsunomiya,Japan,Asia,Utsunomiya City Center,36.5551,139.8828,121.0,148.0,36.5551,139.8828,宇都宮市役所 (townhall),0,5149,yes,way/100466419,kept,pdf
+403,Maebashi,Japan,Asia,Maebashi City Center,36.3895,139.0634,116.0,143.0,36.3895,139.0634,前橋市役所 (townhall),0,2856,yes,way/309673298,kept,pdf
+404,Takasaki,Japan,Asia,Takasaki City Center,36.3219,139.0033,97.0,124.0,36.3219,139.0033,高崎市役所 (office),0,7634,yes,way/164029666,kept,pdf
+405,Kawagoe,Japan,Asia,Kawagoe City Center,35.9251,139.4858,32.0,59.0,35.9251,139.4858,川越市役所 (civic),0,1601,yes,way/222406198,kept,pdf
+406,Kawaguchi,Japan,Asia,川口市役所,35.806720,139.723392,4.0,31.0,35.8077,139.7241,川口市役所 (civic),126,2815,yes,way/204523885,snapped,pdf
+407,Tokorozawa,Japan,Asia,Tokorozawa City Center,35.7997,139.4686,73.0,100.0,35.7997,139.4686,所沢市役所 (townhall),0,5585,yes,way/160511465,kept,pdf
+408,Koshigaya,Japan,Asia,Koshigaya City Center,35.891,139.7909,7.0,34.0,35.891,139.7909,越谷市役所 (public),0,3241,yes,way/611047651,kept,pdf
+409,Hirakata,Japan,Asia,ステーションヒル枚方 京阪モール,34.817208,135.650156,12.0,39.0,34.8143,135.6507,ステーションヒル枚方 京阪モール (retail),327,4579,,way/1491390176,snapped,pdf
+410,Suita,Japan,Asia,Suita City Center,34.7595,135.5169,4.0,31.0,34.7595,135.5169,低層棟 (government),0,1957,yes,way/310746656,kept,pdf
+411,Toyonaka,Japan,Asia,Toyonaka City Center,34.781298,135.469788,30.0,57.0,34.7813,135.469,"unnamed government, 2,719 m²",72,2719,yes,way/268876172,snapped,pdf
+412,Akashi,Japan,Asia,Akashi City Center,34.6431,134.9972,8.0,35.0,34.6431,134.9972,"unnamed building, 3,128 m²",0,3128,,way/198009400,kept,pdf
+413,Nishinomiya,Japan,Asia,Nishinomiya City Center,34.7377,135.3416,14.0,41.0,34.7377,135.3416,西宮市役所 (government),0,4603,yes,way/158680688,kept,pdf
+414,Amagasaki,Japan,Asia,Amagasaki City Center,34.7337,135.4064,16.0,43.0,34.7337,135.4064,南館 (building),0,2361,,way/438360064,kept,pdf
+415,Matsue,Japan,Asia,Matsue City Center,35.4681,133.0484,3.0,30.0,35.4681,133.0484,松江役所 本庁舎 本館 (building),0,3389,,way/319666097,kept,pdf
+416,Tottori,Japan,Asia,Tottori City Center,35.501734,134.237191,10.0,37.0,35.5011,134.2351,"unnamed building, 6,425 m²",202,6425,,way/398114749,snapped,pdf
+417,Yamagata,Japan,Asia,Yamagata City Center,38.2554,140.3396,154.0,181.0,38.2554,140.3396,山形市役所 (townhall),0,5922,yes,way/259225158,kept,pdf
+418,Fukushima,Japan,Asia,Fukushima City Center,37.7608,140.4747,69.0,96.0,37.7608,140.4747,庁舎棟 (government),0,3902,yes,way/1561080795,kept,pdf
+419,Morioka,Japan,Asia,Morioka City Center,39.7036,141.1527,139.0,166.0,39.7036,141.1527,"unnamed building, 2,157 m²",0,2157,,way/427689928,kept,pdf
+420,Aomori,Japan,Asia,青森市役所 本庁舎,40.822612,140.747096,4.0,31.0,40.8221,140.7474,青森市役所 本庁舎 (townhall),63,2507,yes,way/226061848,snapped,pdf
+421,Hachinohe,Japan,Asia,Hachinohe City Center,40.5123,141.4884,20.0,47.0,40.5123,141.4884,八戸市庁本館 (townhall),0,2621,yes,way/350786263,kept,pdf
+422,Koriyama,Japan,Asia,Koriyama City Center,37.4005,140.3597,253.0,280.0,37.4005,140.3597,郡山市役所 (townhall),0,5264,yes,way/304607141,kept,pdf
+423,Iwaki,Japan,Asia,Iwaki City Center,37.0505,140.8877,10.0,37.0,37.0505,140.8877,いわき市役所 (building),0,3512,,way/129282908,kept,pdf
+424,Tsukuba,Japan,Asia,Tsukuba City Center,36.0835,140.0764,26.0,53.0,36.0835,140.0764,つくば市役所 (civic),0,5993,yes,way/171243906,kept,pdf
+425,Nagaoka,Japan,Asia,Nagaoka City Center,37.4463,138.8513,28.0,55.0,37.4463,138.8513,アオーレ長岡 (townhall),0,11692,yes,way/362496449,kept,pdf
+426,Abidjan,Côte d'Ivoire,Africa,Abidjan City Center,5.317842,-4.036138,30.0,57.0,5.3167,-4.0333,"unnamed building, 1,752 m²",339,1752,,way/818644909,snapped,pdf
+427,Accra,Ghana,Africa,Accra City Center,5.603221,-0.186457,64.0,91.0,5.6037,-0.187,"unnamed building, 2,173 m²",80,2173,,way/1162633597,snapped,pdf
+428,Agadir,Morocco,Africa,Résidence Petit Palace,30.426369,-9.599743,40.0,67.0,30.4278,-9.5981,Résidence Petit Palace (residential),224,1079,,way/575992201,snapped,pdf
+429,Algiers,Algeria,Africa,Algiers City Center,36.781148,3.046456,135.0,162.0,36.7833,3.05,"unnamed library, 2,545 m²",397,2545,yes,way/263645886,snapped,pdf
+430,Annaba,Algeria,Africa,Palais de la Culture Mohamed Boudiaf,36.902762,7.757296,18.0,45.0,36.9010,7.7560,Palais de la Culture Mohamed Boudiaf (public),228,5127,yes,way/165582436,snapped,handpicked
+431,Arusha,Tanzania,Africa,Arusha City Center,-3.385491,36.666984,1352.0,1379.0,-3.3833,36.6667,"unnamed building, 1,051 m²",246,1051,,way/623931661,snapped,pdf
+432,Blida,Algeria,Africa,Blida City Center,36.497249,2.833894,187.0,214.0,36.5,2.8333,"unnamed building, 6,934 m²",311,6934,,way/1174137923,snapped,pdf
+433,Bouaké,Côte d'Ivoire,Africa,Bouaké City Center,7.697470,-4.999075,350.0,377.0,7.7,-5.0,"unnamed building, 1,869 m²",300,1869,,way/1385620857,snapped,pdf
+434,Bulawayo,Zimbabwe,Africa,Bulawayo City Center,-20.168031,28.713256,1384.0,1411.0,-20.1667,28.7167,"unnamed building, 405 m²",389,405,,way/488162856,snapped,pdf
+435,Casablanca,Morocco,Africa,Gare Routière Ouled Ziane ⴰⵙⵡⵓⵏⴼⵓ محطة أولاد زيان الحافلات,33.575442,-7.588488,61.0,88.0,33.5731,-7.5898,Gare Routière Ouled Ziane ⴰⵙⵡⵓⵏⴼⵓ محطة أولاد زيان الحافلات (bus station),288,8107,,way/419545012,snapped,pdf
+436,Chingola,Zambia,Africa,Chingola City Center,-12.517123,27.883725,1330.0,1357.0,-12.5167,27.8833,"unnamed building, 1,356 m²",66,1356,,way/654905035,snapped,pdf
+437,Constantine,Algeria,Africa,Palais de la culture Mohamed Laïd El-Khalifa,36.363854,6.608116,623.0,650.0,36.3655,6.6105,Palais de la culture Mohamed Laïd El-Khalifa (civic),282,2920,yes,way/228968529,snapped,handpicked
+438,Dakar,Senegal,Africa,Dakar City Center,14.667488,-17.434858,33.0,60.0,14.6667,-17.4333,"unnamed mosque, 1,639 m²",189,1639,yes,way/248482182,snapped,pdf
+439,Daloa,Côte d'Ivoire,Africa,Institut National d'hygiène publique,6.874339,-6.452661,281.0,308.0,6.8770,-6.4510,Institut National d'hygiène publique (hospital),348,2749,yes,way/787115258,snapped,handpicked
+440,Dar es Salaam,Tanzania,Africa,The Aga Khan University,-6.799688,39.279857,11.0,38.0,-6.8,39.2833,The Aga Khan University (university),382,1129,yes,way/667397461,snapped,pdf
+441,Dodoma,Tanzania,Africa,Dodoma City Center,-6.167895,35.664558,1138.0,1165.0,-6.1667,35.6667,"unnamed building, 372 m²",272,372,,way/841997915,snapped,pdf
+442,Entebbe,Uganda,Africa,Entebbe City Center,0.070018,32.451229,1147.0,1174.0,0.0667,32.45,"unnamed building, 483 m²",394,483,,way/825732449,snapped,pdf
+443,Fez,Morocco,Africa,Tribunal de Première Instance,34.032173,-4.998068,408.0,435.0,34.0331,-5.0003,Tribunal de Première Instance (courthouse),230,4093,yes,way/186942881,snapped,pdf
+444,Francistown,Botswana,Africa,Francistown City Center,-21.115322,27.536728,1032.0,1059.0,-21.1167,27.5333,"unnamed building, 3,738 m²",388,3738,,way/90940573,snapped,pdf
+445,Gaborone,Botswana,Africa,Bank of Botswana,-24.655954,25.911013,1012.0,1039.0,-24.6555,25.9105,Bank of Botswana (bank),72,2969,,way/93257784,snapped,handpicked
+446,Gweru,Zimbabwe,Africa,Gweru City Center,-19.450271,29.816317,1414.0,1441.0,-19.45,29.8167,"unnamed building, 1,970 m²",50,1970,,way/494086865,snapped,pdf
+447,Harare,Zimbabwe,Africa,"National Railways Of Zimbabwe, Harare Train Station",-17.834957,31.051675,1473.0,1500.0,-17.8333,31.05,"National Railways Of Zimbabwe, Harare Train Station (train station)",256,1800,yes,way/245290279,snapped,pdf
+448,Jinja,Uganda,Africa,Jinja City Center,0.451966,33.235853,1155.0,1182.0,0.45,33.2333,"unnamed building, 7,413 m²",359,7413,,way/881061824,snapped,pdf
+449,Kampala,Uganda,Africa,Kampala Hospital,0.332685,32.584694,1189.0,1216.0,0.3333,32.5833,Kampala Hospital (hospital),170,2399,yes,way/148065485,snapped,pdf
+450,Kaolack,Senegal,Africa,Grand Marché,14.149328,-16.078097,7.0,34.0,14.1475,-16.0755,"unnamed building, 605 m²",346,605,,way/1177900008,snapped,handpicked
+451,Keetmanshoop,Namibia,Africa,Keetmanshoop City Center,-26.600080,18.133599,949.0,976.0,-26.6,18.1333,"unnamed building, 1,052 m²",31,1052,,way/421511457,snapped,pdf
+452,Kénitra,Morocco,Africa,Hôtel de Ville de Kénitra,34.262399,-6.582511,12.0,39.0,34.261,-6.5802,Hôtel de Ville de Kénitra (townhall),264,2067,yes,way/331932604,snapped,pdf
+453,Kisumu,Kenya,Africa,Sikh Union Club,-0.099728,34.760995,1178.0,1205.0,-0.1025,34.7610,Sikh Union Club (community centre),309,1735,yes,way/319947729,snapped,handpicked
+454,Kitwe,Zambia,Africa,ECL Mall,-12.808702,28.212170,1216.0,1243.0,-12.8100,28.2130,ECL Mall (building),170,30048,,way/1014166023,snapped,handpicked
+455,Kumasi,Ghana,Africa,Kumasi City Center,6.688833,-1.621906,278.0,305.0,6.6885,-1.6244,"unnamed building, 4,455 m²",278,4455,,way/503339103,snapped,pdf
+456,Lusaka,Zambia,Africa,East Park Mall,-15.390899,28.322033,1255.0,1282.0,-15.3875,28.3228,East Park Mall (retail),387,50736,,way/614461977,snapped,pdf
+457,Marrakesh,Morocco,Africa,Bab Doukkala,31.633988,-7.999008,460.0,487.0,31.6342,-7.9999,Bab Doukkala (city gate),88,373,yes,way/126153361,snapped,pdf
+458,Mbale,Uganda,Africa,Mbale City Center,1.0667,34.2,1165.0,1192.0,1.0667,34.2,"unnamed building, 396 m²",0,396,,way/391146253,kept,pdf
+459,Meknes,Morocco,Africa,Tribunal de deuxième instance محكمة الإستئناف,33.896445,-5.549403,530.0,557.0,33.8935,-5.5473,Tribunal de deuxième instance محكمة الإستئناف (courthouse),381,3777,yes,way/307429699,snapped,pdf
+460,Mombasa,Kenya,Africa,Jesus Celebration Centre - Buxton,-4.042668,39.666736,26.0,53.0,-4.0435,39.6682,Jesus Celebration Centre - Buxton (place of worship),187,2494,yes,way/634787401,snapped,pdf
+461,Mwanza,Tanzania,Africa,Mwanza City Center,-2.516328,32.933001,1279.0,1306.0,-2.5167,32.9333,"unnamed building, 452 m²",53,452,,way/874055576,snapped,pdf
+462,Nairobi,Kenya,Africa,Holy Family Basilica,-1.287210,36.820685,1671.0,1698.0,-1.2864,36.8172,Holy Family Basilica (church),398,2148,yes,way/101814681,snapped,pdf
+463,Nakuru,Kenya,Africa,Nakuru City Center,-0.269908,36.066605,1925.0,1952.0,-0.2667,36.0667,"unnamed building, 947 m²",357,947,,way/376290282,snapped,pdf
+464,Ndola,Zambia,Africa,Ndola City Center,-13.001962,28.650546,1266.0,1293.0,-13.0,28.65,"unnamed building, 1,783 m²",226,1783,,way/580219459,snapped,pdf
+465,Oran,Algeria,Africa,Direction régional CNAS Ouest,35.695619,-0.630497,116.0,143.0,35.6973,-0.6336,Direction régional CNAS Ouest (public),337,4927,yes,way/335444279,snapped,handpicked
+466,Oujda,Morocco,Africa,Souk Sidi Abdelwahab,34.681074,-1.909692,550.0,577.0,34.6814,-1.9086,Souk Sidi Abdelwahab (commercial),106,10095,yes,way/293305514,snapped,pdf
+467,Port Louis,Mauritius,Africa,Port Louis City Center,-20.169226,57.501739,18.0,45.0,-20.1667,57.5,"unnamed hospital, 7,809 m²",335,7809,yes,way/744301089,snapped,pdf
+468,Rabat,Morocco,Africa,Marché central,34.022445,-6.838759,18.0,45.0,34.0209,-6.8416,Marché central (marketplace),314,3608,yes,way/687030169,snapped,pdf
+469,Safi,Morocco,Africa,دائرة الأملاك المخزنية آسفي,32.296232,-9.235805,56.0,83.0,32.2994,-9.2372,دائرة الأملاك المخزنية آسفي (public),376,1105,yes,way/122266681,snapped,pdf
+470,Saint-Louis,Senegal,Africa,Grande Mosquée des HLM,16.014771,-16.497412,7.0,34.0,16.0167,-16.5,Grande Mosquée des HLM (mosque),350,1025,yes,way/181382456,snapped,pdf
+471,Zanzibar City,Tanzania,Africa,House of Wonders,-6.160911,39.189622,10.0,37.0,-6.1630,39.1905,House of Wonders (public),252,2720,yes,way/122950850,snapped,handpicked
+472,Sétif,Algeria,Africa,Sétif City Center,36.1833,5.4,1046.0,1073.0,36.1833,5.4,Boun.ilot 20-1 (building),0,2337,,way/667050358,kept,pdf
+473,Sidi Bel Abbès,Algeria,Africa,City centre,35.192675,-0.635813,475.0,502.0,35.1935,-0.6390,"unnamed public, 3,357 m²",304,3357,yes,way/227145623,snapped,handpicked
+474,Tamale,Ghana,Africa,Tamale City Center,9.433418,-0.817323,137.0,164.0,9.4333,-0.8167,"unnamed building, 875 m²",70,875,,way/1392710306,snapped,pdf
+475,Tangier,Morocco,Africa,مسجد السوريين Mosquée Souriyine,35.769498,-5.800764,9.0,36.0,35.7673,-5.7998,مسجد السوريين Mosquée Souriyine (place of worship),260,1040,yes,way/451623561,snapped,pdf
+476,Tetouan,Morocco,Africa,Tetouan City Center,35.588780,-5.359174,95.0,122.0,35.5889,-5.3626,"unnamed building, 1,036 m²",310,1036,,way/1223979500,snapped,pdf
+477,Thies,Senegal,Africa,City centre,14.792442,-16.927561,72.0,99.0,14.7910,-16.9260,"unnamed public, 709 m²",232,709,yes,way/197723183,snapped,handpicked
+478,Tlemcen,Algeria,Africa,Actel Imama Algérie Télécom,34.882643,-1.348728,756.0,783.0,34.8833,-1.35,Actel Imama Algérie Télécom (building),137,4542,,way/410325337,snapped,pdf
+479,Windhoek,Namibia,Africa,KFBMI Church,-22.558875,17.068302,1672.0,1699.0,-22.5609,17.0658,KFBMI Church (church),342,571,yes,way/905799784,snapped,pdf
+480,Ziguinchor,Senegal,Africa,Cathédrale Saint-Antoine-de-Padoue,12.583217,-16.272250,11.0,38.0,12.5820,-16.2730,Cathédrale Saint-Antoine-de-Padoue (place of worship),158,985,yes,way/202565631,snapped,handpicked
+481,Levin,New Zealand,Oceania,Levin City Center,-40.6223,175.2867,36.0,63.0,-40.6223,175.2867,Post Shop (post office),0,540,,way/545253243,kept,pdf
+482,Paraparaumu,New Zealand,Oceania,Paraparaumu City Center,-40.916152,175.014070,28.0,55.0,-40.9167,175.0167,"unnamed building, 1,411 m²",229,1411,,way/392575175,snapped,pdf
+483,Oamaru,New Zealand,Oceania,Woolworths,-45.097183,170.970498,14.0,41.0,-45.0976,170.9704,Woolworths (building),47,3302,,way/154609241,snapped,pdf
+484,Gore,New Zealand,Oceania,Gore City Center,-46.102581,168.941465,76.0,103.0,-46.1028,168.9436,"unnamed civic, 2,109 m²",167,2109,yes,way/383202661,snapped,pdf
+485,Feilding,New Zealand,Oceania,Manawatu District Council,-40.223195,175.562538,75.0,102.0,-40.2258,175.5656,Manawatu District Council (townhall),390,2235,yes,way/180766739,snapped,pdf
+486,Tokoroa,New Zealand,Oceania,Saint Francis Anglican,-38.223177,175.871035,339.0,366.0,-38.2248,175.8708,Saint Francis Anglican (place of worship),182,572,yes,way/297522296,snapped,pdf
+487,Cambridge,New Zealand,Oceania,Town Hall,-37.892033,175.468093,79.0,106.0,-37.8918,175.4691,Town Hall (community centre),92,1123,yes,way/562991235,snapped,pdf
+488,Te Awamutu,New Zealand,Oceania,Te Awamutu City Center,-38.0095,175.3252,60.0,87.0,-38.0095,175.3252,"unnamed building, 617 m²",0,617,,way/344701745,kept,pdf
+489,Pukekohe,New Zealand,Oceania,Farmers,-37.201485,174.902642,73.0,100.0,-37.2012,174.9031,Farmers (retail),52,7972,,way/207117127,snapped,pdf
+490,Kerikeri,New Zealand,Oceania,Kerikeri City Center,-35.228,173.947,76.0,103.0,-35.228,173.947,"unnamed building, 780 m²",0,780,,way/366243785,kept,pdf
+491,Suva,Fiji,Oceania,Suva City Center,-18.141089,178.441811,60.0,87.0,-18.1416,178.4419,"unnamed building, 2,246 m²",58,2246,,way/1130698392,snapped,pdf
+492,Port Moresby,Papua New Guinea,Oceania,Aopi Building,-9.443340,147.181684,71.0,98.0,-9.4438,147.1803,Aopi Building (public),160,4988,yes,way/945700276,snapped,pdf
+493,Lae,Papua New Guinea,Oceania,Cassowary Road United Church,-6.718104,147.001030,22.0,49.0,-6.7155,146.9999,Cassowary Road United Church (place of worship),316,988,yes,way/792230780,snapped,pdf
+494,Apia,Samoa,Oceania,Marist Brothers Community Hall,-13.832856,-171.767571,7.0,34.0,-13.8333,-171.7667,Marist Brothers Community Hall (community centre),106,2715,yes,way/187130683,snapped,pdf
+495,Nuku'alofa,Tonga,Oceania,Queen Salote Memorial Hall,-21.138310,-175.203767,7.0,34.0,-21.1394,-175.2049,Queen Salote Memorial Hall (sports centre),169,2943,,way/311720748,snapped,pdf
+496,Port Vila,Vanuatu,Oceania,Trade Tools,-17.733318,168.327841,38.0,65.0,-17.7333,168.3273,Trade Tools (building),57,2023,,way/1283045809,snapped,pdf
+497,Honiara,Solomon Islands,Oceania,Honiara City Center,-9.430513,159.949412,4.0,31.0,-9.4333,159.95,"unnamed building, 6,287 m²",317,6287,,way/631329726,snapped,pdf
+498,Nouméa,New Caledonia,Oceania,Géant Casino,-22.275233,166.458648,6.0,33.0,-22.2758,166.458,Géant Casino (retail),92,10552,,way/38224515,snapped,pdf
+499,Majuro,Marshall Islands,Oceania,K&K Supermarket,7.088097,171.378772,9.0,36.0,7.0900,171.3800,K&K Supermarket (building),252,4214,,way/142843348,snapped,handpicked
+500,Koror,Palau,Oceania,Palasia Hotel,7.343411,134.480390,21.0,48.0,7.3419,134.4792,Palasia Hotel (hotel),213,2988,,way/267048282,snapped,pdf

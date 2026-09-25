@@ -36,8 +36,10 @@ data/
     handpicked_anchors.csv  your own downtown points for rows the PDF gets wrong (optional)
     snapped.csv           snap_to_buildings.py output: what batch_generate.py reads
     snapped_review.csv    one line per city with the building picked and map links
-    no_3d_buildings.csv, downtown_anchors.csv, handpick_needed.md   (351-700 only)
-  cache/                osm_buildings_cache.json (Overpass answers, shared by all shares)
+    no_3d_buildings.csv   cities whose ground_truth has no 3D mesh (see *Cities without 3D buildings*)
+    downtown_anchors.csv, handpick_needed.md   (351-700 only)
+  cache/                osm_buildings_cache.json (Overpass answers, shared by all shares;
+                        not tracked: ~100 MB, rebuilt by snap_to_buildings.py on first run)
   examples/             cities_sample.csv, a minimal hand-written city list
 projects/               generated .esp inputs + metadata.csv, manifest.json, render_order.txt
                         (not tracked: regenerated from the CSV by batch_generate.py)
@@ -213,10 +215,13 @@ geometrically correct but shows the satellite image draped over bare
 terrain, so it looks like a skewed satellite view, and nothing in the
 pipeline can fix that. `scripts/check_3d_coverage.py $SHARE` finds them from
 the frames alone; see *How the 3D-coverage check works* below. The confirmed
-list for rows 351–700 is `data/cities_351_700/no_3d_buildings.csv`. Rows
-251–500 (from `500cities.pdf`) score 102 flat, 29 borderline and 118 3D in
-`cities_251_500/coverage_check.csv` (after the sea anchors were re-picked);
-that list has not been reviewed by eye yet.
+list for rows 351–700 is `data/cities_351_700/no_3d_buildings.csv`. For rows
+251–500 (from `500cities.pdf`, after all 44 `no_building` anchors were
+hand-picked) the check scored 103 flat, 24 borderline and 122 3D; the 24
+borderline cities were reviewed by eye and 15 of them had no mesh, giving
+118 cities in `data/cities_251_500/no_3d_buildings.csv` (column `source`
+says which were confirmed by eye). The 103 `flat` verdicts were accepted as
+scored, not eyeballed.
 
 ### Rendering in parallel
 
@@ -313,15 +318,21 @@ n,city,lat,lon,anchor,snap,note
 * Then regenerate, delete the old render, and render again:
   `rm -r $SHARE/<city>` and `render_all.py ... --only <city> ...`.
 
-`data/cities_251_500/handpicked_anchors.csv` is a worked example: 18 sea
-anchors moved to their old towns, plus Kuwait City pinned to its PDF
-downtown point. That pin exists because the auto-snapped building was a
+`data/cities_251_500/handpicked_anchors.csv` is a worked example covering
+all 44 `no_building` rows of that share. 18 were in the sea; the other 26
+were 2–11 km from downtown in fields, forest or suburbs, and Ruse (160 km)
+and Kavala (45 km) were plainly wrong. Each got a downtown landmark and was
+then snapped to a building. Two rows use `snap=no`: Hyderabad (Pakistan),
+because OpenStreetMap has no footprints mapped in its old city, and
+Kuwait City, pinned to its PDF downtown point. That pin exists because the auto-snapped building was a
 small school whose ground_truth stalls at frame 32/33, and the stall
 persists at the downtown point too.
 
 For rows 351–700, the six `no_building` rows are listed in
 `data/cities_351_700/handpick_needed.md`. Overpass results are cached in
-`data/cache/osm_buildings_cache.json`. The public Overpass servers
+`data/cache/osm_buildings_cache.json`. The cache is not in git (it
+passed 100 MB, GitHub's per-file limit), so a fresh clone re-fetches
+everything on its first run. The public Overpass servers
 rate-limit aggressively; the script retries and rotates mirrors, but a full
 350-city run can take the better part of an hour, and even a handful of new
 points can take 10–20 minutes on a bad day. Note the reference dataset itself mostly used Earth Studio's default

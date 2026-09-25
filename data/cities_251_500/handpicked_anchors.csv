@@ -1,0 +1,46 @@
+n,city,lat,lon,anchor,snap,note
+290,Kristiansand,58.1460,7.9948,Kvadraturen (Kristiansand Cathedral),yes,PDF point in the fjord
+296,Tampere,61.4980,23.7610,Keskustori (Central Square),yes,PDF point on Lake Näsijärvi
+298,Helsingør,56.0334,12.6126,St. Olaf's Cathedral,yes,PDF point in the Øresund
+312,Akureyri,65.6815,-18.0900,Akureyrarkirkja / town centre,yes,PDF point in Eyjafjörður
+314,Durrës,41.3133,19.4457,Great Mosque / Amphitheatre,yes,PDF point in the Adriatic
+315,Shkodër,42.0683,19.5117,Ebu Bekr Mosque / Kolë Idromeno street,yes,PDF longitude 19.0167 is ~40 km off the city (Adriatic)
+319,Limassol,34.6730,33.0418,Limassol Castle / old town,yes,PDF point in Akrotiri Bay
+326,Constanța,44.1737,28.6573,Ovid Square / Great Mahmudiye Mosque,yes,PDF point in the Black Sea
+338,Varna,43.2049,27.9106,Dormition of the Theotokos Cathedral,yes,PDF point in Varna Bay
+354,Las Palmas de Gran Canaria,28.1011,-15.4146,Catedral de Santa Ana (Vegueta),yes,PDF point in the Atlantic
+357,Vila Nova de Gaia,41.1238,-8.6118,Câmara Municipal de Gaia,yes,PDF point in the Atlantic
+373,Galle,6.0330,80.2155,Galle town centre (north of the Fort),yes,PDF point in the Indian Ocean
+388,Kuwait City,29.3333,47.9833,Kuwait City City Center,no,PDF downtown anchor kept as is; ground_truth stalls at frame 32-33 at both this point and the snapped building (2026-09-25)
+390,Manama,26.2345,50.5760,Bab Al Bahrain / Manama Souq,yes,PDF point in the Gulf
+391,Muscat,23.6147,58.5945,Al Alam Palace (Old Muscat),yes,PDF point in the Gulf of Oman
+430,Annaba,36.9010,7.7560,Cours de la Révolution,yes,PDF point in the Mediterranean
+465,Oran,35.6973,-0.6336,Place du 1er Novembre / Town Hall,yes,PDF point in the Mediterranean
+471,Zanzibar City,-6.1630,39.1905,Stone Town,yes,PDF point in the Zanzibar Channel
+499,Majuro,7.0900,171.3800,Delap (Capitol),yes,PDF longitude 171.1858 is in the lagoon ~20 km west of Delap-Uliga-Djarrit
+256,Salzgitter,52.1540,10.3320,Salzgitter-Lebenstedt centre / Rathaus,yes,"no_building: PDF point 7.9 km from downtown, render showed forest and fields"
+279,Chur,46.8497,9.5313,Altstadt / Martinsplatz,yes,"no_building: PDF point 4.4 km from downtown, render showed a cliff"
+282,Schaffhausen,47.6963,8.6345,Altstadt / St. Johann,yes,"no_building: PDF point 4.1 km from downtown, render showed forest"
+317,Sarajevo,43.8590,18.4295,Baščaršija / Gazi Husrev-beg Mosque,yes,"no_building: PDF point 3.0 km from downtown, render showed a hillside village"
+332,Pécs,46.0762,18.2283,Széchenyi tér / Mosque of Pasha Qasim,yes,"no_building: PDF point 2.0 km from downtown, render showed a road through woodland"
+336,Ruse,43.8485,25.9545,Ploshtad Svoboda (Liberty Square),yes,"no_building: PDF point 162.7 km from downtown, render showed farmland"
+341,Kavala,40.9385,24.4110,Eleftherias Square / old town,yes,"no_building: PDF point 45.3 km from downtown, render showed farmland"
+359,Olomouc,49.5941,17.2509,Horní náměstí / Holy Trinity Column,yes,"no_building: PDF point 4.4 km from downtown, render showed farmland"
+361,Abu Dhabi,24.4823,54.3548,Qasr Al Hosn,yes,"no_building: PDF point 6.5 km from downtown, render showed tidal flats"
+372,Faisalabad,31.4185,73.0791,Clock Tower (Ghanta Ghar),yes,"no_building: PDF point 6.7 km from downtown, render showed outskirts"
+374,Gujranwala,32.1600,74.1880,City centre (GT Road),yes,"no_building: PDF point 6.7 km from downtown, render showed outskirts"
+380,Hyderabad,25.3920,68.3740,Pakka Qila / Shahi Bazaar,no,"no_building: PDF point 2.8 km from downtown, render showed a river bridge on the outskirts; no OSM building footprints within 400 m, point used as given"
+382,Islamabad,33.7110,73.0600,Blue Area / Jinnah Avenue,yes,"no_building: PDF point 9.9 km from downtown, render showed outskirts"
+389,Lahore,31.5870,74.3140,Walled City / Lahore Fort,yes,"no_building: PDF point 5.5 km from downtown, render showed outskirts"
+392,Nha Trang,12.2465,109.1880,Nha Trang Cathedral,yes,"no_building: PDF point 2.3 km from downtown, render showed an industrial area"
+395,Quy Nhon,13.7760,109.2230,City centre,yes,"no_building: PDF point 4.4 km from downtown, render showed outskirts"
+397,Rawalpindi,33.5960,73.0510,Saddar,yes,"no_building: PDF point 10.9 km from downtown, render showed fields"
+437,Constantine,36.3655,6.6105,Place du 1er Novembre / Palais Ahmed Bey,yes,"no_building: PDF point 5.0 km from downtown, render showed a motorway on the hillside"
+439,Daloa,6.8770,-6.4510,Town centre,yes,"no_building: PDF point 6.5 km from downtown, render showed woodland"
+445,Gaborone,-24.6555,25.9105,Main Mall / Government Enclave,yes,"no_building: PDF point 10.5 km from downtown, render showed bush"
+450,Kaolack,14.1475,-16.0755,Grand Marché,yes,"no_building: PDF point 6.2 km from downtown, render showed salt flats"
+453,Kisumu,-0.1025,34.7610,Central business district,yes,"no_building: PDF point 4.2 km from downtown, render showed farmland"
+454,Kitwe,-12.8100,28.2130,Central business district,yes,"no_building: PDF point 4.1 km from downtown, render showed forest"
+473,Sidi Bel Abbès,35.1935,-0.6390,City centre,yes,"no_building: PDF point 6.4 km from downtown, render showed farmland"
+477,Thies,14.7910,-16.9260,City centre,yes,"no_building: PDF point 7.0 km from downtown, render showed scrub"
+480,Ziguinchor,12.5820,-16.2730,City centre,yes,"no_building: PDF point 6.5 km from downtown, render showed woodland"

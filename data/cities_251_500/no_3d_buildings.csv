@@ -1,0 +1,119 @@
+n,city,country,continent,city_folder,lat,lon,homography_score,source
+261,Amstetten,Austria,Europe,amstetten,48.115239,14.869359,0.703,flat score
+265,Bruck an der Mur,Austria,Europe,bruck_an_der_mur,47.416942,15.278123,0.804,flat score
+267,Feldkirch,Austria,Europe,feldkirch,47.235962,9.597766,0.74,flat score
+271,Krems,Austria,Europe,krems,48.418432,15.600437,0.567,"borderline, confirmed by eye"
+272,Leoben,Austria,Europe,leoben,47.381983,15.095492,0.781,flat score
+273,Mödling,Austria,Europe,modling,48.083978,16.462822,0.767,flat score
+295,Pori,Finland,Europe,pori,61.466566,21.747886,0.853,flat score
+300,Horsens,Denmark,Europe,horsens,55.857669,9.852195,0.88,flat score
+301,Kolding,Denmark,Europe,kolding,55.484357,9.502199,0.687,flat score
+302,Randers,Denmark,Europe,randers,56.467549,10.049720,0.789,flat score
+308,Waterford,Ireland,Europe,waterford,52.251383,-7.100757,0.854,flat score
+310,Dudelange,Luxembourg,Europe,dudelange,49.465573,6.080248,0.76,flat score
+312,Akureyri,Iceland,Europe,akureyri,65.683357,-18.087414,0.697,flat score
+317,Sarajevo,Bosnia and Herzegovina,Europe,sarajevo,43.858819,18.428070,0.703,flat score
+318,Skopje,North Macedonia,Europe,skopje,41.999640,21.479654,0.866,flat score
+319,Limassol,Cyprus,Europe,limassol,34.672249,33.041666,0.888,flat score
+320,Nicosia,Cyprus,Europe,nicosia,35.184216,33.382088,0.943,flat score
+341,Kavala,Greece,Europe,kavala,40.936146,24.407493,0.76,flat score
+348,Niš,Serbia,Europe,nis,43.333755,21.900945,0.869,flat score
+361,Abu Dhabi,United Arab Emirates,Asia,abu_dhabi,24.482796,54.357364,0.85,flat score
+364,Be'er Sheva,Israel,Asia,be_er_sheva,31.249772,34.782711,0.758,flat score
+365,Beirut,Lebanon,Asia,beirut,33.885069,35.499798,0.672,"borderline, confirmed by eye"
+366,Bnei Brak,Israel,Asia,bnei_brak,32.084014,34.864731,0.841,flat score
+367,Chattogram,Bangladesh,Asia,chattogram,22.332765,91.799439,0.78,flat score
+368,Colombo,Sri Lanka,Asia,colombo,6.933727,79.850080,0.644,"borderline, confirmed by eye"
+369,Da Nang,Vietnam,Asia,da_nang,16.064828,108.230956,0.951,flat score
+370,Dehiwala,Sri Lanka,Asia,dehiwala,6.864181,79.865942,0.679,"borderline, confirmed by eye"
+371,Dhaka,Bangladesh,Asia,dhaka,23.7167,90.4167,0.786,flat score
+372,Faisalabad,Pakistan,Asia,faisalabad,31.415984,73.081960,0.791,flat score
+373,Galle,Sri Lanka,Asia,galle,6.0330,80.2155,0.761,flat score
+374,Gujranwala,Pakistan,Asia,gujranwala,32.161995,74.188033,0.885,flat score
+375,Haifa,Israel,Asia,haifa,32.8167,34.9833,0.601,"borderline, confirmed by eye"
+376,Haiphong,Vietnam,Asia,haiphong,20.831021,106.680618,0.871,flat score
+377,Hanoi,Vietnam,Asia,hanoi,21.031524,105.847248,0.659,"borderline, confirmed by eye"
+378,Ho Chi Minh City,Vietnam,Asia,ho_chi_minh_city,10.749351,106.666103,0.889,flat score
+379,Holon,Israel,Asia,holon,32.031480,34.783174,0.654,"borderline, confirmed by eye"
+380,Hyderabad,Pakistan,Asia,hyderabad,25.3920,68.3740,0.742,flat score
+381,Irbid,Jordan,Asia,irbid,32.551302,35.850541,0.839,flat score
+382,Islamabad,Pakistan,Asia,islamabad,33.708861,73.058616,0.852,flat score
+383,Jaffna,Sri Lanka,Asia,jaffna,9.665710,80.015023,0.746,flat score
+384,Jerusalem,Israel,Asia,jerusalem,31.7833,35.2167,0.587,"borderline, confirmed by eye"
+386,Karachi,Pakistan,Asia,karachi,24.866975,67.048909,0.831,flat score
+387,Kathmandu,Nepal,Asia,kathmandu,27.702670,85.334971,0.753,flat score
+390,Manama,Bahrain,Asia,manama,26.233298,50.576059,0.763,flat score
+391,Muscat,Oman,Asia,muscat,23.611617,58.593602,0.588,"borderline, confirmed by eye"
+392,Nha Trang,Vietnam,Asia,nha_trang,12.248453,109.188067,0.922,flat score
+393,Petah Tikva,Israel,Asia,petah_tikva,32.085271,34.880590,0.675,"borderline, confirmed by eye"
+394,Phnom Penh,Cambodia,Asia,phnom_penh,11.549912,104.918379,0.888,flat score
+395,Quy Nhon,Vietnam,Asia,quy_nhon,13.773124,109.221701,0.954,flat score
+396,Ramat Gan,Israel,Asia,ramat_gan,32.064477,34.798400,0.697,flat score
+397,Rawalpindi,Pakistan,Asia,rawalpindi,33.593231,73.049578,0.852,flat score
+398,Sharjah,United Arab Emirates,Asia,sharjah,25.334972,55.430283,0.864,flat score
+399,Tripoli,Lebanon,Asia,tripoli,34.449886,35.830624,0.793,flat score
+400,Ulaanbaatar,Mongolia,Asia,ulaanbaatar,47.915852,106.884135,0.685,flat score
+427,Accra,Ghana,Africa,accra,5.603221,-0.186457,0.78,flat score
+428,Agadir,Morocco,Africa,agadir,30.426369,-9.599743,0.726,flat score
+430,Annaba,Algeria,Africa,annaba,36.902762,7.757296,0.663,"borderline, confirmed by eye"
+431,Arusha,Tanzania,Africa,arusha,-3.385491,36.666984,0.87,flat score
+432,Blida,Algeria,Africa,blida,36.497249,2.833894,0.838,flat score
+433,Bouaké,Côte d'Ivoire,Africa,bouake,7.697470,-4.999075,0.697,flat score
+434,Bulawayo,Zimbabwe,Africa,bulawayo,-20.168031,28.713256,0.834,flat score
+435,Casablanca,Morocco,Africa,casablanca,33.575442,-7.588488,0.773,flat score
+436,Chingola,Zambia,Africa,chingola,-12.517123,27.883725,0.774,flat score
+438,Dakar,Senegal,Africa,dakar,14.667488,-17.434858,0.871,flat score
+439,Daloa,Côte d'Ivoire,Africa,daloa,6.874339,-6.452661,0.739,flat score
+440,Dar es Salaam,Tanzania,Africa,dar_es_salaam,-6.799688,39.279857,0.848,flat score
+441,Dodoma,Tanzania,Africa,dodoma,-6.167895,35.664558,0.745,flat score
+442,Entebbe,Uganda,Africa,entebbe,0.070018,32.451229,0.894,flat score
+443,Fez,Morocco,Africa,fez,34.032173,-4.998068,0.832,flat score
+444,Francistown,Botswana,Africa,francistown,-21.115322,27.536728,0.811,flat score
+445,Gaborone,Botswana,Africa,gaborone,-24.655954,25.911013,0.825,flat score
+446,Gweru,Zimbabwe,Africa,gweru,-19.450271,29.816317,0.849,flat score
+447,Harare,Zimbabwe,Africa,harare,-17.834957,31.051675,0.744,flat score
+448,Jinja,Uganda,Africa,jinja,0.451966,33.235853,0.798,flat score
+450,Kaolack,Senegal,Africa,kaolack,14.149328,-16.078097,0.848,flat score
+451,Keetmanshoop,Namibia,Africa,keetmanshoop,-26.600080,18.133599,0.82,flat score
+452,Kénitra,Morocco,Africa,kenitra,34.262399,-6.582511,0.903,flat score
+453,Kisumu,Kenya,Africa,kisumu,-0.099728,34.760995,0.892,flat score
+454,Kitwe,Zambia,Africa,kitwe,-12.808702,28.212170,0.731,flat score
+456,Lusaka,Zambia,Africa,lusaka,-15.390899,28.322033,0.822,flat score
+457,Marrakesh,Morocco,Africa,marrakesh,31.633988,-7.999008,0.892,flat score
+458,Mbale,Uganda,Africa,mbale,1.0667,34.2,0.571,"borderline, confirmed by eye"
+459,Meknes,Morocco,Africa,meknes,33.896445,-5.549403,0.718,flat score
+460,Mombasa,Kenya,Africa,mombasa,-4.042668,39.666736,0.888,flat score
+462,Nairobi,Kenya,Africa,nairobi,-1.287210,36.820685,0.871,flat score
+463,Nakuru,Kenya,Africa,nakuru,-0.269908,36.066605,0.704,flat score
+464,Ndola,Zambia,Africa,ndola,-13.001962,28.650546,0.867,flat score
+465,Oran,Algeria,Africa,oran,35.695619,-0.630497,0.84,flat score
+466,Oujda,Morocco,Africa,oujda,34.681074,-1.909692,0.899,flat score
+467,Port Louis,Mauritius,Africa,port_louis,-20.169226,57.501739,0.864,flat score
+468,Rabat,Morocco,Africa,rabat,34.022445,-6.838759,0.905,flat score
+469,Safi,Morocco,Africa,safi,32.296232,-9.235805,0.82,flat score
+470,Saint-Louis,Senegal,Africa,saint_louis,16.014771,-16.497412,0.882,flat score
+471,Zanzibar City,Tanzania,Africa,zanzibar_city,-6.160911,39.189622,0.773,flat score
+473,Sidi Bel Abbès,Algeria,Africa,sidi_bel_abbes,35.192675,-0.635813,0.778,flat score
+474,Tamale,Ghana,Africa,tamale,9.433418,-0.817323,0.768,flat score
+475,Tangier,Morocco,Africa,tangier,35.769498,-5.800764,0.787,flat score
+477,Thies,Senegal,Africa,thies,14.792442,-16.927561,0.895,flat score
+478,Tlemcen,Algeria,Africa,tlemcen,34.882643,-1.348728,0.851,flat score
+479,Windhoek,Namibia,Africa,windhoek,-22.558875,17.068302,0.612,"borderline, confirmed by eye"
+480,Ziguinchor,Senegal,Africa,ziguinchor,12.583217,-16.272250,0.897,flat score
+481,Levin,New Zealand,Oceania,levin,-40.6223,175.2867,0.884,flat score
+482,Paraparaumu,New Zealand,Oceania,paraparaumu,-40.916152,175.014070,0.608,"borderline, confirmed by eye"
+483,Oamaru,New Zealand,Oceania,oamaru,-45.097183,170.970498,0.82,flat score
+484,Gore,New Zealand,Oceania,gore,-46.102581,168.941465,0.896,flat score
+485,Feilding,New Zealand,Oceania,feilding,-40.223195,175.562538,0.721,flat score
+486,Tokoroa,New Zealand,Oceania,tokoroa,-38.223177,175.871035,0.928,flat score
+487,Cambridge,New Zealand,Oceania,cambridge,-37.892033,175.468093,0.845,flat score
+488,Te Awamutu,New Zealand,Oceania,te_awamutu,-38.0095,175.3252,0.919,flat score
+489,Pukekohe,New Zealand,Oceania,pukekohe,-37.201485,174.902642,0.903,flat score
+490,Kerikeri,New Zealand,Oceania,kerikeri,-35.228,173.947,0.685,flat score
+492,Port Moresby,Papua New Guinea,Oceania,port_moresby,-9.443340,147.181684,0.74,flat score
+493,Lae,Papua New Guinea,Oceania,lae,-6.718104,147.001030,0.757,flat score
+494,Apia,Samoa,Oceania,apia,-13.832856,-171.767571,0.767,flat score
+495,Nuku'alofa,Tonga,Oceania,nuku_alofa,-21.138310,-175.203767,0.865,flat score
+496,Port Vila,Vanuatu,Oceania,port_vila,-17.733318,168.327841,0.584,"borderline, confirmed by eye"
+498,Nouméa,New Caledonia,Oceania,noumea,-22.275233,166.458648,0.685,flat score
+499,Majuro,Marshall Islands,Oceania,majuro,7.088097,171.378772,0.809,flat score
