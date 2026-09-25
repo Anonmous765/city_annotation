@@ -84,10 +84,19 @@ expensive part (~600 MB and several minutes per city).
 To run step 4 unattended and keep it alive after closing the terminal:
 
 ```bash
+mkdir -p $SHARE                               # see note below
 setsid nohup python3 scripts/render_all.py projects --out $SHARE >> $SHARE/render_all.log 2>&1 < /dev/null &
 tail -f $SHARE/render_all.log                 # progress
 ls -d $SHARE/*/*/footage | wc -l              # finished views (2 per city)
 ```
+
+`render_all.py` creates `$SHARE/` itself, but only after it starts running —
+too late here, because the shell opens `$SHARE/render_all.log` for the `>>`
+redirect *before* launching the script. Without the `mkdir -p` the command
+fails immediately with `No such file or directory` and `$SHARE/` is never
+created. This only bites the backgrounded form above; running
+`render_all.py` directly in the foreground (no `>>` redirect) creates the
+folder fine on its own.
 
 ### Stopping and resuming
 
@@ -116,6 +125,7 @@ again first:
 
 ```bash
 SHARE=cities_351_700                          # your share
+mkdir -p $SHARE                               # already exists from the first run; harmless
 setsid nohup python3 scripts/render_all.py projects --out $SHARE >> $SHARE/render_all.log 2>&1 < /dev/null &
 tail -f $SHARE/render_all.log
 ```
@@ -169,6 +179,7 @@ mostly idle. `--parallel N` runs N copies of the script at once, each in its
 own Chrome window on its own share of the cities:
 
 ```bash
+mkdir -p $SHARE                               # see note under "unattended" above
 setsid nohup python3 scripts/render_all.py projects --out $SHARE --parallel 3 >> $SHARE/render_all.log 2>&1 < /dev/null &
 tail -f $SHARE/render_all.*.log                 # one log per window
 ```
