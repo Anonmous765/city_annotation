@@ -115,9 +115,14 @@ nothing that is already complete is touched.
   relaunches Chrome. Kill both explicitly:
 
   ```bash
-  pkill -f "python3 render_all[.]py"; pkill -f "ges-chrome-profile"
+  pkill -f "scripts/render_all.py"; pkill -f "ges-chrome-profile"
   pgrep -af "render_all|ges-chrome-profile"   # should print nothing
   ```
+
+  (`pkill -f` matches the full command line, which is `python3
+  scripts/render_all.py ...` — a pattern like `"python3 render_all.py"`
+  never matches, because `scripts/` sits in between; the script survives
+  and dutifully relaunches Chrome, which looks like the kill did nothing.)
 
 **Resume.** Run the same command you started with, from the project folder.
 `$SHARE` is a plain shell variable and is empty in a new terminal, so set it
